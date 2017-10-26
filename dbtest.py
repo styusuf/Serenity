@@ -17,10 +17,15 @@ with open('sample.json') as data_file:
 a = Recipe()
 a.populate_from_json(data)
 a.populate_insert_statement()
-print a.insertStatement
+# print a.insertStatement
+if a.update_db(conn) == 0:
+    print "success"
+else:
+    print "fail"
 
-cursor = conn.cursor()
 
-cursor.execute(a.insertStatement)
-conn.commit()
+# b = cursor.execute(a.insertStatement)
+# conn.commit()
+
+# print type(b)
 
