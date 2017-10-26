@@ -1,15 +1,15 @@
+from DBObject import DBObject
+from RawJson import RawJson
 from IngredientClass import Ingredient
 import logging
 import json
-import traceback
 
 
-
-class Recipe:
+class Recipe(DBObject):
     """Recipe Class"""
     def __init__(self):
         # Database entries
-        self.id = -1
+        DBObject.__init__(self)
         self.isVeg = None
         self.isVegan = None
         self.isGlutenFree = None
@@ -24,11 +24,11 @@ class Recipe:
         self.dishTypes = None
         self.instructions = None
         self.ingredients = None
-        # Insert statement
-        self.insertStatement = None
         self.preparedInsertStatement = False
         # Ingredients JSON
         self.ingredientsJson = None
+        # Raw Json
+        self.rawJson = None
 
     def populate_from_json(self, json_object):
         """Feed the recipe json here and it will populate the fields"""
@@ -69,47 +69,47 @@ class Recipe:
 
         self.ingredients = '\'' + json.dumps(recipe['extendedIngredients']) + '\''
 
-    def update_db(self, conn):
+        # Raw Json
+        self.rawJson = RawJson(json.dumps(json_object), self.id)
+
+    def update_with_recipe(self, conn, filename):
         """Update the database with the recipe and ingredients"""
-        if self.preparedInsertStatement == False:
-            self.populate_insert_statement()
-        cursor = conn.cursor()
-        try:
-            cursor.execute(self.insertStatement)
-        except:
-            e = traceback.format_exc()
-            logging.error(e)
-            return -1
-        conn.commit()
-        cursor.close()
+        if self.update_db(conn) != 0:
+            logging.error("DB Update for recipe {} failed!".format(self.id))
         logging.info("Updated Recipe {}".format(self.id))
+
+        # Update SQL file with recipe
+        self.update_sql_file(filename)
+
         # Update Ingredients Table
         for i in self.ingredientsJson:
             ingr = Ingredient(self.id)
             ingr.populate_from_json(i)
-            ingr.update_db(conn)
+            if (ingr.populate_statement(conn) & ingr.update_db(conn)) != 0:
+                logging.error("Update for ingredient {} for recipe {} failed".format(ingr.id, self.id))
+                return -1
+            ingr.update_sql_file(filename)
+        logging.info("Updated Ingredients for {}".format(self.id))
+
+        # Update RawJson
+        self.rawJson.populate_statement()
+        if self.rawJson.update_db(conn) != 0:
+            logging.error("DB update for raw json failed for recipe {} failed".format(self.id))
+            return -1
+        self.rawJson.update_sql_file(filename)
+        logging.info("DB Update for raw json successful for recipe {}".format(self.id))
         return 0
-
-
-    def populate_from_db(self, conn, recipe_id):
-        """Update the object from the database cursor and id"""
-        pass
-
-    def update_sql_file(self, filename):
-        """update sql file with insert statement for this recipe"""
-        pass
 
     def populate_insert_statement(self):
         """Populate the insert statement"""
         if self.id == -1:
             logging.error("First populate the fields")
             return -1
-        self.insertStatement = 'INSERT INTO recipes VALUES ( {}, {}, {}, {}, {}, ' \
-                '{}, {}, {}, {}, {}, ' \
-                '{}, {}, {}, {}, {})'.format(self.id, self.isVeg, self.isVegan,
-                    self.isGlutenFree, self.isDairyFree, self.title, self.ReadyInMin,
-                    self.CookingMin, self.pricePerServing, self.servings, self.spoonacularScore,
-                    self.image, self.dishTypes, self.instructions, self.ingredients)
+        self.statement = 'INSERT INTO recipes VALUES ( {}, {}, {}, {}, {},'\
+              '{}, {}, {}, {}, {}, ' \
+              '{}, {}, {}, {}, {})'.format(self.id, self.isVeg, self.isVegan,
+              self.isGlutenFree, self.isDairyFree, self.title, self.ReadyInMin,
+              self.CookingMin, self.pricePerServing, self.servings, self.spoonacularScore,
+              self.image, self.dishTypes, self.instructions, self.ingredients)
         self.preparedInsertStatement = True
         return 0
-
