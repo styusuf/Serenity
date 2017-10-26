@@ -1,11 +1,12 @@
 import json
 import logging
-import traceback
+from DBObject import DBObject
 
-class Ingredient:
+
+class Ingredient(DBObject):
     """Ingredient Class"""
     def __init__(self, recipe_id):
-        self.id = -1
+        DBObject.__init__(self)
         self.name = None
         self.type = None
         self.image = None
@@ -18,17 +19,12 @@ class Ingredient:
         self.type = json.dumps(ingredient_json['aisle']).replace('\"', '\'')
         self.image = '\'{ "image" : ' + json.dumps(ingredient_json['image']) + '}\''
 
-    def populate_from_db(self, cursor, ingredient_id):
-        """populate the object from the database for ingredientID"""
-        pass
-
-    def update_db(self, conn):
+    def populate_statement(self, conn):
         """update the database with object"""
         if self.id == -1:
             logging.error("First populate the fields")
             return -1
         # First check if this ingredient exists
-        statement = None
         cursor = conn.cursor()
         select_statement = "SELECT recipes FROM ingredients where id = {}".format(self.id)
         cursor.execute(select_statement)
@@ -36,26 +32,13 @@ class Ingredient:
             # This ingredient exists, we'll have to update the recipe list
             j = json.loads(cursor.fetchone()[0])
             j.append(self.recipe)
-            statement = "UPDATE ingredients SET recipes = '{}' WHERE id = {}".format(j, self.id)
+            self.statement = "UPDATE ingredients SET recipes = '{}' WHERE id = {}".format(j, self.id)
             pass
         else:
             # Update a new ingredient
             recipe = '\'[' + str(self.recipe) + ']\''
-            statement = 'INSERT INTO ingredients VALUES ({}, {}, {}, {}, {}' \
-                    ')'.format(self.id, self.name, self.type, self.image, recipe)
-        try:
-            cursor.execute(statement)
-        except:
-            e = traceback.format_exc()
-            logging.error(e)
-            return -1
-        conn.commit()
+            self.statement = 'INSERT INTO ingredients VALUES ({}, {}, {}, {}, {})'\
+                .format(self.id, self.name, self.type, self.image, recipe)
         cursor.close()
         return 0
-
-    def update_sql_file(self, filename):
-        """update sql file with insert statement for this ingredient"""
-        pass
-
-
 
