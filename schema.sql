@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS foodtest;
+DROP DATABASE IF EXISTS FoodDatabase;
 
-CREATE DATABASE foodtest
+CREATE DATABASE FoodDatabase
 	WITH
 	OWNER = postgres
 	ENCODING = 'UTF8'
@@ -8,26 +8,41 @@ CREATE DATABASE foodtest
 	CONNECTION LIMIT = -1;
 
 -- Postgres command
-\c foodtest;
+\c fooddatabase
 
 drop table if exists recipes;
 drop table if exists ingredients;
-drop type if exists ingredient_type;
 
 create table recipes (
-	id serial NOT NULL,
+	id int NOT NULL,
+	veg boolean NOT NULL, 
+	vegan boolean NOT NULL,
+	glutenFree boolean NOT NULL,
+	dairyFree boolean NOT NULL,
+	title varchar(256) NOT NULL,
+	ReadyInMin int NOT NULL,
+	CookingMin int NOT NULL,
+	pricePerServing numeric NOT NULL,
+	servings int NOT NULL, 
+	spoonacularScore int NOT NULL,
+	image jsonb,
+	dishTypes jsonb,
 	instructions jsonb,
 	ingredients jsonb,
-	image jsonb,
 	PRIMARY KEY(id)
 );
 
-create type ingredient_type as ENUM ('spices', 'meats');
-
 create table ingredients (
-	id serial NOT NULL,
-	type ingredient_type,
+	id int NOT NULL,
+	name varchar(256) NOT NULL,
+	type varchar(256) NOT NULL,
 	image jsonb,
 	recipes json,
+	PRIMARY KEY(id)
+);
+
+create table rawrecipejson (
+	id int NOT NULL,
+	object jsonb,
 	PRIMARY KEY(id)
 );
