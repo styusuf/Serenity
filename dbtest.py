@@ -1,10 +1,11 @@
 import psycopg2 as psql
 import json
+from RecipeClass import Recipe
 
 conn = None
 
 try:
-	conn = psql.connect("dbname='foodtest' user='postgres' host='localhost' password='a' port='5433'")
+	conn = psql.connect("dbname='fooddatabase' user='postgres' host='localhost' password='a' port='5433'")
 except:
 	print "unable to connect"
 	exit(1)
@@ -13,18 +14,13 @@ except:
 with open('sample.json') as data_file:
 	data = json.load(data_file)
 
+a = Recipe()
+a.populate_from_json(data)
+a.populate_insert_statement()
+print a.insertStatement
 
-# ingredients = str(data['ingredients']).replace('u\'', '"').replace('\'', '"')
-ingredients = json.dumps(data['ingredients'])
-# print ingredients
+cursor = conn.cursor()
 
-# insert_command = "insert into recipes (ingredients) values ('" + ingredients + "')"
+cursor.execute(a.insertStatement)
+conn.commit()
 
-if conn:
-    cursor = conn.cursor()
-    cursor.execute("select * from recipes;")
-    print cursor.fetchall()
-    cursor.execute("INSERT INTO recipes (ingredients) values('" + ingredients + "')")
-    conn.commit()
-    cursor.execute("select * from recipes;")
-    print cursor.fetchall()
