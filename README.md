@@ -19,6 +19,8 @@ Data and Visual analytics project
   * \i </path/to/script> (Run script)
   * \d (list tables in database)
   
+ ## [Git Bash for Windows](https://git-for-windows.github.io/)
+  
  ## [Git Cheatsheet](https://education.github.com/git-cheat-sheet-education.pdf)
  
  ## Python tools
