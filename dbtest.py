@@ -2,6 +2,9 @@ import psycopg2 as psql
 import json
 from RecipeClass import Recipe
 
+# psycopg2.extensions.register_type(psycopg2.extensions.UNICODE)
+# psycopg2.extensions.register_type(psycopg2.extensions.UNICODEARRAY)
+
 conn = None
 
 try:
@@ -11,7 +14,7 @@ except:
 	exit(1)
 
 # Open file
-with open('sample.json') as data_file:
+with open('json_objects/20171027132145877592.json') as data_file:
 	data = json.load(data_file)
 
 
@@ -25,4 +28,3 @@ if a.update_with_recipe(conn, filename) == 0:
     print "success"
 else:
     print "fail"
-
