@@ -1,5 +1,6 @@
 import json
 import logging
+from psycopg2 import sql
 from DBObject import DBObject
 
 
@@ -17,7 +18,7 @@ class Ingredient(DBObject):
         self.id = ingredient_json['id']
         self.name = json.dumps(ingredient_json['name']).replace('\"', '\'')
         self.type = json.dumps(ingredient_json['aisle']).replace('\"', '\'')
-        self.image = '\'{ "image" : ' + json.dumps(ingredient_json['image']) + '}\''
+        self.image = '{ "image" : ' + json.dumps(ingredient_json['image']) + '}'
 
     def populate_statement(self, conn):
         """update the database with object"""
@@ -25,20 +26,28 @@ class Ingredient(DBObject):
             logging.error("First populate the fields")
             return -1
         # First check if this ingredient exists
+        # query = sql.SQL("select {0} from {1}").format(
+        # ...    sql.SQL(', ').join([sql.Identifier('foo'), sql.Identifier('bar')]),
+        # ...    sql.Identifier('table'))
         cursor = conn.cursor()
-        select_statement = "SELECT recipes FROM ingredients where id = {}".format(self.id)
-        cursor.execute(select_statement)
+        select_statement = sql.SQL("SELECT {0} FROM {1} where {2} = %s").format(sql.Identifier('recipes'),
+                                                                                sql.Identifier('ingredients'),
+                                                                                sql.Identifier('id'))
+        cursor.execute(select_statement, [self.id])
         if cursor.rowcount > 0:
             # This ingredient exists, we'll have to update the recipe list
-            j = json.loads(cursor.fetchone()[0])
+            j = cursor.fetchone()[0]
             j.append(self.recipe)
-            self.statement = "UPDATE ingredients SET recipes = '{}' WHERE id = {}".format(j, self.id)
-            pass
+            self.statement = sql.SQL("""UPDATE {0} SET {1} = %s WHERE {2} = %s""").format(sql.Identifier('ingredients'),
+                                                                                          sql.Identifier('recipes'),
+                                                                                          sql.Identifier('id'))
+            self.params = '[' + ', '.join(str(e) for e in j) + ']'
+            self.params = [self.params, self.id]
         else:
             # Update a new ingredient
-            recipe = '\'[' + str(self.recipe) + ']\''
-            self.statement = 'INSERT INTO ingredients VALUES ({}, {}, {}, {}, {})'\
-                .format(self.id, self.name, self.type, self.image, recipe)
+            recipes = '[' + str(self.recipe) + ']'
+            self.statement = sql.SQL("INSERT INTO {0} VALUES (%s, %s, %s, %s, %s)").format(sql.Identifier('ingredients'))
+            self.params = [self.id, self.name, self.type, self.image, recipes]
         cursor.close()
         return 0
 

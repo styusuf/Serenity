@@ -1,5 +1,5 @@
 from DBObject import DBObject
-
+from psycopg2 import sql
 
 class RawJson(DBObject):
     """Raw JSON Object"""
@@ -10,5 +10,6 @@ class RawJson(DBObject):
 
     def populate_statement(self):
         """Populate the statement for SQL"""
-        self.statement = "INSERT INTO rawrecipejson VALUES ({}, '{}')"\
-            .format(self.id, self.json)
+        self.statement = sql.SQL("INSERT INTO {0} VALUES (%s, %s)").format(sql.Identifier('rawrecipejson'))
+        self.params = [self.id, self.json]
+
