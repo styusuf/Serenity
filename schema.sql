@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS FoodDatabase;
 
 CREATE DATABASE FoodDatabase
 	WITH
-	OWNER = postgres
+	OWNER = samuelyusuf
 	ENCODING = 'UTF8'
 	TABLESPACE = pg_default
 	CONNECTION LIMIT = -1;
