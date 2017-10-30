@@ -12,6 +12,7 @@ CREATE DATABASE FoodDatabase
 
 drop table if exists recipes;
 drop table if exists ingredients;
+drop table if exists rawrecipejson
 
 create table recipes (
 	id int NOT NULL,

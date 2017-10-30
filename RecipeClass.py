@@ -1,6 +1,7 @@
 from DBObject import DBObject
 from RawJson import RawJson
 from IngredientClass import Ingredient
+from psycopg2 import sql
 import logging
 import json
 
@@ -35,30 +36,38 @@ class Recipe(DBObject):
         recipe = json_object['recipes'][0]
         # Populate fields
         self.id = recipe['id']
+        logging.error("Populating for recipe id = " + str(self.id))
         self.isVeg = recipe['vegetarian']
         self.isVegan = recipe['vegan']
         self.isGlutenFree = recipe['glutenFree']
         self.isDairyFree = recipe['dairyFree']
         self.title = json.dumps(recipe['title']).replace('\"', '\'')
         self.ReadyInMin = recipe['readyInMinutes']
-        self.CookingMin = recipe['cookingMinutes']
+        try:
+            self.CookingMin = recipe['cookingMinutes']
+        except KeyError:
+            self.CookingMin = 0
         self.pricePerServing = recipe['pricePerServing']
         self.servings = recipe['servings']
         self.spoonacularScore = recipe['spoonacularScore']
-        self.image = '\'{ "image" : "' + recipe['image'] + '"}\''
-        self.dishTypes = '\'' + json.dumps(recipe['dishTypes']) + '\''
+        self.image = '{ "image" : ' + json.dumps(recipe['image']) + '}'
+        self.dishTypes = json.dumps(recipe['dishTypes'])
 
         # Instructions
-        instructions_steps = recipe['analyzedInstructions'][0]['steps']
-        for step in instructions_steps:
-            step.pop('ingredients', None)
-            step.pop('equipment', None)
+        try:
+            instructions_steps = recipe['analyzedInstructions'][0]['steps']
+            for step in instructions_steps:
+                step.pop('ingredients', None)
+                step.pop('equipment', None)
+        except IndexError:
+            instructions_steps = recipe['instructions']
+
 
         # Format of instructions
         # [ { step : ...
         #     number: ...
         #   },...]
-        self.instructions = '\'' + json.dumps(instructions_steps) + '\''
+        self.instructions = json.dumps(instructions_steps)
 
         # Ingredients
         self.ingredientsJson = recipe['extendedIngredients']
@@ -67,19 +76,19 @@ class Recipe(DBObject):
             i.pop('metaInformation', None)
             i.pop('consistency', None)
 
-        self.ingredients = '\'' + json.dumps(recipe['extendedIngredients']) + '\''
+        self.ingredients = json.dumps(recipe['extendedIngredients'])
 
         # Raw Json
         self.rawJson = RawJson(json.dumps(json_object), self.id)
 
     def update_with_recipe(self, conn, filename):
+        # Update SQL file with recipe
         """Update the database with the recipe and ingredients"""
         if self.update_db(conn) != 0:
             logging.error("DB Update for recipe {} failed!".format(self.id))
+            return -1
         logging.info("Updated Recipe {}".format(self.id))
-
-        # Update SQL file with recipe
-        self.update_sql_file(filename)
+        self.update_sql_file(filename, conn)
 
         # Update Ingredients Table
         for i in self.ingredientsJson:
@@ -88,28 +97,34 @@ class Recipe(DBObject):
             if (ingr.populate_statement(conn) & ingr.update_db(conn)) != 0:
                 logging.error("Update for ingredient {} for recipe {} failed".format(ingr.id, self.id))
                 return -1
-            ingr.update_sql_file(filename)
+            if ingr.update_sql_file(filename, conn) == 0:
+                logging.info("Ingredient statement updated in SQL file")
+            else:
+                logging.error("Ingredient statement update in SQL file failed")
         logging.info("Updated Ingredients for {}".format(self.id))
 
         # Update RawJson
         self.rawJson.populate_statement()
+        if self.rawJson.update_sql_file(filename, conn) == 0:
+            logging.info("raw json statement updated in SQL file")
+        else:
+            logging.error("raw json statement update in SQL file failed")
+
         if self.rawJson.update_db(conn) != 0:
             logging.error("DB update for raw json failed for recipe {} failed".format(self.id))
             return -1
-        self.rawJson.update_sql_file(filename)
         logging.info("DB Update for raw json successful for recipe {}".format(self.id))
         return 0
 
-    def populate_insert_statement(self):
+    def populate_insert_statement(self, conn):
         """Populate the insert statement"""
         if self.id == -1:
             logging.error("First populate the fields")
             return -1
-        self.statement = 'INSERT INTO recipes VALUES ( {}, {}, {}, {}, {},'\
-              '{}, {}, {}, {}, {}, ' \
-              '{}, {}, {}, {}, {})'.format(self.id, self.isVeg, self.isVegan,
+        self.statement = sql.SQL("""INSERT INTO {0} VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""").format(sql.Identifier('recipes'))
+        self.params = [self.id, self.isVeg, self.isVegan,
               self.isGlutenFree, self.isDairyFree, self.title, self.ReadyInMin,
               self.CookingMin, self.pricePerServing, self.servings, self.spoonacularScore,
-              self.image, self.dishTypes, self.instructions, self.ingredients)
+              self.image, self.dishTypes, self.instructions, self.ingredients]
         self.preparedInsertStatement = True
         return 0
