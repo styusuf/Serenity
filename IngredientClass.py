@@ -51,3 +51,17 @@ class Ingredient(DBObject):
         cursor.close()
         return 0
 
+
+    def populate_from_db(self, conn, obj_id):
+        cursor = conn.cursor()
+        select_statement = sql.SQL("SELECT * FROM ingredients WHERE id == {}").format(obj_id)
+        cursor.execute(select_statement)
+        ing = cursor.fetchone()
+        self.id = ing[0]
+        self.name = ing[1]
+        self.type = ing[2]
+        self.image = ing[3]
+        self.recipe = ing[4]
+        return 0
+
+
