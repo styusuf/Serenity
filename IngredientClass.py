@@ -64,7 +64,7 @@ class Ingredient(DBObject):
         self.recipe = ing[4]
         return 0
 
-    def get_recipe_count(self):
+    def get_recipe_count(self, conn):
         if (self.id == -1 or type(self.recipe) != list):
             logging.error("Populate the Ingredient from the DB first! Call populate_from_db(ingredient_id)")
             return -1

@@ -15,7 +15,8 @@ def connect_to_db():
 
 def get_recipes(ingredient_list):
     conn = connect_to_db()
-    statement = sql.SQL("SELECT {0} FROM {1} WHERE {2} IN (" + "%s," * (len(ingredient_list) - 1)  + "%s)").format(sql.Identifier('recipes'),
+    statement = sql.SQL("SELECT {0} FROM {1} WHERE {2} IN (" + "%s," * (len(ingredient_list) - 1)  + "%s)")\
+                                                                            .format(sql.Identifier('recipes'),
                                                                             sql.Identifier('ingredients'),
                                                                             sql.Identifier('id'))
     cursor = conn.cursor()
@@ -28,9 +29,21 @@ def get_recipes(ingredient_list):
     conn.close()
     return list(recipes)
 
+def get_recipe_count(ingredient_id):
+    conn = connect_to_db()
+    statement = sql.SQL("SELECT json_array_length({0}) from {1} where {2} = %s").format(sql.Identifier('recipes'),
+                                                                                        sql.Identifier('ingredients'),
+                                                                                        sql.Identifier('id'))
+    cursor = conn.cursor()
+    cursor.execute(statement, [ingredient_id])
+    cursor.close()
+    conn.close()
+    return cursor.fetchone()[0]
 
+
+# For testing only
 def main(argv):
-    get_recipes(argv)
+    print get_recipe_count(2047)
 
 if __name__ == '__main__':
     main(sys.argv[1:])

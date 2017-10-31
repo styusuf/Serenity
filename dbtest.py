@@ -22,7 +22,7 @@ if (ingr.populate_from_db(conn, 98913) != 0):
 
 print ingr.id
 print ingr.name
-print ingr.recipe
+print ingr.get_recipe_count()
 
 rec = Recipe()
 if (rec.populate_from_db(conn, 590007) != 0):
