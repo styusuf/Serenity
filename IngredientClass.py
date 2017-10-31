@@ -36,13 +36,13 @@ class Ingredient(DBObject):
         cursor.execute(select_statement, [self.id])
         if cursor.rowcount > 0:
             # This ingredient exists, we'll have to update the recipe list
-            j = cursor.fetchone()[0]
-            j.append(self.recipe)
-            self.statement = sql.SQL("""UPDATE {0} SET {1} = %s WHERE {2} = %s""").format(sql.Identifier('ingredients'),
+            # j = cursor.fetchone()[0]
+            # j.append(self.recipe)
+            self.statement = sql.SQL("""UPDATE {0} SET {1} = {1}::jsonb || %s::jsonb WHERE {2} = %s""").format(sql.Identifier('ingredients'),
                                                                                           sql.Identifier('recipes'),
                                                                                           sql.Identifier('id'))
-            self.params = '[' + ', '.join(str(e) for e in j) + ']'
-            self.params = [self.params, self.id]
+            recipe = '[' + str(self.recipe) + ']'
+            self.params = [recipe, self.id]
         else:
             # Update a new ingredient
             recipes = '[' + str(self.recipe) + ']'
