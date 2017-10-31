@@ -6,7 +6,7 @@ from DBObject import DBObject
 
 class Ingredient(DBObject):
     """Ingredient Class"""
-    def __init__(self, recipe_id):
+    def __init__(self, recipe_id = -1):
         DBObject.__init__(self)
         self.name = None
         self.type = None
@@ -54,8 +54,9 @@ class Ingredient(DBObject):
 
     def populate_from_db(self, conn, obj_id):
         cursor = conn.cursor()
-        select_statement = sql.SQL("SELECT * FROM ingredients WHERE id == {}").format(obj_id)
-        cursor.execute(select_statement)
+        select_statement = sql.SQL("SELECT * FROM {0} WHERE {1} = %s").format(sql.Identifier('ingredients'),
+                                                                              sql.Identifier('id'))
+        cursor.execute(select_statement, [obj_id])
         ing = cursor.fetchone()
         self.id = ing[0]
         self.name = ing[1]
@@ -63,5 +64,12 @@ class Ingredient(DBObject):
         self.image = ing[3]
         self.recipe = ing[4]
         return 0
+
+    def get_recipe_count(self):
+        if (self.id == -1 or type(self.recipe) != list):
+            logging.error("Populate the Ingredient from the DB first! Call populate_from_db(ingredient_id)")
+            return -1
+        return len(self.recipe)
+
 
 

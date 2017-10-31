@@ -1,5 +1,6 @@
 import psycopg2 as psql
 import json
+from IngredientClass import Ingredient
 from RecipeClass import Recipe
 
 # psycopg2.extensions.register_type(psycopg2.extensions.UNICODE)
@@ -13,18 +14,18 @@ except:
 	print "unable to connect"
 	exit(1)
 
-# Open file
-with open('json_objects/20171027132145877592.json') as data_file:
-	data = json.load(data_file)
+ingr = Ingredient()
+if (ingr.populate_from_db(conn, 98913) != 0):
+    print "Error pulling ingredient data"
+    exit(1)
 
+print ingr.id
+print ingr.name
+print ingr.recipe
 
-# SQL file
-filename = 'master.sql'
-a = Recipe()
-a.populate_from_json(data)
-a.populate_insert_statement()
-# print a.insertStatement
-if a.update_with_recipe(conn, filename) == 0:
-    print "success"
-else:
-    print "fail"
+rec = Recipe()
+if (rec.populate_from_db(conn, 590007) != 0):
+    print "Error pull recipe data"
+    exit(1)
+print rec.id
+print rec.title
