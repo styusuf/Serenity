@@ -36,7 +36,7 @@ for i in range(1,4000):
 
         # Update local file with json
         with open(filename, 'w') as f:
-            f.write(str(response.body))
+            f.write(str(response.raw_body))
 
         conn = connect_to_db()
 
