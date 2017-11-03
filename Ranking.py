@@ -1,6 +1,8 @@
-class Ranking:
-    """Ranking Class"""
+from IngredientCluster import get_ingredient_clusters
+import numpy as np
 
+
+class Ranking:
     def __init__(self):
         """
         Constructor for the ranking class. This sets up all the variables needed to rank. We want to create one ranking
@@ -9,9 +11,20 @@ class Ranking:
         # Initialize info for tf-idf
         self.num_recipes = 3964  #TODO: read from file
 
-        # TODO: Initialize info for ingredient frequencies
         self.ingred_freq = {} # ingredient frequency lookup table
-        self.default_freq = 1/max(self.ingred_freq)  # TODO: replace with frequency of most frequent ingredient
+        with open("TestData/frequency.txt") as infile:
+            infile.readline()
+            infile.readline()
+            for line in infile:
+                split = line.split('|')
+                if len(split) != 3:
+                    continue
+                ingredient = split[1].strip().replace("'", '')
+                frequency = int(split[2].lstrip().strip())
+                self.ingred_freq[ingredient] = frequency
+        self.default_freq = 1/max(self.ingred_freq["salt"])
+
+        self.cluster_weights = get_ingredient_clusters()
 
         # TODO: Initialize info for query frequency
         self.qf_lut = {}  # query frequency lookup table
@@ -24,48 +37,85 @@ class Ranking:
         # save work flow weights
         pass
 
-    def rank_results(self, results, orig_query):
+    def rank_results(self, results, orig_query, needed_adjustment=False):
         """
         Orders the queried results and returns them for displaying
         :param results: List of Query results
         :param orig_query: Query object describing what user requested
         :return: Ordered list of query results
         """
-        pass
+        if not needed_adjustment:
+            ranked_results = self.rank_no_adjustment(results, orig_query, use_clusters=False)
+        else:
+            ranked_results = self.rank_adjustment(results, orig_query, use_clusters=False)
 
-    def rank_adjustment(self, results, orig_query):
+        return ranked_results
+
+    # Adjustment functions
+    # TODO: Implement rank when query needs adjustment
+    def rank_adjustment(self, results, orig_query, use_clusters=False):
         """
         Ranking by similarity between original query and returned results. We needed to adjust the query in this case.
         :param results: List of Query results
         :param orig_query: Query object describing what user requested
+        :param use_clusters: Flag indicating to use cluster frequencies instead of pure frequencies
         :return: similarity weights for each query
         """
         pass
 
-    def rank_no_adjustment(self, results, orig_query):
+    # No Adjustment unctions
+    def rna_pure_freq(self, missing_ingred):
+        """
+        Scores in the unadjusted query case by using the frequencies of each ingredient
+        :param missing_ingred: List/set of ingredients missing from query
+        :return: Score
+        """
+        ret = 0
+        # To avoid overflowing, I'm using sum of log occurrences
+        for ingredient in missing_ingred:
+            ret += np.log(self.ingred_freq[ingredient])
+        return ret
+
+    def rna_cluster_freq(self, missing_ingred):
+        """
+        Scores in the unadjusted query case by using the number of elements in the cluster
+        :param missing_ingred: List/set of ingredients missing from query
+        :return: Score
+        """
+        ret = 0
+        # To avoid overflowing, I'm using sum of log occurrences
+        for ingredient in missing_ingred:
+            ret += np.log(1.0 / self.cluster_weights[ingredient])
+        return ret
+
+    def rank_no_adjustment(self, results, orig_query, use_clusters=False):
         """
         Ranking by dissimilarity between original query and returned results. We did not need to adjust the query in
         this case.
         :param results: List of Query results
         :param orig_query: Query object describing what user requested
+        :param use_clusters: Flag indicating to use cluster frequencies instead of pure frequencies
         :return: Ordered list of tuples of recipes and their scores [(recipe0, score0), ..., (recipeN, scoreN)]
         """
-        ret = []
+        scores = []
+        set_orig_query = set(orig_query)
         for recipe in results:
             # remove all of the overlapping ingredients
-            rem_ingred = []
+            recipe_ingred = set(recipe.ingredients)
+            missing_ingred = recipe_ingred.difference(set_orig_query)
 
             # generate score by using geometric sum of frequencies
-            score = 1
-            for ingred in rem_ingred:
-                score *= self.ingred_freq.get(ingred, self.default_freq)
-            score *= -1
-            ret.append(recipe, score)
+            if use_clusters:
+                score = self.rna_cluster_freq(missing_ingred)
+            else:
+                score = self.rna_pure_freq(missing_ingred)
+            scores.append(score)
 
-        # sort in increasing decreasing order (least negative first)
-        ret = sorted(ret, key=lambda x: -x[1])
+        # sort in increasing decreasing order
+        sort_idx = [i[0] for i in sorted(enumerate(scores), key=lambda x: -x[1])]
+        results = [results[i] for i in sort_idx]
 
-        return ret
+        return results
 
     def update_qf(self, orig_query):
         """

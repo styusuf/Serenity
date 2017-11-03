@@ -2,6 +2,38 @@ from sklearn.cluster import KMeans
 import numpy as np
 import pdb
 
+
+def get_ingredient_clusters():
+    """
+    Clusters ingredients on frequency and returns information
+    :return: Dictionary mapping ingredients to new cluster weights
+    """
+    num_clusters = 3
+    # Read in data
+    X = []
+    ingred = []
+    with open("TestData/frequency.txt", 'r') as infile:
+        infile.readline()
+        infile.readline()
+        for line in infile:
+            split = line.split('|')
+            if len(split) != 3:
+                continue
+            ingred.append(split[1].strip().replace("'", ''))
+            X.append(int(split[2].lstrip().strip()))
+    X = np.array(X)
+    X = X.reshape(X.shape[0], 1)
+
+    # Generate clusters from data
+    clusters = KMeans(n_clusters=num_clusters, init='k-means++').fit(X)
+
+    ret = {}
+    for ingredient, idx in enumerate(ingred):
+        ret[ingredient] = len(clusters.cluster_centers_[clusters.labels_[idx]])
+
+    return ret
+
+
 if __name__ == "__main__":
     num_clusters = 3
     # Read in data
