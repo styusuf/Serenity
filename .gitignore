@@ -5,3 +5,4 @@
 .idea/workspace.xml
 .ipynb_checkpoints/
 *.pyc
+.idea/.*
