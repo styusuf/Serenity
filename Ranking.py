@@ -9,7 +9,7 @@ class Ranking:
         object when the app is kicked off, but not create another after that.
         """
         # Initialize info for tf-idf
-        self.num_recipes = 3964  #TODO: read from file
+        self.num_recipes = 20015  #TODO: read from file
 
         self.ingred_freq = {} # ingredient frequency lookup table
         with open("TestData/frequency.txt") as infile:

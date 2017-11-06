@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS FoodDatabase;
 
 CREATE DATABASE FoodDatabase
 	WITH
-	OWNER = samuelyusuf
+	OWNER = postgres
 	ENCODING = 'UTF8'
 	TABLESPACE = pg_default
 	CONNECTION LIMIT = -1;
@@ -12,7 +12,7 @@ CREATE DATABASE FoodDatabase
 
 drop table if exists recipes;
 drop table if exists ingredients;
-drop table if exists rawrecipejson
+drop table if exists rawrecipejson;
 
 create table recipes (
 	id int NOT NULL,
@@ -47,3 +47,4 @@ create table rawrecipejson (
 	object jsonb,
 	PRIMARY KEY(id)
 );
+
