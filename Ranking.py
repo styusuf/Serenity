@@ -43,19 +43,20 @@ class Ranking:
         # save work flow weights
         pass
 
-    def rank_results(self, results, orig_query, top_k=10, needed_adjustment=False):
+    def rank_results(self, results, orig_query, top_k=10, needed_adjustment=False, use_clusters=False):
         """
         Orders the queried results and returns them for displaying
         :param results: List of Query results
         :param orig_query: Query object describing what user requested
         :param top_k: Number of results that will be displayed
         :param needed_adjustment: Flag indicating whether the query was adjusted
+        :param use_clusters: Flag indicating to use clusters or pure frequencies
         :return: (Ordered list of query results, Ordered list of scores)
         """
         if not needed_adjustment:
-            ranked_results, ranked_scores = self.rank_no_adjustment(results, orig_query, use_clusters=False)
+            ranked_results, ranked_scores = self.rank_no_adjustment(results, orig_query, use_clusters=use_clusters)
         else:
-            ranked_results, ranked_scores = self.rank_adjustment(results, orig_query, use_clusters=False)
+            ranked_results, ranked_scores = self.rank_adjustment(results, orig_query, use_clusters=use_clusters)
 
         if top_k < len(ranked_results):
             return ranked_results[:top_k], ranked_scores[:top_k]
@@ -96,7 +97,7 @@ class Ranking:
         ret = 0
         # To avoid underflowing, I'm using sum of log occurrences
         for ingredient in missing_ingred:
-            ret += np.log(1.0 / self.cluster_weights[self.ingredient_clusters[self.id_to_ingred[ingredient]]])
+            ret += np.log(1.0 / self.cluster_weights[self.ingred_clusters[self.id_to_ingred[ingredient]]])
         return ret
 
     def rank_no_adjustment(self, results, orig_query, use_clusters=False):
@@ -129,7 +130,11 @@ class Ranking:
             scores.append(score)
 
         # sort in increasing decreasing order
-        sort_idx = [i[0] for i in sorted(enumerate(scores), key=lambda x: x[1])]
+        if use_clusters:
+            sort_idx = [i[0] for i in sorted(enumerate(scores), key=lambda x: -x[1])]
+        else:
+            sort_idx = [i[0] for i in sorted(enumerate(scores), key=lambda x: -x[1])]
+            
         results = [results[i] for i in sort_idx]
         scores = [scores[i] for i in sort_idx]
 
@@ -178,7 +183,7 @@ def test_ranking():
     query = [ingred_to_id[i] for i in query_names]
     results = dbi.get_recipes(query, verbose=True)
 
-    ranked, scores = ranker.rank_results(results, query)
+    ranked, scores = ranker.rank_results(results, query, use_clusters=True)
     for idx, recipe in enumerate(ranked):
         print "{0}: {1}".format(recipe.title, scores[idx])
 
