@@ -129,13 +129,16 @@ class Recipe(DBObject):
         self.preparedInsertStatement = True
         return 0
 
-
     def populate_from_db(self, conn, obj_id):
         cursor = conn.cursor()
         select_statement = sql.SQL("SELECT * FROM {0} WHERE {1} = %s").format(sql.Identifier('recipes'),
                                                                               sql.Identifier('id'))
         cursor.execute(select_statement, [obj_id])
         rec = cursor.fetchone()
+        self.populate(rec)
+        return 0
+
+    def populate(self, rec):
         self.id = rec[0]
         self.isVeg = rec[1]
         self.isVegan = rec[2]
@@ -151,7 +154,6 @@ class Recipe(DBObject):
         self.dishTypes = rec[12]
         self.instructions = rec[13]
         self.ingredients = rec[14]
-        return 0
 
 
 

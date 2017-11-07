@@ -1,6 +1,7 @@
 import traceback
 import psycopg2 as psql
 from psycopg2 import sql
+from RecipeClass import Recipe
 
 
 class DBInteract(object):
@@ -42,7 +43,21 @@ class DBInteract(object):
         self.conn.close()
         return rec_count
 
-    def get_recipes(self, ingredients_list):
+    def get_recipes_verbose(self, recipe_list):
+        self.connect_to_db()
+        statement = sql.SQL("SELECT * FROM {0} WHERE {1} IN (" + "%s," * (len(recipe_list) - 1) + "%s)")\
+                                                                            .format(self.recipe, self.id)
+        cursor = self.conn.cursor()
+        cursor.execute(statement, recipe_list)
+        recipe_object_list = list()
+        for each in cursor.fetchall():
+            r = Recipe()
+            r.populate(each)
+            recipe_object_list.append(r)
+
+        return recipe_object_list
+
+    def get_recipes(self, ingredients_list, verbose=False):
         '''
         Get the list of all common recipes for the list of ingredients
         :param ingredients_list: list of ingredients
@@ -59,7 +74,10 @@ class DBInteract(object):
                 recipes.add(r)
         cursor.close()
         self.conn.close()
-        return list(recipes)
+        if not verbose:
+            return list(recipes)
+        else:
+            return self.get_recipes_verbose(list(recipes))
 
     def get_recipe_total(self):
         '''
@@ -79,4 +97,6 @@ class DBInteract(object):
 if __name__ == '__main__':
     dbi = DBInteract()
     print dbi.get_recipe_count(2047)
+    a = dbi.get_recipes([10019150], verbose=True)
+    print a[0].instructions
 
