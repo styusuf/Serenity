@@ -55,6 +55,8 @@ class DBInteract(object):
             r.populate(each)
             recipe_object_list.append(r)
 
+        cursor.close()
+        self.conn.close()
         return recipe_object_list
 
     def get_recipes(self, ingredients_list, verbose=False):
