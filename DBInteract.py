@@ -71,9 +71,14 @@ class DBInteract(object):
         cursor = self.conn.cursor()
         cursor.execute(statement, ingredients_list)
         recipes = set()
+        flag = False
         for each in cursor.fetchall():
-            for r in each[0]:
-                recipes.add(r)
+            if not flag:
+                recipes = set(each[0])
+                flag = True
+            else:
+                recipes = recipes.intersection(each[0])
+
         cursor.close()
         self.conn.close()
         if not verbose:
@@ -98,7 +103,8 @@ class DBInteract(object):
 
 if __name__ == '__main__':
     dbi = DBInteract()
-    print dbi.get_recipe_count(2047)
-    a = dbi.get_recipes([10019150], verbose=True)
-    print a[0].instructions
+    # print dbi.get_recipe_count(2047)
+    a = dbi.get_recipes([5062, 19296, 1004], verbose=False)
+    # print a[0].instructions
+    print len(a)
 
