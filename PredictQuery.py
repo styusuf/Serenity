@@ -119,7 +119,7 @@ def build_training_data():
 
     choices = range(num_ingred)
     for k in range(1, 11):
-        for _ in range(1, 4001):
+        for _ in range(1, 2001):
             new_ingreds = np.random.choice(choices, k)
             new_feat = np.zeros(num_ingred)
             new_feat[new_ingreds] = 1
@@ -160,7 +160,7 @@ def test_on_db_data():
 
     # train
     pq = PredictQuery()
-    pq.train(train_X, train_y, linreg=True, knn=False, rf=False, k=10, num_trees=100)
+    pq.train(train_X, train_y, linreg=True, knn=True, rf=True, k=5, num_trees=20)
 
     # test
     print "Testing in-sample"
