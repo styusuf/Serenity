@@ -6,7 +6,7 @@ import pdb
 def get_ingredient_clusters():
     """
     Clusters ingredients on frequency and returns information
-    :return: Dictionary mapping ingredients to new cluster weights
+    :return: (Dictionary mapping ingredients to new cluster weights, Dictionary mapping clusters to number of members)
     """
     num_clusters = 3
     # Read in data
@@ -28,10 +28,13 @@ def get_ingredient_clusters():
     clusters = KMeans(n_clusters=num_clusters, init='k-means++').fit(X)
 
     ret = {}
-    for ingredient, idx in enumerate(ingred):
+    for idx, ingredient in enumerate(ingred):
         ret[ingredient] = len(clusters.cluster_centers_[clusters.labels_[idx]])
+    cluster_sizes = {}
+    for i in range(num_clusters):
+        cluster_sizes[i] = len(clusters.labels_[clusters.labels_ == i])
 
-    return ret
+    return ret, cluster_sizes
 
 
 if __name__ == "__main__":
