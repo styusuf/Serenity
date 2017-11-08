@@ -138,7 +138,7 @@ class Ranking:
         results = [results[i] for i in sort_idx]
         scores = [scores[i] for i in sort_idx]
 
-        pdb.set_trace()
+        # pdb.set_trace()
         return results, scores
 
     def update_qf(self, orig_query):

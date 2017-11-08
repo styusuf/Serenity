@@ -84,7 +84,10 @@ class DBInteract(object):
         if not verbose:
             return list(recipes)
         else:
-            return self.get_recipes_verbose(list(recipes))
+            if len(list(recipes)) > 0:
+                return self.get_recipes_verbose(list(recipes))
+            else:
+                return list()
 
     def get_recipe_total(self):
         '''
@@ -104,7 +107,7 @@ class DBInteract(object):
 if __name__ == '__main__':
     dbi = DBInteract()
     # print dbi.get_recipe_count(2047)
-    a = dbi.get_recipes([5062, 19296, 1004], verbose=False)
+    a = dbi.get_recipes([16117], verbose=False)
     # print a[0].instructions
-    print len(a)
+    print a
 
