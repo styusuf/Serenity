@@ -1,6 +1,8 @@
 import DBInteract
 from IngredientCluster import get_ingredient_clusters
 import numpy as np
+import os.path
+import pickle
 
 import pdb
 
@@ -28,12 +30,14 @@ class Ranking:
                 self.ingred_freq[ingredient] = frequency
                 self.id_to_ingred[id_val] = ingredient
 
-        self.default_freq = 1/self.ingred_freq["salt"]
-
         self.ingred_clusters, self.cluster_weights = get_ingredient_clusters()
 
-        # TODO: Initialize info for query frequency
-        self.qf_lut = {}  # query frequency lookup table
+        if os.path.isfile("TestData/qf_data.p"):
+            self.qf_lut = pickle.load( open("TestData/qf_data.p", "rb"))
+        else:
+            self.qf_lut = {}  # query frequency lookup table
+            self.qf_lut["total"] = 0
+            self.qf_lut["max"] = 0
 
     def __del__(self):
         """
@@ -41,7 +45,7 @@ class Ranking:
         :return: None
         """
         # save work flow weights
-        pass
+        pickle.dump(self.qf_lut, open("TestData/qf_data.p", "wb"))
 
     def rank_results(self, results, orig_query, top_k=10, needed_adjustment=False, use_clusters=False):
         """
@@ -53,6 +57,7 @@ class Ranking:
         :param use_clusters: Flag indicating to use clusters or pure frequencies
         :return: (Ordered list of query results, Ordered list of scores)
         """
+        self.update_qf(orig_query)
         if not needed_adjustment:
             ranked_results, ranked_scores = self.rank_no_adjustment(results, orig_query, use_clusters=use_clusters)
         else:
@@ -85,7 +90,8 @@ class Ranking:
         ret = 0
         # To avoid overflowing, I'm using sum of log occurrences
         for ingredient in missing_ingred:
-            ret += np.log(self.ingred_freq[self.id_to_ingred[ingredient]])
+            qf_contribution = (self.qf_lut.get(ingredient, 0) + 1.0) / (self.qf_lut.get("max", 0) + 1.0)
+            ret += np.log(float(self.ingred_freq[self.id_to_ingred[ingredient]]) / self.num_recipes) + np.log(qf_contribution)
         return ret
 
     def rna_cluster_freq(self, missing_ingred):
@@ -97,7 +103,8 @@ class Ranking:
         ret = 0
         # To avoid underflowing, I'm using sum of log occurrences
         for ingredient in missing_ingred:
-            ret += np.log(1.0 / self.cluster_weights[self.ingred_clusters[self.id_to_ingred[ingredient]]])
+            qf_contribution = (self.qf_lut.get(ingredient, 0) + 1.0) / (self.qf_lut.get("max", 0) + 1.0)
+            ret += np.log(1.0 / self.cluster_weights[self.ingred_clusters[self.id_to_ingred[ingredient]]]) + np.log(qf_contribution)
         return ret
 
     def rank_no_adjustment(self, results, orig_query, use_clusters=False):
@@ -129,28 +136,24 @@ class Ranking:
                 score = self.rna_pure_freq(missing_ingred)
             scores.append(score)
 
-        # sort in increasing decreasing order
-        if use_clusters:
-            sort_idx = [i[0] for i in sorted(enumerate(scores), key=lambda x: -x[1])]
-        else:
-            sort_idx = [i[0] for i in sorted(enumerate(scores), key=lambda x: -x[1])]
-            
+        # sort in decreasing order
+        sort_idx = [i[0] for i in sorted(enumerate(scores), key=lambda x: -x[1])]
+
         results = [results[i] for i in sort_idx]
         scores = [scores[i] for i in sort_idx]
 
-        pdb.set_trace()
         return results, scores
 
     def update_qf(self, orig_query):
         """
         Updates the work flow weights
-        :param orig_query:
+        :param orig_query: Query object describing what user requested
         :return: None
         """
         new_max = 0
-        for ing_amt_pair in orig_query: # assumes orig_query is setup as [(ing0, amt0), ..., (ingN, amtN)]
-            ingred = ing_amt_pair[0]
-            ingred = ingred.lower()
+        for ingred in orig_query:  #TODO: assumes orig_query is setup as [(ing0, amt0), ..., (ingN, amtN)]
+            # ingred = ing_amt_pair[0]
+            ingred = ingred
             new_val = self.qf_lut.get(ingred, 0) + 1
             self.qf_lut[ingred] = new_val
             if new_val > new_max:
@@ -183,9 +186,16 @@ def test_ranking():
     query = [ingred_to_id[i] for i in query_names]
     results = dbi.get_recipes(query, verbose=True)
 
+    print "Using Pure Frequencies"
+    ranked, scores = ranker.rank_results(results, query, use_clusters=False)
+    for idx, recipe in enumerate(ranked):
+        print "{0}: {1}".format(recipe.title, scores[idx])
+    print
+    print "Using Cluster Frequencies"
     ranked, scores = ranker.rank_results(results, query, use_clusters=True)
     for idx, recipe in enumerate(ranked):
         print "{0}: {1}".format(recipe.title, scores[idx])
 
 if __name__ == "__main__":
+    np.seterr(all='raise')
     test_ranking()

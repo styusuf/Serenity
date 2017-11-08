@@ -93,6 +93,9 @@ class PredictQuery:
                 rmse = np.sqrt(mean_squared_error(y, pred))
                 print "Model", key, "yields RMSE = ", rmse
 
+    def query(self):
+        pass
+
 def build_training_data():
     """
     Generates training samples and target values
