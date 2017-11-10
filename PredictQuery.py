@@ -163,7 +163,7 @@ def test_on_db_data():
 
     # train
     pq = PredictQuery()
-    pq.train(train_X, train_y, linreg=True, knn=False, rf=False, k=5, num_trees=20)
+    pq.train(train_X, train_y, linreg=True, knn=True, rf=True, k=5, num_trees=20)
 
     # test
     print "Testing in-sample"

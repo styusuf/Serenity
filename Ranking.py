@@ -6,6 +6,14 @@ import pickle
 
 import pdb
 
+# TODO: add breakdown of missing ingredient clusters
+class RankingMetrics:
+    def __init__(self, n_missing_q=0, n_missing_recipe=0, missing_by_cluster={}, score=0):
+        self.n_missing_in_query = n_missing_q
+        self.n_missing_in_recipe = n_missing_recipe
+        self.missing_by_cluster = missing_by_cluster
+        self.score = score
+
 class Ranking:
     def __init__(self):
         """
@@ -31,6 +39,14 @@ class Ranking:
                 self.id_to_ingred[id_val] = ingredient
 
         self.ingred_clusters, self.cluster_weights = get_ingredient_clusters()
+        self.clusters_to_name = {}
+        for cluster in range(3):
+            if self.cluster_weights[cluster] < 20:
+                self.clusters_to_name[cluster] = "common"
+            elif self.cluster_weights[cluster] < 1000:
+                self.clusters_to_name[cluster] = "uncommon"
+            else:
+                self.clusters_to_name[cluster] = "rare"
 
         if os.path.isfile("TestData/qf_data.p"):
             self.qf_lut = pickle.load( open("TestData/qf_data.p", "rb"))
@@ -58,30 +74,23 @@ class Ranking:
         :return: (Ordered list of query results, Ordered list of scores)
         """
         self.update_qf(orig_query)
-        if not needed_adjustment:
-            ranked_results, ranked_scores = self.rank_no_adjustment(results, orig_query, use_clusters=use_clusters)
-        else:
-            ranked_results, ranked_scores = self.rank_adjustment(results, orig_query, use_clusters=use_clusters)
+        ranked_results, ranked_scores = self.do_ranking(results, orig_query, use_clusters=use_clusters)
 
         if top_k < len(ranked_results):
             return ranked_results[:top_k], ranked_scores[:top_k]
         else:
             return ranked_results, ranked_scores
 
-    # Adjustment functions
-    # TODO: Implement rank when query needs adjustment
-    def rank_adjustment(self, results, orig_query, use_clusters=False):
-        """
-        Ranking by similarity between original query and returned results. We needed to adjust the query in this case.
-        :param results: List of Query results
-        :param orig_query: Query object describing what user requested
-        :param use_clusters: Flag indicating to use cluster frequencies instead of pure frequencies
-        :return: similarity weights for each query
-        """
-        pass
+    # Helper Functions
+    def get_metric(self, all_missing, missing_in_rec, missing_in_q, score):
+        missing_by_cluster = {}
+        for ingred in all_missing:
+            cluster = self.clusters_to_name[self.ingred_clusters[self.id_to_ingred[ingred]]]
+            missing_by_cluster[cluster] = missing_by_cluster.get(cluster, 0) + 1
+        ret = RankingMetrics(n_missing_q = len(missing_in_q), n_missing_recipe = len(missing_in_rec), missing_by_cluster=missing_by_cluster, score=score)
+        return ret
 
-    # No Adjustment functions
-    def rna_pure_freq(self, missing_ingred):
+    def use_pure_freq(self, missing_ingred):
         """
         Scores in the unadjusted query case by using the frequencies of each ingredient
         :param missing_ingred: List/set of ingredients missing from query
@@ -94,7 +103,7 @@ class Ranking:
             ret += np.log(float(self.ingred_freq[self.id_to_ingred[ingredient]]) / self.num_recipes) + np.log(qf_contribution)
         return ret
 
-    def rna_cluster_freq(self, missing_ingred):
+    def use_cluster_freq(self, missing_ingred):
         """
         Scores in the unadjusted query case by using the number of elements in the cluster
         :param missing_ingred: List/set of ingredients missing from query
@@ -107,7 +116,7 @@ class Ranking:
             ret += np.log(1.0 / self.cluster_weights[self.ingred_clusters[self.id_to_ingred[ingredient]]]) + np.log(qf_contribution)
         return ret
 
-    def rank_no_adjustment(self, results, orig_query, use_clusters=False):
+    def do_ranking(self, results, orig_query, use_clusters=False):
         """
         Ranking by dissimilarity between original query and returned results. We did not need to adjust the query in
         this case.
@@ -117,32 +126,35 @@ class Ranking:
         :return: (Ordered list of recipes, Ordered list of scores)
         """
         scores = []
+        metrics = []
         set_orig_query = set(orig_query)
         for recipe in results:
             # remove all of the overlapping ingredients
             recipe_ingred = set()
             for ingredient in recipe.ingredients:
-                try:
-                    recipe_ingred.add(ingredient["id"])
-                except:
-                    pdb.set_trace()
-                    continue
-            missing_ingred = recipe_ingred.difference(set_orig_query)
+                recipe_ingred.add(ingredient["id"])
+            missing_in_rec = recipe_ingred.difference(set_orig_query)  # in recipe but not query
+            missing_in_q = set_orig_query.difference(recipe_ingred)  # in query but not recipe
+            all_missing_ingred = missing_in_q.union(missing_in_rec)
 
             # generate score by using sum of log frequencies
             if use_clusters:
-                score = self.rna_cluster_freq(missing_ingred)
+                score = self.use_cluster_freq(all_missing_ingred)
             else:
-                score = self.rna_pure_freq(missing_ingred)
+                score = self.use_pure_freq(all_missing_ingred)
             scores.append(score)
+
+            # TODO: add breakdown of missing ingredient clusters
+            metrics.append(self.get_metric(all_missing_ingred, missing_in_rec, missing_in_q, score))
 
         # sort in decreasing order
         sort_idx = [i[0] for i in sorted(enumerate(scores), key=lambda x: -x[1])]
 
         results = [results[i] for i in sort_idx]
         scores = [scores[i] for i in sort_idx]
+        metrics = [metrics[i] for i in sort_idx]
 
-        return results, scores
+        return results, metrics
 
     def update_qf(self, orig_query):
         """
@@ -187,15 +199,19 @@ def test_ranking():
     results = dbi.get_recipes(query, verbose=True)
 
     print "Using Pure Frequencies"
-    ranked, scores = ranker.rank_results(results, query, use_clusters=False)
+    print "Name\tMissing in Recipe\tMissing in Query\tScore"
+    print "--------------------------------------------------------------------"
+    ranked, metrics = ranker.rank_results(results, query, use_clusters=False)
     for idx, recipe in enumerate(ranked):
-        print "{0}: {1}".format(recipe.title, scores[idx])
+        print "{0}: {1}, {2}, {3}, {4}".format(recipe.title, metrics[idx].missing_by_cluster, metrics[idx].n_missing_in_query, metrics[idx].n_missing_in_recipe, metrics[idx].score)
     print
     print "Using Cluster Frequencies"
-    ranked, scores = ranker.rank_results(results, query, use_clusters=True)
+    print "Name\tMissing in Query\tMissing in Recipe\tScore"
+    print "--------------------------------------------------------------------"
+    ranked, metrics = ranker.rank_results(results, query, use_clusters=True)
     for idx, recipe in enumerate(ranked):
-        print "{0}: {1}".format(recipe.title, scores[idx])
-
+        print "{0}: {1}, {2}, {3}, {4}".format(recipe.title, metrics[idx].missing_by_cluster, metrics[idx].n_missing_in_query, metrics[idx].n_missing_in_recipe, metrics[idx].score)
+    
 if __name__ == "__main__":
     np.seterr(all='raise')
     test_ranking()

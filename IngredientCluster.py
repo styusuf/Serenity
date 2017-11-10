@@ -29,7 +29,7 @@ def get_ingredient_clusters():
 
     ret = {}
     for idx, ingredient in enumerate(ingred):
-        ret[ingredient] = len(clusters.cluster_centers_[clusters.labels_[idx]])
+        ret[ingredient] = clusters.labels_[idx]
     cluster_sizes = {}
     for i in range(num_clusters):
         cluster_sizes[i] = len(clusters.labels_[clusters.labels_ == i])
