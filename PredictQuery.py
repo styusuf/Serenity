@@ -93,6 +93,9 @@ class PredictQuery:
                 rmse = np.sqrt(mean_squared_error(y, pred))
                 print "Model", key, "yields RMSE = ", rmse
 
+    def query(self):
+        pass
+
 def build_training_data():
     """
     Generates training samples and target values
@@ -160,7 +163,7 @@ def test_on_db_data():
 
     # train
     pq = PredictQuery()
-    pq.train(train_X, train_y, linreg=True, knn=False, rf=False, k=5, num_trees=20)
+    pq.train(train_X, train_y, linreg=True, knn=True, rf=True, k=5, num_trees=20)
 
     # test
     print "Testing in-sample"
