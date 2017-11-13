@@ -1,5 +1,6 @@
 import sys
 from DBInteract import DBInteract
+from QueryAdjuster import QueryAdjuster
 from Ranking import Ranking
 
 def create_ingredient_info():
@@ -37,8 +38,10 @@ def main(ingredient_list):
     dbi = DBInteract()
     ingredient_info = create_ingredient_info()
     rank = Ranking(ingredient_info)
+    qa = QueryAdjuster()
 
-    recipes = dbi.get_recipes(ingredient_list, verbose=True)
+    adj_ingredient_list = qa.get_adj_query(ingredient_list, ingredient_info)
+    recipes = dbi.get_recipes(adj_ingredient_list, verbose=True)
     ranked, scores = rank.rank_results(recipes, ingredient_list, ingredient_info)
     if len(ranked) > 0:
         for i in range(0, len(ranked)):

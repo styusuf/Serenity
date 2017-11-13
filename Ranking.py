@@ -18,7 +18,7 @@ class Ranking:
     def __init__(self, ingredient_info):
         """
         Constructor for the ranking class. This sets up all the variables needed to rank. We want to create one ranking
-        object when the app is kicked off, but not create another after that.
+            object when the app is kicked off, but not create another after that.
         :param ingredient_info: Dictionary created in main file that holds all
             necessary information about ingredients
         """
