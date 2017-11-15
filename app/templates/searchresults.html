@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Results:</h2>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+	{% for message in messages %}
+		<li>{{ message }}</li>
+	{% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+{% for recipe in recipes %}
+<!-- Enter row template here -->
+<div>
+	<p>
+		{{ recipe.title }}
+	</p>
+</div>
+{% endfor %}
+{% endblock %}

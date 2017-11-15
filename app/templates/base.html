@@ -1,0 +1,31 @@
+<html>
+<head>
+	{% if title %}
+	<title>{{ title }}</title>
+	{% else %}
+	<title>Welcome to Serenity</title>
+	{% endif %}
+</head>
+<body>
+	<div>
+		<img src="../static/images/serenity_panda.png">
+		<hr>
+		<a href="/index">Home</a> <br>
+		<a href="/login">Login</a>
+	</div>
+	<hr>
+	<!-- Search functionality here -->
+	<h2>Enter Ingredients here</h2>
+	<form action="" method="post" name="search">
+		{{ form.hidden_tag() }}
+		<p>
+			Please enter the ingredients that you have:<br>
+			{{ form.ingredients(size=200) }}<br>
+		</p>
+		<p>
+			<input type="submit" value="Search">
+		</p>
+	</form>
+	{% block content %}{% endblock %}
+</body>
+</html>

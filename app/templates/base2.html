@@ -1,0 +1,16 @@
+<html>
+<head>
+	{% if title %}
+	<title>{{ title }}</title>
+	{% else %}
+	<title>Welcome to Serenity</title>
+	{% endif %}
+</head>
+<body>
+	<div>
+		<img src="../static/images/serenity_panda.png">
+		<hr>
+	</div>
+	{% block content %}{% endblock %}
+</body>
+</html>
