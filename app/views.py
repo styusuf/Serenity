@@ -46,7 +46,8 @@ def searchResults():
     return render_template('searchresults.html',
                             title='Serenity',
                             form=form,
-                            recipes=recipes)
+                            recipes=recipes,
+                            ingredients=ingredients)
 
 
 

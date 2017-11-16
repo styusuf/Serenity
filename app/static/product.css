@@ -1,14 +1,3 @@
-div {
-    display: block;
-}
-
-body {
-    font-family: Gotham, "Helvetica,Neue",
-        Helvetica, Arial, "sans-serif";
-    font-size: 14px;
-    color: #333333;
-}
-
 #main-content {
     padding-bottom: 15px;
     background: white;
@@ -71,68 +60,13 @@ li {
     height: 20px;
 }
 
-.container {
-    position: relative;
-    height: auto;
-}
-
-[type="checkbox"] {
-    position: absolute;
-    left: -9999px;
-}
-
-label {
+.label {
     background: #e4e3df;
     display: block;
     width: 100%;
     height: 25px;
     cursor: pointer;
-    position: absolute;
     top: 0;
-}
-
-label:before,
-label:after {
-    position: absolute;
-}
-
-label:before {
-    content: 'More';
-    left: 10px;
-}
-
-label:after {
-    content: '⇣●';
-    right: 10px;
-    animation: sudo .85s linear infinite alternate;
-}
-
-@keyframes sudo {
-    from {
-        transform: translateY(-2px);
-    }
-    to {
-        transform: translateY(2px);
-    }
-}
-[type="checkbox"] ~ ul {
-    display: none;
-}
-
-[type="checkbox"]:checked ~ ul {
-    display: block;
-}
-
-[type="checkbox"]:checked + label {
-    top: 100%;
-}
-
-[type="checkbox"]:checked + label:before {
-    content: 'Less';
-}
-
-[type="checkbox"]:checked + label:after {
-    content: '⇡●';
 }
 
 .name {

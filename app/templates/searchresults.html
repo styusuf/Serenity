@@ -10,6 +10,7 @@
 {% endif %}
 {% endwith %}
 {% if recipes %}
+<link rel="stylesheet" href="../static/global.css" title="" type="">
 <link rel="stylesheet" href="../static/product.css" title="" type="">
 <h2>Results:</h2>
 <div id="main-content">
@@ -34,38 +35,26 @@
                     <div class="row">
                         <div class="ingredients">
                             <h4 style="padding-left: 40px">Ingredients</h4>
-                            {% if recipe.ingredients|length > 4 %}
-                            <ul>
+                            {% if recipe.ingredients|length >4 %}
+                                <ul>
                                 {% for i in range(4) %}
-                                    <li>{{ recipe.ingredients[i].name }}</li>
+                                   <li>{{ recipe.ingredients[i].name }}</li>
                                 {% endfor %}
-                                <li class="container">
-                                <input type="checkbox" id="check_id">
-                                <label for="check_id"></label>
-                                    <ul style="padding-left: 0;">
-                                    {% for i in range(4, recipe.ingredients|length) %}
-                                        <li>{{ recipe.ingredients[i].name }}</li>
-                                    {% endfor %}
-                                    </ul>
-                                </li>
-                            </ul>
+                                <li><a class="label" href="#">view more...</a></li>
+                                </ul>
                             {% else %}
-                            <ul>
-                                {% for i in recipe.ingredients %}
-                                    <li>{{ i.name }}</li>
+                                <ul>
+                                {% for j in recipe.ingredients %}
+                                   <li>{{ j.name }}</li>
                                 {% endfor %}
-                            </ul>
+                                </ul>
                             {% endif %}
                         </div>
                     </div>
                     <br>
                     <div class="row">
                         <div class="instructions">
-                            <ul style="padding-left: 0;">
-                                {% for i in recipe.instructions %}
-                                <!--<li>{{ i.step }}</li>-->
-                                {% endfor %}
-                            </ul>
+                            <a class="label" href="#">View Instructions</a>
                         </div>
                     </div>
                     <br>
