@@ -26,9 +26,12 @@ def main(ingredient_list):
     tmp_adj_query = copy(adj_ingredient_list)
     recipes = []
     # Just in case ML model was wrong, need to requery
-    while len(recipes) < 2*min_res:
-        recipes = dbi.get_recipes(tmp_adj_query, verbose=True)
-        tmp_adj_query.pop()
+    if len(tmp_adj_query) > 1:
+        while (len(recipes) < 2*min_res) and (len(tmp_adj_query) > 1):
+            recipes = dbi.get_recipes_with_synonyms(tmp_adj_query, ingredient_info, group_info, verbose=True)
+            tmp_adj_query.pop()
+    else:
+        recipes = dbi.get_recipes_with_synonyms(tmp_adj_query, ingredient_info, group_info, verbose=True)
 
     ranked, scores = rank.rank_results(recipes, ingredient_list, ingredient_info, group_info)
     if len(ranked) > 0:

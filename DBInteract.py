@@ -3,7 +3,6 @@ import psycopg2 as psql
 from psycopg2 import sql
 from RecipeClass import Recipe
 
-
 class DBInteract(object):
     '''
     Class to interact with the DB. All DB functions to be written here.
@@ -66,6 +65,7 @@ class DBInteract(object):
         :return: list of recipes
         '''
         self.connect_to_db()
+
         statement = sql.SQL("SELECT {0} FROM {1} WHERE {2} IN (" + "%s," * (len(ingredients_list) - 1)  + "%s)")\
                                                                             .format(self.recipe, self.ingredient, self.id)
         cursor = self.conn.cursor()
@@ -78,6 +78,40 @@ class DBInteract(object):
                 flag = True
             else:
                 recipes = recipes.intersection(each[0])
+
+        cursor.close()
+        self.conn.close()
+        if not verbose:
+            return list(recipes)
+        else:
+            if len(list(recipes)) > 0:
+                return self.get_recipes_verbose(list(recipes))
+            else:
+                return list()
+
+    def get_recipes_with_synonyms(self, ingredients_list, ingredient_info, group_info, verbose=False):
+        """
+        Get the list of all common recipes for the list of ingredients using synonyms
+        :param ingredients_list: list of ingredients
+        :param verbose: Option to use print statements
+        :return: list of recipes
+        """
+        self.connect_to_db()
+
+        search_str_builder = []
+        for ingredient in ingredients_list:
+            new_or_statement_builder = []
+            for grp in ingredient_info[ingredient]["group"]:
+                for syn in group_info[grp]["ingredient list"]:
+                    new_or_statement_builder.append("ingredients::jsonb @> '[{}]'::jsonb".format(syn))
+            search_str_builder.append("(" + " OR ".join(new_or_statement_builder) + ")")
+        search_str = " AND ".join(search_str_builder) + ";"
+        statement = sql.SQL("SELECT id FROM recipes_index WHERE {}".format(search_str))
+        import pdb; pdb.set_trace()
+
+        cursor = self.conn.cursor()
+        cursor.execute(statement)
+        recipes = [x[0] for x in cursor.fetchall()]
 
         cursor.close()
         self.conn.close()
@@ -110,4 +144,3 @@ if __name__ == '__main__':
     a = dbi.get_recipes([16117], verbose=False)
     # print a[0].instructions
     print a
-

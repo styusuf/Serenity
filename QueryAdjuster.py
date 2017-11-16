@@ -55,7 +55,10 @@ class QueryAdjuster:
             if verbose:
                 print ("Predicted number of recipes for query: {} is {}".format(adj_query, predicted_num))
 
-        return adj_query
+        if len(adj_query) == 0:
+            return [ orig_query[sort_idx[0]] ]
+        else:
+            return adj_query
 
 
 if __name__ == "__main__":
