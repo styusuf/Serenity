@@ -15,18 +15,18 @@ class RankingMetrics:
         self.score = score
 
 class Ranking:
-    def __init__(self, ingredient_info):
+    def __init__(self, group_info):
         """
         Constructor for the ranking class. This sets up all the variables needed to rank. We want to create one ranking
             object when the app is kicked off, but not create another after that.
-        :param ingredient_info: Dictionary created in main file that holds all
-            necessary information about ingredients
+        :param group_info: Dictionary created in main file that holds all
+            necessary information about groups
         """
         # Initialize info for qf-idf
         self.num_recipes = 20015  #TODO: read from file
 
         # Initialize info required for
-        self.ingred_clusters, self.cluster_weights = get_ingredient_clusters(ingredient_info)
+        self.ingred_clusters, self.cluster_weights = get_ingredient_clusters(group_info)
         self.clusters_to_name = {} # used in debugging
         for cluster in range(3):
             if self.cluster_weights[cluster] < 20:
@@ -51,19 +51,21 @@ class Ranking:
         # save work flow weights
         pickle.dump(self.qf_lut, open("TestData/qf_data.p", "wb"))
 
-    def rank_results(self, results, orig_query, ingredient_info, top_k=10, use_clusters=False):
+    def rank_results(self, results, orig_query, ingredient_info, group_info, top_k=10, use_clusters=False):
         """
         Orders the queried results and returns them for displaying
         :param results: List of Query results
         :param orig_query: Query object describing what user requested
         :param ingredient_info: Dictionary created in main file that holds all
             necessary information about ingredients
+        :param group_info: Dictionary created in main file that holds all
+            necessary information about groups
         :param top_k: Number of results that will be displayed
         :param use_clusters: Flag indicating to use clusters or pure frequencies
         :return: (Ordered list of query results, Ordered list of scores)
         """
         self.update_qf(orig_query)
-        ranked_results, ranked_scores = self.do_ranking(results, orig_query, ingredient_info, use_clusters=use_clusters)
+        ranked_results, ranked_scores = self.do_ranking(results, orig_query, ingredient_info, group_info, use_clusters=use_clusters)
 
         if top_k < len(ranked_results):
             return ranked_results[:top_k], ranked_scores[:top_k]
@@ -79,19 +81,24 @@ class Ranking:
         ret = RankingMetrics(n_missing_q = len(missing_in_q), n_missing_recipe = len(missing_in_rec), missing_by_cluster=missing_by_cluster, score=score)
         return ret
 
-    def use_pure_freq(self, missing_ingred, ingredient_info):
+    def use_pure_freq(self, missing_ingred, ingredient_info, group_info):
         """
         Scores in the unadjusted query case by using the frequencies of each ingredient
         :param missing_ingred: List/set of ingredients missing from query
         :param ingredient_info: Dictionary created in main file that holds all
             necessary information about ingredient
+        :param group_info: Dictionary created in main file that holds all
+            necessary information about groups
         :return: Score
         """
         ret = 0
         # To avoid overflowing, using sum of log occurrences
         for ingredient_id in missing_ingred:
             qf_contribution = (self.qf_lut.get(ingredient_id, 0) + 1.0) / (self.qf_lut.get("max", 0) + 1.0)
-            ret += np.log(ingredient_info[ingredient_id]["frequency"] / self.num_recipes) + np.log(qf_contribution)
+            all_groups_freq = 0.0
+            for grp in ingredient_info[ingredient_id]["group"]:
+                all_groups_freq += group_info[grp]["group frequency"]
+            ret += np.log(all_groups_freq / self.num_recipes) + np.log(qf_contribution)
         return ret
 
     def use_cluster_freq(self, missing_ingred):
@@ -107,7 +114,7 @@ class Ranking:
             ret += np.log(1.0 / self.cluster_weights[self.ingred_clusters[ingredient_id]]) + np.log(qf_contribution)
         return ret
 
-    def do_ranking(self, results, orig_query, ingredient_info, use_clusters=False):
+    def do_ranking(self, results, orig_query, ingredient_info, group_info, use_clusters=False):
         """
         Ranking by dissimilarity between original query and returned results. We did not need to adjust the query in
         this case.
@@ -115,6 +122,8 @@ class Ranking:
         :param orig_query: Query object describing what user requested
         :param ingredient_info: Dictionary created in main file that holds all
             necessary information about ingredients
+        :param group_info: Dictionary created in main file that holds all
+            necessary information about groups
         :param use_clusters: Flag indicating to use cluster frequencies instead of pure frequencies
         :return: (Ordered list of recipes, Ordered list of scores)
         """
@@ -134,7 +143,7 @@ class Ranking:
             if use_clusters:
                 score = self.use_cluster_freq(all_missing_ingred)
             else:
-                score = self.use_pure_freq(all_missing_ingred, ingredient_info)
+                score = self.use_pure_freq(all_missing_ingred, ingredient_info, group_info)
             scores.append(score)
 
             # TODO: add breakdown of missing ingredient clusters
@@ -173,10 +182,11 @@ def test_ranking():
     dbi = DBInteract.DBInteract()
     dbi.connect_to_db()
 
-    from App import create_ingredient_info
-    ingredient_info = create_ingredient_info()
+    from LookUpTables import create_ingredient_info, create_group_info
+    group_info, ingred_to_group = create_group_info()
+    ingredient_info = create_ingredient_info(ingred_to_group)
 
-    ranker = Ranking(ingredient_info)
+    ranker = Ranking(group_info)
 
     query = [5062, 19296]
     results = dbi.get_recipes(query, verbose=True)
@@ -184,22 +194,23 @@ def test_ranking():
     print "Using Pure Frequencies"
     print "Name\tMissing in Recipe\tMissing in Query\tScore"
     print "--------------------------------------------------------------------"
-    ranked, metrics = ranker.rank_results(results, query, ingredient_info, use_clusters=False)
+    ranked, metrics = ranker.rank_results(results, query, ingredient_info, group_info, use_clusters=False)
     for idx, recipe in enumerate(ranked):
         print "{0}: {1}, {2}, {3}, {4}".format(recipe.title, metrics[idx].missing_by_cluster, metrics[idx].n_missing_in_query, metrics[idx].n_missing_in_recipe, metrics[idx].score)
     print
     print "Using Cluster Frequencies"
     print "Name\tMissing in Query\tMissing in Recipe\tScore"
     print "--------------------------------------------------------------------"
-    ranked, metrics = ranker.rank_results(results, query, ingredient_info, use_clusters=True)
+    ranked, metrics = ranker.rank_results(results, query, ingredient_info, group_info, use_clusters=True)
     for idx, recipe in enumerate(ranked):
         print "{0}: {1}, {2}, {3}, {4}".format(recipe.title, metrics[idx].missing_by_cluster, metrics[idx].n_missing_in_query, metrics[idx].n_missing_in_recipe, metrics[idx].score)
 
 def test_ranking_by_hand():
     from RecipeClass import Recipe
-    from App import create_ingredient_info
-    ingredient_info = create_ingredient_info()
-    ranker = Ranking(ingredient_info)
+    from LookUpTables import create_ingredient_info, create_group_info
+    group_info, ingred_to_group = create_group_info
+    ingredient_info = create_ingredient_info(ingred_to_group)
+    ranker = Ranking(group_info)
 
     query = [2047, 19296, 5062]
     results = []
@@ -241,18 +252,18 @@ def test_ranking_by_hand():
     print "Using Pure Frequencies"
     print "Name\tMissing in Recipe\tMissing in Query\tScore"
     print "--------------------------------------------------------------------"
-    ranked, metrics = ranker.rank_results(results, query, ingredient_info, use_clusters=False)
+    ranked, metrics = ranker.rank_results(results, query, ingredient_info, group_info, use_clusters=False)
     for idx, recipe in enumerate(ranked):
         print "{0}: {1}, {2}, {3}, {4}".format(recipe.title, metrics[idx].missing_by_cluster, metrics[idx].n_missing_in_query, metrics[idx].n_missing_in_recipe, metrics[idx].score)
     print
     print "Using Cluster Frequencies"
     print "Name\tMissing in Query\tMissing in Recipe\tScore"
     print "--------------------------------------------------------------------"
-    ranked, metrics = ranker.rank_results(results, query, ingredient_info, use_clusters=True)
+    ranked, metrics = ranker.rank_results(results, query, ingredient_info, group_info, use_clusters=True)
     for idx, recipe in enumerate(ranked):
         print "{0}: {1}, {2}, {3}, {4}".format(recipe.title, metrics[idx].missing_by_cluster, metrics[idx].n_missing_in_query, metrics[idx].n_missing_in_recipe, metrics[idx].score)
 
 if __name__ == "__main__":
     np.seterr(all='raise')
-    # test_ranking()
-    test_ranking_by_hand()
+    test_ranking()
+    # test_ranking_by_hand()
