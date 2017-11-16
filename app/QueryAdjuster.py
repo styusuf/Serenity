@@ -46,7 +46,7 @@ class QueryAdjuster:
 
 
 if __name__ == "__main__":
-    from App import create_ingredient_info
+    from app import create_ingredient_info
     ingredient_info = create_ingredient_info()
 
     qa = QueryAdjuster()

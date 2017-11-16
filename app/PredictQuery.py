@@ -1,7 +1,7 @@
-import DBInteract
-import numpy as np
 import os.path
 import pickle
+
+import numpy as np
 from sklearn import datasets
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import LinearRegression
@@ -9,7 +9,8 @@ from sklearn.metrics import mean_squared_error
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.neural_network import MLPRegressor
 
-import pdb
+import DBInteract
+
 
 class PredictQuery:
     """predictQuery class - Predict number of query results returned"""
@@ -182,7 +183,7 @@ def test_on_db_data(big=False):
     Tests regression models on generated test data
     :return: None
     """
-    from App import create_ingredient_info
+    from setup import create_ingredient_info
     ingredient_info = create_ingredient_info()
 
     # load or generate file

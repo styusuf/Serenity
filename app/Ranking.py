@@ -1,10 +1,11 @@
-import DBInteract
-from IngredientCluster import get_ingredient_clusters
-import numpy as np
 import os.path
 import pickle
 
-import pdb
+import numpy as np
+
+import DBInteract
+from IngredientCluster import get_ingredient_clusters
+
 
 # TODO: add breakdown of missing ingredient clusters
 class RankingMetrics:
@@ -173,7 +174,7 @@ def test_ranking():
     dbi = DBInteract.DBInteract()
     dbi.connect_to_db()
 
-    from App import create_ingredient_info
+    from setup import create_ingredient_info
     ingredient_info = create_ingredient_info()
 
     ranker = Ranking(ingredient_info)
@@ -197,7 +198,7 @@ def test_ranking():
 
 def test_ranking_by_hand():
     from RecipeClass import Recipe
-    from App import create_ingredient_info
+    from setup import create_ingredient_info
     ingredient_info = create_ingredient_info()
     ranker = Ranking(ingredient_info)
 

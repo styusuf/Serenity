@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Results:</h2>
 {% with messages = get_flashed_messages() %}
 {% if messages %}
 <ul>
@@ -10,12 +9,72 @@
 </ul>
 {% endif %}
 {% endwith %}
-{% for recipe in recipes %}
-<!-- Enter row template here -->
-<div>
-	<p>
-		{{ recipe.title }}
-	</p>
+{% if recipes %}
+<link rel="stylesheet" href="../static/product.css" title="" type="">
+<h2>Results:</h2>
+<div id="main-content">
+	{% for recipe in recipes %}
+    <div class="product" id={{ recipe.id }}>
+        <div class="body">
+            <div class="row">
+                <div class="image">
+                    <div class="image_container">
+                        <a class="productimage" href="#">
+                            <img src={{ recipe.image.image }} alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="product_specs">
+                    <div class="row">
+                        <div class="name">
+                            <div>{{ recipe.title }}</div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="ingredients">
+                            <h4 style="padding-left: 40px">Ingredients</h4>
+                            {% if recipe.ingredients|length > 4 %}
+                            <ul>
+                                {% for i in range(4) %}
+                                    <li>{{ recipe.ingredients[i].name }}</li>
+                                {% endfor %}
+                                <li class="container">
+                                <input type="checkbox" id="check_id">
+                                <label for="check_id"></label>
+                                    <ul style="padding-left: 0;">
+                                    {% for i in range(4, recipe.ingredients|length) %}
+                                        <li>{{ recipe.ingredients[i].name }}</li>
+                                    {% endfor %}
+                                    </ul>
+                                </li>
+                            </ul>
+                            {% else %}
+                            <ul>
+                                {% for i in recipe.ingredients %}
+                                    <li>{{ i.name }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="instructions">
+                            <ul style="padding-left: 0;">
+                                {% for i in recipe.instructions %}
+                                <!--<li>{{ i.step }}</li>-->
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <br>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+	{% endfor %}
 </div>
-{% endfor %}
+{% endif %}
 {% endblock %}

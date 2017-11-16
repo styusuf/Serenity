@@ -32,7 +32,7 @@ def get_ingredient_clusters(ingredient_info):
     return cluster_members, cluster_sizes
 
 if __name__ == "__main__":
-    from App import create_ingredient_info
+    from app import create_ingredient_info
     ingredient_info = create_ingredient_info()
     cluster_members, cluster_sizes = get_ingredient_clusters(ingredient_info)
 
