@@ -1,0 +1,46 @@
+In [1]: f = open("id_name.txt", "r")
+
+In [2]: f.readline()
+Out[2]: '    id    |                       name                        \n'
+
+In [3]: f.readline()
+Out[3]: '----------+---------------------------------------------------\n'
+
+In [4]: myIng = []
+
+In [5]: file_len("id_name.txt)
+  File "<ipython-input-5-d9bd11225696>", line 1
+    file_len("id_name.txt)
+                         ^
+SyntaxError: EOL while scanning string literal
+
+
+In [6]: for line in f:
+   ...:     split = line.split("|")
+   ...:     value = split[0].strip()
+   ...:     label = split[1].strip("\n")
+   ...:     label = label.strip()
+   ...:     label = label.strip("'")
+   ...:     label = label.title()
+   ...:     myIng.append({"label": label, "value": value})
+   ...:     
+   ...:     
+---------------------------------------------------------------------------
+IndexError                                Traceback (most recent call last)
+<ipython-input-6-d26512728329> in <module>()
+      2     split = line.split("|")
+      3     value = split[0].strip()
+----> 4     label = split[1].strip("\n")
+      5     label = label.strip()
+      6     label = label.strip("'")
+
+IndexError: list index out of range
+
+In [7]: len(myIng)
+Out[7]: 2140
+
+In [9]: import json
+
+In [10]: with open('data.txt', 'w') as outfile:
+    ...:     json.dump(myIng, outfile)
+    ...:     
