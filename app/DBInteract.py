@@ -12,6 +12,9 @@ class DBInteract(object):
         self.conn = None
         self.recipe = sql.Identifier('recipes')
         self.ingredient = sql.Identifier('ingredients')
+        self.people = sql.Identifier('people')
+        self.password = sql.Identifier('password')
+        self.username = sql.Identifier('username')
         self.id = sql.Identifier('id')
 
     def connect_to_db(self):
@@ -26,6 +29,25 @@ class DBInteract(object):
             print e
             print "unable to connect"
             exit(1)
+
+    def get_password(self, username):
+        '''
+        Get the password for the given username
+        :param username:
+        :return:
+        '''
+        self.connect_to_db()
+        statement = sql.SQL("SELECT {0} from {1} WHERE {2} = %s").format(self.password,
+                                                                         self.people,
+                                                                         self.username)
+        with self.conn.cursor() as cursor:
+            cursor.execute(statement, [username])
+            if cursor.rowcount > 0:
+                password = cursor.fetchone()[0]
+            else:
+                password = None
+        self.conn.close()
+        return password
 
     def get_recipe_count(self, ingredient_id):
         '''

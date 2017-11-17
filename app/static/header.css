@@ -1,12 +1,11 @@
 .main-header {
-    background-color: #00aeef;
+    background-color: rgba(25, 125, 125, 0.5);
     position: relative;
     z-index: 10;
     width: 100%;
-    background: linear-gradient(#00aeef, #00bff3);
     top: 0px;
     left: 0px;
-    border-bottom: 1px solid #00add9;
+    border-bottom: 1px solid rgba(6, 88, 20, 0.4);
     box-shadow: rgba(0,0,0,0.15) 0 1px;
     height: 70px;
     line-height: 70px;

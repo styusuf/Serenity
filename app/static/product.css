@@ -1,19 +1,33 @@
 #main-content {
     padding-bottom: 15px;
-    background: white;
+    background: transparent;
     padding: 10px 0 15px 0;
     width: 75%;
     float: left;
     position: relative;
     min-height: 1px;
-    display: table;
+    position: absolute;
+    top: 30%;
+    left: 23%;
+    display: flex;
+    flex-direction: column;
+}
+
+#left-filter {
+    margin: 10px;
+    width: 340px;
+    height: 200px;
+    position: absolute;
+    background: white;
+    border-radius: 4px;
+    top: 30%;
 }
 
 .product {
     margin-bottom: 10px !important;
     border: 0;
     border-top: 1px dotted #999;
-    border-radius: 0;
+    border-radius: 4px 4px 4px 4px;
     text-align: left;
     box-shadow: none!important;
     background-color: white;
@@ -25,6 +39,13 @@
     margin-left: -15px;
     margin-right: 15px;
     margin-top: 10px;
+}
+
+.instructions {
+    position: relative;
+    right: 939px;
+    float: left;
+    top: 193px;
 }
 
 .image {
@@ -45,8 +66,13 @@ a {
 }
 
 .product_specs {
-    width: 41%;
+    width: 61%;
     float: left;
+}
+
+.sign {
+    font-size: 20px;
+    margin-left: 10px;
 }
 
 ul {
@@ -56,35 +82,194 @@ ul {
     background: white;
 }
 
-li {
-    height: 20px;
+.ingredients {
+    position: absolute;
+    margin-left: 5px;
+    padding-top: 25px;
+}
+
+.ing-hide, .pop_hide {
+    display: none;
+}
+
+.ing-show, .pop_show {
+    display: block;
+}
+
+.more-details {
+    position: relative;
+    right: 330px;
+    top: 178px;
+}
+
+.more-details * img {
+    width: 30px;
+}
+
+.more-details > ul {
+    margin: none;
+    list-style-type: none;
+    background: transparent;
+}
+
+.more-details * li {
+    height: 35px;
+    padding: 9px;
+    float: left;
+    margin-right: 56px;
+}
+
+.ing-large {
+    border-radius: 4px;
+    border: 1px solid teal;
+    position: absolute;
+    z-index: 10;
+    width: 200px;
 }
 
 .label {
-    background: #e4e3df;
     display: block;
-    width: 100%;
     height: 25px;
     cursor: pointer;
-    top: 0;
 }
 
 .name {
-    color: #777;
-    font-size: 13px;
+    color: #0b8e84;
+    font-size: 17px;
     float: left!important;
     position:relative;
     min-height: 1px;
     padding-left: 15px;
     padding-right: 15px;
+    text-transform: uppercase;
 }
 
 .productimage img {
     vertical-align: middle;
     border: 0;
     width: 90%;
+    border-radius: 4px;
 }
 
 .body {
     padding: 15px;
 }
+
+.img-ing {
+    width: 10%;
+    margin-left: 40px;
+}
+
+.product_view {
+    background-color: rgba(35, 39, 41, 0.85);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    outline: none;
+}
+
+.modal {
+    opacity: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 9001;
+    max-width: 1024px;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 60px rgba(153, 153, 153, 153, 0.85);
+    will-change: opacity;
+    transition: all 0.2s ease-out;
+    background-color: white;
+}
+
+.modal__close {
+    cursor: pointer;
+    display: block;
+    position: fixed;
+    top: 1px;
+    right: 1px;
+    z-index: 9002;
+    margin: 0;
+    background-color: #000;
+    width: 36px;
+    height: 36px;
+}
+
+.modal__close svg {
+    margin: 9px 0 0 8px;
+    fill: #fff;
+    box-sizing: inherit;
+}
+
+.modal__content-wrapper.animate {
+    opacity: 1;
+}
+
+.modal__content-wrapper {
+    min-height: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 0;
+    position: relative;
+    will-change: opacity;
+    transition: opacity 0.3s ease-out;
+}
+
+.modal__content {
+    height: auto;
+}
+
+main, #product-content {
+    flex: 1 0 auto;
+}
+
+#product-content {
+    width: 100%;
+    margin: auto;
+}
+
+.grid {
+    flex-wrap: wrap;
+}
+
+.site-flexbox {
+    display: flex;
+    flex-direction: row;
+}
+
+#product-options {
+    padding: 3em 5% 0;
+}
+
+.clearfix {
+    zoom: 1;
+    clear: both;
+}
+
+#product-header h1 {
+    font-size: 2.6rem;
+    line-height: 1.2;
+    float: left;
+    margin: 0 1.5em 0 0;
+    position: relative;
+    color: #303030;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+h4 {
+    position: absolute;
+    top: 7px;
+    left: 78px;
+}
+
+#product-meta {
+    float: left;
+    width: 100%;
+    font-size: 1.2rem;
+    margin: 1em 0 2.5em;
+}
+

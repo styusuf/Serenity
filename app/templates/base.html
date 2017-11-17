@@ -10,6 +10,7 @@
 <body>
     <link rel="stylesheet" href="../static/global.css" title="" type="">
     <link rel="stylesheet" href="../static/header.css" title="" type="">
+    <link rel="stylesheet" href="../static/searchbox.css" title="" type="">
     <div class="main-header" id="mainHeader">
         <div class="header-container">
             <h1 class="serenity-logo">
@@ -30,6 +31,9 @@
                             <li class="nav-item" style="margin-left: 25px;">
                                 <a href="/login">Login</a>
                             </li>
+							<li class="nav-item" style="margin-left: 25px;">
+                                <a href="/logout">Logout</a>
+                            </li>
                         </ul>
                     </nav>
                 </div>
@@ -39,14 +43,10 @@
 	<!-- Search functionality here -->
 	<form action="" method="post" name="search">
 		{{ form.hidden_tag() }}
-		<p>
-			Please enter the ingredients that you have:<br>
-			{{ form.ingredients(size=200) }}<br>
-		</p>
-		<p>
-			<input type="submit" value="Search">
-		</p>
+        {{ form.ingredients(size=200, class_="textbox", value=ingredients) }}
+        <input title="Search" type="submit" value="&#x1F50D;" class="button">
 	</form>
+    <br>
 	{% block content %}{% endblock %}
 </body>
 </html>

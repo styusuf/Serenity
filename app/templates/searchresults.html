@@ -1,5 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
+<script type="text/javascript">
+function showMore(id) {
+    document.getElementById(id + '_ing_small').setAttribute('class', document.getElementById(id + '_ing_small').getAttribute('class').replace('show', 'hide'));
+    document.getElementById(id + '_ing_large').setAttribute('class', document.getElementById(id + '_ing_large').getAttribute('class').replace('hide', 'show'));
+}
+function showLess(id) {
+    document.getElementById(id + '_ing_large').setAttribute('class', document.getElementById(id + '_ing_large').getAttribute('class').replace('show', 'hide'));
+    document.getElementById(id + '_ing_small').setAttribute('class', document.getElementById(id + '_ing_small').getAttribute('class').replace('hide', 'show'));
+}
+function showProductPopup(id) {
+    document.getElementById(id + '_view').setAttribute('class', document.getElementById(id + '_view').getAttribute('class').replace('hide', 'show'));
+}
+function hideProductPopup(id) {
+    document.getElementById(id + '_view').setAttribute('class', document.getElementById(id + '_view').getAttribute('class').replace('show', 'hide'));   
+}
+</script>
+<link rel="stylesheet" href="../static/product.css" title="" type="">
 {% with messages = get_flashed_messages() %}
 {% if messages %}
 <ul>
@@ -10,12 +27,14 @@
 {% endif %}
 {% endwith %}
 {% if recipes %}
-<link rel="stylesheet" href="../static/global.css" title="" type="">
-<link rel="stylesheet" href="../static/product.css" title="" type="">
-<h2>Results:</h2>
+<div id="left-filter">
+    <div>
+        <h2>Filter</h2>
+    </div>
+</div>
 <div id="main-content">
 	{% for recipe in recipes %}
-    <div class="product" id={{ recipe.id }}>
+    <div class="product" id={{ recipe.id }} style="order: {{ loop.index }};">
         <div class="body">
             <div class="row">
                 <div class="image">
@@ -28,37 +47,105 @@
                 <div class="product_specs">
                     <div class="row">
                         <div class="name">
-                            <div>{{ recipe.title }}</div>
+                            <div>{{ recipe.title | replace("'", "") }}</div>
                         </div>
                     </div>
                     <br>
                     <div class="row">
                         <div class="ingredients">
-                            <h4 style="padding-left: 40px">Ingredients</h4>
+                            <img class="img-ing" src="../static/images/ingredients.jpg">
+                            <h4>Ingredients</h4>
                             {% if recipe.ingredients|length >4 %}
-                                <ul>
+                                <ul class="ing-show" id="{{ recipe.id }}_ing_small">
                                 {% for i in range(4) %}
-                                   <li>{{ recipe.ingredients[i].name }}</li>
+                                   <li id={{ recipe.ingredients[i].id }}>{{ recipe.ingredients[i].name }}</li>
                                 {% endfor %}
-                                <li><a class="label" href="#">view more...</a></li>
+                                <li><a class="label" href="javascript:showMore({{ recipe.id }});"><b class="sign">+</b></a></li>
+                                </ul>
+                                <ul class="ing-hide ing-large" id="{{ recipe.id }}_ing_large">
+                                {% for j in recipe.ingredients %}
+                                   <li id={{ j.id }}>{{ j.name }}</li>
+                                {% endfor %}
+                                <li><a class="label" href="javascript:showLess({{ recipe.id }});"><b class="sign">-</b></a></li>
                                 </ul>
                             {% else %}
                                 <ul>
                                 {% for j in recipe.ingredients %}
-                                   <li>{{ j.name }}</li>
+                                   <li id={{ j.id }}>{{ j.name }}</li>
                                 {% endfor %}
                                 </ul>
                             {% endif %}
                         </div>
                     </div>
-                    <br>
-                    <div class="row">
-                        <div class="instructions">
-                            <a class="label" href="#">View Instructions</a>
-                        </div>
+                    <div class="more-details">
+                        <ul>
+                            <li><img src="../static/images/clock.png" alt="" style="">
+                                <p style="position: relative;top: -37px;right: -38px;">{{ recipe.ReadyInMin }} mins</p></li>
+                            <li><img src="../static/images/servings.png" alt="">
+                                <p style="position: relative;top: -37px;right: -38px;">{{ recipe.servings }}</p></li>
+                            {% if recipe.isVeg %}
+                            <li><img src="../static/images/veg.png" alt=""></li>
+                            {% else %}
+                            <li><img src="../static/images/non-veg.png" alt=""></li>
+                            {% endif %}
+
+                        </ul>
                     </div>
                     <br>
-                    
+                </div>
+                  <a class="label instructions" href="javascript:showProductPopup({{ recipe.id }})">View Instructions</a>
+            </div>
+        </div>
+        <div class="product_view pop_hide" id="{{ recipe.id }}_view">
+            <div class="modal quickview">
+                <span class="modal__close">
+                    <a href="javascript:hideProductPopup({{ recipe.id }})">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve"><path d="M62.146,49.999L92.364,19.78c1.159-1.159,1.159-3.037,0-4.195l-7.95-7.95c-1.158-1.158-3.036-1.158-4.195,0L50,37.854  L19.781,7.635c-1.158-1.158-3.037-1.158-4.196,0l-7.95,7.95c-1.159,1.158-1.159,3.036,0,4.195l30.219,30.219L7.636,80.219  c-1.16,1.159-1.16,3.037,0,4.195l7.949,7.95c1.159,1.159,3.038,1.159,4.196,0L50,62.146l30.218,30.218  c1.159,1.159,3.037,1.159,4.195,0l7.95-7.95c1.159-1.158,1.159-3.036,0-4.195L62.146,49.999z"></path></svg>
+                    </a>
+                </span>
+                <div class="modal__content-wrapper animate">
+                    <div class="modal__content">
+                        <main role="main">
+                            <div id="product-content" class="site-flexbox grid">
+                                <div id="product-images" style="width: 100%;">
+                                    <img style="width: 100%;" src="{{ recipe.image.image }}" alt="">
+                                </div>
+                                <div id="product-options">
+                                    <header id="product-header" class="clearfix">
+                                        <h1>{{ recipe.title|replace("'", "") }}</h1>
+                                        <div id="product-meta">
+                                            <div class="quickview_ingredients">
+                                                <h3>Ingredients Required:</h3>
+                                                <ul>
+                                                    {% for i in recipe.ingredients %}
+                                                    <div class="ingr_popup_img">
+                                                            <img src="{{ i.image }}" alt="">
+                                                        </div>
+                                                    <li id="{{ i.id }}_popup" class="ingr_popup">
+                                                        {{ i.name }}
+                                                        {% if i.unitLong %}
+                                                            ({{ i.amount }} {{ i.unitLong }})
+                                                        {% else %}
+                                                            ({{ i.amount }})
+                                                        {% endif %}</li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                            <hr>
+                                            <div class="quickview_instructions">
+                                                <h3>Instructions to Prepare:</h3>
+                                                <ul>
+                                                    {% for i in recipe.instructions %}
+                                                    <li id="{{ i.number }}_popup"><p>{{ i.number }}. {{ i.step }}</p></li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </header>
+                                </div>
+                            </div>
+                        </main>
+                    </div>
                 </div>
             </div>
         </div>

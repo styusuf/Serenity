@@ -1,5 +1,6 @@
 <html>
 <head>
+    <link rel="shortcut icon" href="../static/images/icon.png"/>
 	{% if title %}
 	<title>{{ title }}</title>
 	{% else %}
@@ -7,10 +8,35 @@
 	{% endif %}
 </head>
 <body>
-	<div>
-		<img src="../static/images/serenity_panda.png">
-		<hr>
-	</div>
+    <link rel="stylesheet" href="../static/global.css" title="" type="">
+    <link rel="stylesheet" href="../static/header.css" title="" type="">
+    <link rel="stylesheet" href="../static/login.css" title="" type="">
+    <div class="main-header" id="mainHeader">
+        <div class="header-container">
+            <h1 class="serenity-logo">
+                <a href="/index">
+                    <span class="logo-name">
+                        Serenity
+                    </span>
+                    <img class="logo-image" src="../static/images/panda_clipart.png" alt="">
+                </a>
+            </h1>
+            <div class="nav-wrap">
+                <div class="nav-wrap-inner">
+                    <nav class="nav">
+                        <ul class="nav-list"> 
+                            <li class="nav-item">
+                                <a href="/index">Home</a>
+                            </li>
+                            <li class="nav-item" style="margin-left: 25px;">
+                                <a href="/login">Login</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
 	{% block content %}{% endblock %}
 </body>
 </html>

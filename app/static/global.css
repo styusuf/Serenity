@@ -7,6 +7,5 @@ body {
         Helvetica, Arial, "sans-serif";
     font-size: 14px;
     color: #333333;
+    background: url("images/background.png") no-repeat center center fixed;
 }
-
-
