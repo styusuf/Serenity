@@ -1,0 +1,10 @@
+(dp0
+S'max'
+p1
+I2
+sS'total'
+p2
+I2
+sI2047
+I2
+s.

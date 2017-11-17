@@ -18,16 +18,16 @@ class PredictQuery:
     def __init__(self):
         """predictQuery constructor"""
         self.models = {"linreg": None, "knn": None, "rf": None, "nn_class": None, "nn": None}
-        if os.path.isfile("TestData/linreg_model.p"):
-            self.models["linreg"] = pickle.load( open("TestData/linreg_model.p", "rb"))
-        if os.path.isfile("TestData/knn_model.p"):
-            self.models["knn"] = pickle.load( open("TestData/knn_model.p", "rb"))
-        if os.path.isfile("TestData/rf_model.p"):
-            self.models["rf"] = pickle.load( open("TestData/rf_model.p", "rb"))
-        if os.path.isfile("TestData/nn_class_model.p"):
-            self.models["nn_class"] = pickle.load( open("TestData/nn_class_model.p", "rb"))
-        if os.path.isfile("TestData/nn_model.p"):
-            self.models["nn"] = pickle.load( open("TestData/nn_model.p", "rb"))
+        if os.path.isfile("app/TestData/linreg_model.p"):
+            self.models["linreg"] = pickle.load( open("app/TestData/linreg_model.p", "rb"))
+        if os.path.isfile("app/TestData/knn_model.p"):
+            self.models["knn"] = pickle.load( open("app/TestData/knn_model.p", "rb"))
+        if os.path.isfile("app/TestData/rf_model.p"):
+            self.models["rf"] = pickle.load( open("app/TestData/rf_model.p", "rb"))
+        if os.path.isfile("app/TestData/nn_class_model.p"):
+            self.models["nn_class"] = pickle.load( open("app/TestData/nn_class_model.p", "rb"))
+        if os.path.isfile("app/TestData/nn_model.p"):
+            self.models["nn"] = pickle.load( open("app/TestData/nn_model.p", "rb"))
 
     def train(self, X, y, linreg=True, knn=True, rf=True, nn_class=True, nn=True, k=3, knn_weights="uniform", num_trees=10, max_depth=None, min_res=10):
         """
@@ -45,25 +45,25 @@ class PredictQuery:
         """
         if linreg:
             self.train_linreg(X, y)
-            pickle.dump(self.models["linreg"], open("TestData/linreg_model.p", "wb"))
+            pickle.dump(self.models["linreg"], open("app/TestData/linreg_model.p", "wb"))
             print "finished training linreg"
         if knn:
             self.train_knn(X, y, k=k, weights=knn_weights)
-            pickle.dump(self.models["knn"], open("TestData/knn_model.p", "wb"))
+            pickle.dump(self.models["knn"], open("app/TestData/knn_model.p", "wb"))
             print "finished training knn"
         if rf:
             self.train_rf(X, y, num_trees=num_trees, max_depth=max_depth)
-            pickle.dump(self.models["rf"], open("TestData/rf_model.p", "wb"))
+            pickle.dump(self.models["rf"], open("app/TestData/rf_model.p", "wb"))
             print "finished training rf"
         if nn_class:
             y_class = np.zeros(y.shape)
             y_class[y >= 2*min_res] = 1
             self.train_nn_class(X, y_class)
-            pickle.dump(self.models["nn_class"], open("TestData/nn_class_model.p", "wb"))
+            pickle.dump(self.models["nn_class"], open("app/TestData/nn_class_model.p", "wb"))
             print "finished training nn classifier"
         if nn:
             self.train_nn(X, y)
-            pickle.dump(self.models["nn"], open("TestData/nn_model.p", "wb"))
+            pickle.dump(self.models["nn"], open("app/TestData/nn_model.p", "wb"))
             print "finished training nn"
 
     def train_linreg(self, X, y):
@@ -202,11 +202,11 @@ def build_training_data(ingredient_info, big=False, verbose=True):
     ret_X = np.array(ret_X)
     ret_y = np.array(ret_y)
     if not big:
-        np.save("TestData/predict_query_train_X", ret_X)
-        np.save("TestData/predict_query_train_y", ret_y)
+        np.save("app/TestData/predict_query_train_X", ret_X)
+        np.save("app/TestData/predict_query_train_y", ret_y)
     else:
-        np.save("TestData/predict_query_train_X_big", ret_X)
-        np.save("TestData/predict_query_train_y_big", ret_y)
+        np.save("app/TestData/predict_query_train_X_big", ret_X)
+        np.save("app/TestData/predict_query_train_y_big", ret_y)
     return ret_X, ret_y
 
 def test_on_db_data(big=False):
@@ -219,13 +219,13 @@ def test_on_db_data(big=False):
     ingredient_info = create_ingredient_info(ingred_to_group)
 
     # load or generate file
-    if os.path.isfile("TestData/predict_query_train_X.npy") and (big == False):
-        all_X = np.load("TestData/predict_query_train_X.npy")
-        all_y = np.load("TestData/predict_query_train_y.npy")
-    elif os.path.isfile("TestData/predict_query_train_X_big.npy") and (big == True):
-        all_X = np.load("TestData/predict_query_train_X_big.npy")
+    if os.path.isfile("app/TestData/predict_query_train_X.npy") and (big == False):
+        all_X = np.load("app/TestData/predict_query_train_X.npy")
+        all_y = np.load("app/TestData/predict_query_train_y.npy")
+    elif os.path.isfile("app/TestData/predict_query_train_X_big.npy") and (big == True):
+        all_X = np.load("app/TestData/predict_query_train_X_big.npy")
         pdb.set_trace()
-        all_y = np.load("TestData/predict_query_train_y_big.npy")
+        all_y = np.load("app/TestData/predict_query_train_y_big.npy")
     else:
         all_X, all_y = build_training_data(ingredient_info, big=True)
 

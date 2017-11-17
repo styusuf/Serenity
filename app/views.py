@@ -3,13 +3,13 @@ from .forms import SearchForm, LoginForm
 from flask import render_template, flash, redirect, url_for, request, session
 from .CheckUser import User
 from .setup import searchRecipes, createGlobals
-import LookUpTables
 
-[dbi, ingredient_info, rank, qa] = createGlobals()
+
+[dbi, ingredient_info, group_info, rank, qa] = createGlobals()
 
 def displaySearchResults(data):
     ingredients_ids = [int(a) for a in data.split(',')]
-    return searchRecipes(ingredients_ids, dbi, ingredient_info, rank, qa)
+    return searchRecipes(ingredients_ids, dbi, ingredient_info, group_info, rank, qa)
 
 @app.route('/', methods=['GET','POST'])
 @app.route('/login', methods=['GET','POST'])
