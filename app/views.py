@@ -3,6 +3,7 @@ from .forms import SearchForm, LoginForm
 from flask import render_template, flash, redirect, url_for, request, session
 from .CheckUser import User
 from .setup import searchRecipes, createGlobals
+import LookUpTables
 
 [dbi, ingredient_info, rank, qa] = createGlobals()
 
