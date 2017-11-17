@@ -35,8 +35,8 @@ class Ranking:
             else:
                 self.clusters_to_name[cluster] = "rare"
 
-        if os.path.isfile("TestData/qf_data.p"):
-            self.qf_lut = pickle.load( open("TestData/qf_data.p", "rb"))
+        if os.path.isfile("app/TestData/qf_data.p"):
+            self.qf_lut = pickle.load( open("app/TestData/qf_data.p", "rb"))
         else:
             self.qf_lut = {}  # query frequency lookup table
             self.qf_lut["total"] = 0
@@ -48,7 +48,7 @@ class Ranking:
         :return: None
         """
         # save work flow weights
-        pickle.dump(self.qf_lut, open("TestData/qf_data.p", "wb"))
+        pickle.dump(self.qf_lut, open("app/TestData/qf_data.p", "wb"))
 
     def rank_results(self, results, orig_query, ingredient_info, group_info, top_k=10, use_clusters=False):
         """
