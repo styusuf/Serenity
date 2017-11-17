@@ -107,7 +107,6 @@ class DBInteract(object):
             search_str_builder.append("(" + " OR ".join(new_or_statement_builder) + ")")
         search_str = " AND ".join(search_str_builder) + ";"
         statement = sql.SQL("SELECT id FROM recipes_index WHERE {}".format(search_str))
-        import pdb; pdb.set_trace()
 
         cursor = self.conn.cursor()
         cursor.execute(statement)

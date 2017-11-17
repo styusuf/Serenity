@@ -4,8 +4,6 @@ import numpy as np
 import os.path
 import pickle
 
-import pdb
-
 # TODO: add breakdown of missing ingredient clusters
 class RankingMetrics:
     def __init__(self, n_missing_q=0, n_missing_recipe=0, missing_by_cluster={}, score=0):
@@ -81,37 +79,70 @@ class Ranking:
         ret = RankingMetrics(n_missing_q = len(missing_in_q), n_missing_recipe = len(missing_in_rec), missing_by_cluster=missing_by_cluster, score=score)
         return ret
 
-    def use_pure_freq(self, missing_ingred, ingredient_info, group_info):
+    def use_pure_freq(self, missing_ingred, in_common, ingredient_info, group_info):
         """
         Scores in the unadjusted query case by using the frequencies of each ingredient
         :param missing_ingred: List/set of ingredients missing from query
+        :param in_common: Tuple of information regarding ingredients and their quantities
+            occurring in query and recipe
         :param ingredient_info: Dictionary created in main file that holds all
             necessary information about ingredient
         :param group_info: Dictionary created in main file that holds all
             necessary information about groups
         :return: Score
         """
-        ret = 0
         # To avoid overflowing, using sum of log occurrences
+        ret = 0
+
+        # Deal with missing ingredients
         for ingredient_id in missing_ingred:
             qf_contribution = (self.qf_lut.get(ingredient_id, 0) + 1.0) / (self.qf_lut.get("max", 0) + 1.0)
             all_groups_freq = 0.0
             for grp in ingredient_info[ingredient_id]["group"]:
                 all_groups_freq += group_info[grp]["group frequency"]
             ret += np.log(all_groups_freq / self.num_recipes) + np.log(qf_contribution)
+
+        # Deal with quantities
+        for ingredient_tup in in_common:
+            qf_contribution = (self.qf_lut.get(ingredient_tup[0], 0) + 1.0) / (self.qf_lut.get("max", 0) + 1.0)
+            all_groups_freq = 0.0
+            for grp in ingredient_info[ingredient_tup[0]]["group"]:
+                all_groups_freq += group_info[grp]["group frequency"]
+
+            # cap quantities
+            if ingredient_tup[2] > ingredient_tup[1]:
+                quantity_scaling = 0.0
+            else:
+                quantity_scaling = (ingredient_tup[1]  - ingredient_tup[2]) / (ingredient_tup[1])
+            ret += quantity_scaling * (np.log(all_groups_freq / self.num_recipes) + np.log(qf_contribution))
         return ret
 
-    def use_cluster_freq(self, missing_ingred):
+    def use_cluster_freq(self, missing_ingred, in_common):
         """
         Scores in the unadjusted query case by using the number of elements in the cluster
         :param missing_ingred: List/set of ingredients missing from query
+        :param in_common: Tuple of information regarding ingredients and their quantities
+            occurring in query and recipe
         :return: Score
         """
-        ret = 0
         # To avoid underflowing, using sum of log occurrences
+        ret = 0
+
+        # Deal with missing ingredients
         for ingredient_id in missing_ingred:
             qf_contribution = (self.qf_lut.get(ingredient_id, 0) + 1.0) / (self.qf_lut.get("max", 0) + 1.0)
             ret += np.log(1.0 / self.cluster_weights[self.ingred_clusters[ingredient_id]]) + np.log(qf_contribution)
+
+        # Deal with quantities
+        for ingredient_tup in in_common:
+            qf_contribution = (self.qf_lut.get(ingredient_tup[0], 0) + 1.0) / (self.qf_lut.get("max", 0) + 1.0)
+
+            # cap quantities
+            if ingredient_tup[2] > ingredient_tup[1]:
+                quantity_scaling = 0.0
+            else:
+                quantity_scaling = (ingredient_tup[1]  - ingredient_tup[2]) / (ingredient_tup[1])
+            ret += quantity_scaling * (np.log(1.0 / self.cluster_weights[self.ingred_clusters[ingredient_tup[0]]]) + np.log(qf_contribution))
         return ret
 
     def do_ranking(self, results, orig_query, ingredient_info, group_info, use_clusters=False):
@@ -129,21 +160,24 @@ class Ranking:
         """
         scores = []
         metrics = []
-        set_orig_query = set(orig_query)
+        set_orig_query = set(orig_query.keys())
         for recipe in results:
             # remove all of the overlapping ingredients
             recipe_ingred = set()
+            in_common = []
             for ingredient in recipe.ingredients:
                 recipe_ingred.add(ingredient["id"])
+                if ingredient["id"] in set_orig_query:
+                    in_common.append((ingredient["id"], ingredient["amount"], orig_query[ingredient["id"]]))
             missing_in_rec = recipe_ingred.difference(set_orig_query)  # in recipe but not query
             missing_in_q = set_orig_query.difference(recipe_ingred)  # in query but not recipe
             all_missing_ingred = missing_in_q.union(missing_in_rec)
 
             # generate score by using sum of log frequencies
             if use_clusters:
-                score = self.use_cluster_freq(all_missing_ingred)
+                score = self.use_cluster_freq(all_missing_ingred, in_common)
             else:
-                score = self.use_pure_freq(all_missing_ingred, ingredient_info, group_info)
+                score = self.use_pure_freq(all_missing_ingred, in_common, ingredient_info, group_info)
             scores.append(score)
 
             # TODO: add breakdown of missing ingredient clusters
@@ -189,22 +223,24 @@ def test_ranking():
     ranker = Ranking(group_info)
 
     query = [5062, 19296]
+    query_with_amounts = {5062:1, 19296:1}
     results = dbi.get_recipes(query, verbose=True)
 
     print "Using Pure Frequencies"
     print "Name\tMissing in Recipe\tMissing in Query\tScore"
     print "--------------------------------------------------------------------"
-    ranked, metrics = ranker.rank_results(results, query, ingredient_info, group_info, use_clusters=False)
+    ranked, metrics = ranker.rank_results(results, query_with_amounts, ingredient_info, group_info, use_clusters=False)
     for idx, recipe in enumerate(ranked):
         print "{0}: {1}, {2}, {3}, {4}".format(recipe.title, metrics[idx].missing_by_cluster, metrics[idx].n_missing_in_query, metrics[idx].n_missing_in_recipe, metrics[idx].score)
     print
     print "Using Cluster Frequencies"
     print "Name\tMissing in Query\tMissing in Recipe\tScore"
     print "--------------------------------------------------------------------"
-    ranked, metrics = ranker.rank_results(results, query, ingredient_info, group_info, use_clusters=True)
+    ranked, metrics = ranker.rank_results(results, query_with_amounts, ingredient_info, group_info, use_clusters=True)
     for idx, recipe in enumerate(ranked):
         print "{0}: {1}, {2}, {3}, {4}".format(recipe.title, metrics[idx].missing_by_cluster, metrics[idx].n_missing_in_query, metrics[idx].n_missing_in_recipe, metrics[idx].score)
 
+# TODO: This will break!!! No quantities...
 def test_ranking_by_hand():
     from RecipeClass import Recipe
     from LookUpTables import create_ingredient_info, create_group_info
