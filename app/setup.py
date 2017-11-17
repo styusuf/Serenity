@@ -4,14 +4,12 @@ from LookUpTables import create_ingredient_info, create_group_info
 import numpy as np
 from QueryAdjuster import QueryAdjuster
 from Ranking import Ranking
-import logging
 import sys
 
 def createGlobals():
     group_info, ingred_to_groups = create_group_info()
     dbi = DBInteract()
     ingredient_info = create_ingredient_info(ingred_to_groups)
-    logging.error(ingredient_info)
     # del ingred_to_groups
     rank = Ranking(group_info)
     qa = QueryAdjuster()
@@ -49,7 +47,6 @@ def searchRecipes(ingredient_list, dbi, ingredient_info, group_info, rank, qa):
     # qa = QueryAdjuster()
 
     # Use ML to adjust query
-    logging.error(ingredient_info)
     adj_ingredient_list = qa.get_adj_query(ingredient_list, ingredient_info, group_info)
     tmp_adj_query = copy(adj_ingredient_list)
     recipes = []
