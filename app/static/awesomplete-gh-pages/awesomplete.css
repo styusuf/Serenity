@@ -17,6 +17,7 @@
 }
 
 .awesomplete > ul {
+    top: 37px;
     position: absolute;
     left: 0;
     z-index: 1;

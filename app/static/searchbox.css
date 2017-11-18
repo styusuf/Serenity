@@ -1,6 +1,6 @@
 form {
-  position: absolute;
-  top: 150px;
+  position: relative;
+  top: 100px;
   left: 710px;
   outline: 0;
   float: left;
@@ -10,7 +10,7 @@ form {
   border-radius: 4px;
 }
 
-form > .textbox {
+.textbox {
   outline: 0;
   height: 42px;
   width: 244px;
@@ -24,16 +24,16 @@ form > .textbox {
   border-radius: 4px 0 0 4px;
 }
 
-form > .textbox:focus {
+.textbox:focus {
   outline: 0;
   background-color: #FFF;
 }
 
-form > .button {
+.button {
   outline: 0;
   background: none;
   background-color: rgba(38, 50, 56, 0.8);
-  float: left;
+  float: right;
   height: 42px;
   width: 42px;
   text-align: center;
@@ -41,7 +41,7 @@ form > .button {
   border: 0;
   color: #FFF;
   font: normal normal normal 14px/1 FontAwesome;
-  font-size: 16px;
+  font-size: 26px;
   text-rendering: auto;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   -webkit-transition: background-color .4s ease;
@@ -50,6 +50,45 @@ form > .button {
   border-radius: 0 4px 4px 0;
 }
 
-form > .button:hover {
+.button:hover {
   background-color: rgba(0, 150, 136, 0.8);
+}
+
+#add_ingredient {
+    top: 220px;
+    left: 337px;
+    position: relative;
+    padding: 6px;
+}
+
+.sub_button {
+    margin: 5px 0 5px 5px;
+    border-radius: 4px;
+}
+
+.search_button {
+    border-radius: 4px;
+    position: fixed;
+    top: 251px;
+    left: 767px;
+}
+
+.ingr_name, .ingr_unit, .ingr_quantity {
+    border-radius: 4px;
+    margin: 5px;
+}
+
+.ingr_unit {
+    width: 120px;
+}
+.ingr_quantity {
+    width: 68px;
+}
+
+.search {
+    left: 50%;
+}
+
+.final_ingredients {
+    display: none;
 }

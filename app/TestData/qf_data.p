@@ -1,12 +1,12 @@
 (dp0
-I10319335
-I1
-sS'max'
+S'max'
 p1
 I2
 sS'total'
 p2
 I3
+sI1124
+I1
 sI2047
 I2
 s.
