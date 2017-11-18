@@ -2,7 +2,7 @@
     background-color: rgba(25, 125, 125, 0.5);
     position: relative;
     z-index: 10;
-    width: 100%;
+    width: 90%;
     top: 0px;
     left: 0px;
     border-bottom: 1px solid rgba(6, 88, 20, 0.4);
@@ -10,7 +10,7 @@
     height: 70px;
     line-height: 70px;
     vertical-align: baseline;
-    margin: 0;
+    margin: auto;
     padding: 0;
 }
 
@@ -82,4 +82,10 @@
     text-transform: uppercase;
     width: auto;
     text-decoration: unset;
+}
+
+h2 {
+    text-align: center;
+    width: 90%;
+    margin: 1%;
 }

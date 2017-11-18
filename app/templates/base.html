@@ -14,99 +14,56 @@
     <link rel="stylesheet" href="../static/global.css" title="" type="">
     <link rel="stylesheet" href="../static/header.css" title="" type="">
     <link rel="stylesheet" href="../static/searchbox.css" title="" type="">
-    <div class="main-header" id="mainHeader">
-        <div class="header-container">
-            <h1 class="serenity-logo">
-                <a href="/index">
-                    <span class="logo-name">
-                        Serenity
-                    </span>
-                    <img class="logo-image" src="../static/images/panda_clipart.png" alt="">
-                </a>
-            </h1>
-            <div class="nav-wrap">
-                <div class="nav-wrap-inner">
-                    <nav class="nav">
-                        <ul class="nav-list"> 
-                            <li class="nav-item">
-                                <a href="/index">Home</a>
-                            </li>
-                            <li class="nav-item" style="margin-left: 25px;">
-                                <a href="/login">Login</a>
-                            </li>
-							<li class="nav-item" style="margin-left: 25px;">
-                                <a href="/logout">Logout</a>
-                            </li>
-                        </ul>
-                    </nav>
+    <div class="container">
+        <div class="main-header" id="mainHeader">
+            <div class="header-container">
+                <h1 class="serenity-logo">
+                    <a href="/index">
+                        <span class="logo-name">
+                            Serenity
+                        </span>
+                        <img class="logo-image" src="../static/images/panda_clipart.png" alt="">
+                    </a>
+                </h1>
+                <div class="nav-wrap">
+                    <div class="nav-wrap-inner">
+                        <nav class="nav">
+                            <ul class="nav-list"> 
+                                <li class="nav-item">
+                                    <a href="/index">Home</a>
+                                </li>
+                                <li class="nav-item" style="margin-left: 25px;">
+                                    <a href="/login">Login</a>
+                                </li>
+                                <li class="nav-item" style="margin-left: 25px;">
+                                    <a href="/logout">Logout</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
+        <h2>Select Ingredients</h2>
+        <!-- Search functionality here -->
+        <div class="search">
+            <form action="" name="add" method="">
+                <input class="textbox" id="ingredients" name="ingredients" size="200" type="text" value="" autocomplete="off" aria-owns="awesomplete_list_1" role="combobox">
+                <input title="Add" type="button" value="+" class="button" id="add_button">
+            </form>
+            <form action="" method="post" id="final_form">
+                {{ form.hidden_tag() }}
+                {{ form.ingredients(size=200, class_="final_ingredients", id="search_box") }}
+            <input value="&#x1F50D;" id="search_button" class="button search_button" style="display: none;" type="submit">
+            </form>
+            <form action="" id="add_ingredient" style="display: none;"></form>
+        </div>
+        <script type="text/javascript" src="../static/awesomecomplete.js"></script>
+        <script type="text/javascript" charset="utf-8" src="../static/units.js">
+        </script>
+        <br>
+            <script type="text/javascript" src="../static/form.js"></script>
+    {% block content %}{% endblock %}
     </div>
-	<!-- Search functionality here -->
-    <div class="search">
-        <form action="" name="add" method="">
-            <input class="textbox" id="ingredients" name="ingredients" size="200" type="text" value="" autocomplete="off" aria-owns="awesomplete_list_1" role="combobox">
-            <input title="Add" type="button" value="+" class="button" id="add_button">
-        </form>
-        <form action="" method="post" id="final_form">
-            {{ form.hidden_tag() }}
-            {{ form.ingredients(size=200, class_="final_ingredients", id="search_box") }}
-        <input value="&#x1F50D;" id="search_button" class="button search_button" style="display: none;" type="submit">
-        </form>
-        <form action="" id="add_ingredient" style="display: none;"></form>
-    </div>
-    <script type="text/javascript" src="../static/awesomecomplete.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../static/units.js">
-    </script>
-    <br>
-        <script type="text/javascript">
-        document.getElementById('final_form').addEventListener('submit', function() {
-            document.getElementById('search_box').value = ings.join(',');
-        }, false);
-        function form_list(units) {
-            select = "<select name=\"units\" class=\"textbox ingr_unit\">"
-            if (units.length > 0) {
-                units.forEach(function(element){
-                    select = select + "<option value='" + element + "'>" + element + "</option>"
-                });
-                select = select + "</select>"
-                return select
-            } else {
-                return false
-            }
-        }
-        function removeDiv(id) {
-            var item = document.getElementById(id);
-            document.getElementById('add_ingredient').removeChild(item);
-            ings.pop();
-            if (ings.length == 0) {
-                document.getElementById('add_ingredient').style.display = "none";
-                document.getElementById('search_button').style.display = "none";
-            }
-        }
-        document.getElementById('add_button').addEventListener('click', function(){
-            if (ings.length >= 1) {
-                document.getElementById('add_ingredient').style.display = "block";
-                document.getElementById('search_button').style.display = "block";
-            }
-            if (ings.length > 0){
-                var id = ings[ings.length-1];
-                var ingr = document.getElementById('ingredients').value;
-                var element = ""
-                var select_list = form_list(units[id])
-                if (select_list) {
-                    element = "<div id="+ id + "><input value=\"0\" min=\"0\" class=\"textbox ingr_quantity\" type='number' name='qty' id='qty' />" + select + "<input disabled=\"True\"class=\"textbox ingr_name\" type='text' value=\"" + ingr + "\"/><button class=\"button sub_button\" onclick=\"removeDiv(this.parentNode.id)\">-</button></div>";
-                } else {
-                    element = "<div id="+ id + "><input value=\"0\" min=\"0\" class=\"textbox ingr_quantity\" type='number' name='qty' id='qty' disabled=\"True\"/><input class=\"textbox ingr_unit\" disabled=\"True\"/><input class=\"textbox ingr_name\" type='text' value=\"" + ingr + "\" disabled=\"True\"/><button class=\"button sub_button\" onclick=\"removeDiv(this.parentNode.id)\">-</button></div>"
-                }
-                document.getElementById('add_ingredient').innerHTML = document.getElementById('add_ingredient').innerHTML + element;
-            }
-        }, false)
-        function search() {
-            
-        }
-    </script>
-	{% block content %}{% endblock %}
 </body>
 </html>

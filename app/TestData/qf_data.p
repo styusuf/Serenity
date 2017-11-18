@@ -4,9 +4,7 @@ p1
 I2
 sS'total'
 p2
-I3
-sI1124
-I1
+I2
 sI2047
 I2
 s.

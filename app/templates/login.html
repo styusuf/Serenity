@@ -10,17 +10,19 @@
 		{% endfor %}
 	{% endif %}
 	{% endwith %}
-	<form action="" method="post" name="login">
-		{{ form.hidden_tag() }}
-			{{ form.username(size=50, class_="textbox", value="Username", onfocus="if(this.value=='Username') this.value=''") }}<br>
-			{% for error in form.username.errors %}
-			<span style="color: red">{{ error }}</span>
-			{% endfor %}
-			{{ form.password(size=50, class_="textbox") }}<br>
-			{% for error in form.password.errors %}
-			<span style="color: red">{{ error }}</span>
-			{% endfor %}
-		<input title="Search" type="submit" value="Login" class="button">
-	</form>
+	<div class="form_container">
+		<form action="" method="post" name="login">
+			{{ form.hidden_tag() }}
+				{{ form.username(size=50, class_="textbox", value="Username", onfocus="if(this.value=='Username') this.value=''") }}<br>
+				{% for error in form.username.errors %}
+				<span style="color: red">{{ error }}</span>
+				{% endfor %}
+				{{ form.password(size=50, class_="textbox") }}<br>
+				{% for error in form.password.errors %}
+				<span style="color: red">{{ error }}</span>
+				{% endfor %}
+			<input title="Search" type="submit" value="Login" class="button">
+		</form>
+	</div>
 {% endblock %}
 

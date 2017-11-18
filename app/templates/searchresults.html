@@ -12,14 +12,15 @@
 {% endif %}
 {% endwith %}
 {% if recipes %}
-<div id="left-filter">
-    <div>
-        <h2>Filter</h2>
+<div class="content_filter_products">
+    <div id="left-filter">
+        <div>
+            <h2>Filter</h2>
+        </div>
     </div>
-</div>
-<div id="main-content">
+    <div id="main-content">
 	{% for recipe in recipes %}
-    <div class="product" id={{ recipe.id }} style="order: {{ loop.index }};">
+        <div class="product" id={{ recipe.id }} style="order: {{ loop.index }};">
         <div class="body">
             <div class="row">
                 <div class="image">
@@ -135,7 +136,8 @@
             </div>
         </div>
     </div>
-	{% endfor %}
+    {% endfor %}
+    </div>
 </div>
 {% endif %}
 {% endblock %}
