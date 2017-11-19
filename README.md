@@ -30,7 +30,7 @@ Data and Visual analytics project
 * ### [Install unirest](http://unirest.io/python.html)
 
 * ## To work with Flask
-``$ pip install flask`
+`$ pip install flask`
 
 `$ pip install flask-login`
 
