@@ -61,6 +61,24 @@ def searchResults():
         form = SearchForm()
         ingredients = request.args.get('q')
         recipes = displaySearchResults(ingredients)
+
+        # Get dish types of recipes
+        dish_types = []
+        for recipe in recipes:
+            for d_type in recipe.dishTypes:
+                if d_type not in dish_types:
+                    dish_types.append(d_type)
+        dish_dict = {} # Dictionary of dishtype as key and recipe ids of recipes with that dishtype as values
+        for d_type in dish_types:
+            dish_dict[d_type] = []
+
+        for d_type in dish_types:
+            for recipe in recipes:
+                if d_type in recipe.dishTypes:
+                    dish_dict[d_type].append(recipe.id)
+
+        dish_dict = {k.title(): v for k, v in dish_dict.items()} # Update dish_type string to be title format
+
         if form.validate_on_submit():
             ingredients = form.ingredients.data
             return redirect(url_for('searchResults', q=ingredients))
@@ -68,7 +86,8 @@ def searchResults():
                                 title='Serenity',
                                 form=form,
                                 recipes=recipes,
-                                ingredients=ingredients)
+                                ingredients=ingredients,
+                                dish_dict = dish_dict)
     else:
         # form = LoginForm()
         flash('Please Login First!')

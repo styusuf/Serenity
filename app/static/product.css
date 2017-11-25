@@ -24,16 +24,26 @@ body {
     left: 23%;
     display: flex;
     flex-direction: column;
+    margin: 4%;
 }
 
 #left-filter {
-    margin: 10px;
-    width: 340px;
-    height: 200px;
+    margin: 2%;
+    width: 25%;
+    height: 40%;
+    float:left;
     position: absolute;
     background: white;
     border-radius: 4px;
-    top: 30%;
+    top: 34%;
+    right:72%;
+
+}
+
+#dish-types {
+    float: right;
+    width: 100%;
+    height: 100%;
 }
 
 .product {
@@ -49,16 +59,18 @@ body {
 }
 
 .row {
-    margin-left: -15px;
-    margin-right: 15px;
-    margin-top: 10px;
+    /* margin-left: -15px;
+    margin-right: 15px; */
+    margin-top: 3%;
+    left: 20%;
 }
 
 .instructions {
     position: relative;
-    right: 939px;
+    /*right: 80%;
     float: left;
-    top: 193px;
+    top: 60%; */
+    left: 4%;
 }
 
 .image {
@@ -81,6 +93,7 @@ a {
 .product_specs {
     width: 61%;
     float: left;
+    position: absolute;
 }
 
 .sign {
@@ -97,8 +110,13 @@ ul {
 
 .ingredients {
     position: absolute;
-    margin-left: 5px;
-    padding-top: 25px;
+    margin-left: 1%;
+    padding-top: 1%;
+    left: 42%;
+    width: 100%;
+    height: 100%;
+    top: 20%;
+    margin-top: 10%;
 }
 
 .ing-hide, .pop_hide {
@@ -110,9 +128,9 @@ ul {
 }
 
 .more-details {
-    position: relative;
-    right: 330px;
-    top: 178px;
+    position: absolute;
+    top: 323%;
+    right: -36%;
 }
 
 .more-details * img {
@@ -142,8 +160,9 @@ ul {
 
 .label {
     display: block;
-    height: 25px;
+    height: 10%;
     cursor: pointer;
+    width: 25%;
 }
 
 .name {
@@ -152,9 +171,11 @@ ul {
     float: left!important;
     position:relative;
     min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 2%;
+    padding-right: 2%;
     text-transform: uppercase;
+    left: 43%;
+    margin: -3%;
 }
 
 .productimage img {

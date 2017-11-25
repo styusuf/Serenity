@@ -16,6 +16,13 @@
     <div id="left-filter">
         <div>
             <h2>Filter</h2>
+            <form action="" id="dish-types" style="">
+            {% for dish_type in dish_dict %}
+                <input type="checkbox" name= {{ dish_type }} value={{ dish_type }}> {{ dish_type }}<br>
+            {% endfor %}
+                <input type="submit" value="Submit">
+            </form>
+            
         </div>
     </div>
     <div id="main-content">

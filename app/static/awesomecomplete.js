@@ -1,5 +1,5 @@
 var input = document.getElementById("ingredients");
-var ings = [];
+var ings = []; // initialize array of ingredients
 
 // Show label but insert value into the input:
 new Awesomplete(input, {
@@ -8,7 +8,7 @@ list: [{"value": "10319335", "label": "Vanilla Sugar"}, {"value": "10016063", "l
     replace: function(suggestion) {
         this.input.value = suggestion.label; // default replace() inserts suggestion.value to input
         if (!(ings.includes(suggestion.value))){
-            ings.push(suggestion.value);
+            ings.push(suggestion.value); // Append ing array with ingredient ID of inserted ingredient
         }
     }
 });

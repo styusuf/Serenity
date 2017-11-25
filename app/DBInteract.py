@@ -22,7 +22,7 @@ class DBInteract(object):
         :return: None
         '''
         try:
-            self.conn = psql.connect("dbname='fooddatabase' user='postgres' host='localhost' password='a' port='5433'")
+            self.conn = psql.connect("dbname='fooddatabase' user='samuelyusuf' host='localhost' password='database' port='5432'")
         except:
             e = traceback.format_exc(0)
             print e
