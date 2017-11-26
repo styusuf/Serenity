@@ -71,5 +71,5 @@ if __name__ == '__main__':
     # print sys.argv[1:]
     [dbi, ingredient_info, group_info, rank, qa] = createGlobals()
     i_list = [2047]
-    # for each in searchRecipes(i_list, dbi, ingredient_info, group_info, rank, qa):
-    #     print each.title
+    for each in searchRecipes(i_list, dbi, ingredient_info, group_info, rank, qa):
+        print each.title

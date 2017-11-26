@@ -1,6 +1,13 @@
 {% extends "base2.html" %}
 {% block content %}
 <script type="text/javascript" src="../static/showhide.js"></script>
+<script>
+var dish_types = {};
+{% for dish in dish_types.iterkeys() %}
+{% set recipe_ids = dish_types[dish] %}
+dish_types["{{ dish }}"] = {{ recipe_ids }};
+{% endfor %}
+</script>
 <link rel="stylesheet" href="../static/product.css" title="" type="">
 {% with messages = get_flashed_messages() %}
 {% if messages %}
@@ -14,20 +21,15 @@
 {% if recipes %}
 <div class="content_filter_products">
     <div id="left-filter">
+        <button id="dishType_button" onclick="filter();">Apply</button>
         <div>
-            <h2>Filter</h2>
-            <form action="" id="dish-types" style="">
-            {% for dish_type in dish_dict %}
-                <input type="checkbox" name= {{ dish_type }} value={{ dish_type }}> {{ dish_type }}<br>
-            {% endfor %}
-                <input type="submit" value="Submit">
-            </form>
-            
+            <h2>Dish Types</h2>
+            <form action="" id="dishTypes" class="left_form"></form>
         </div>
     </div>
     <div id="main-content">
 	{% for recipe in recipes %}
-        <div class="product" id={{ recipe.id }} style="order: {{ loop.index }};">
+        <div class="product" id={{ recipe.id }} style="order: {{ loop.index }}; display: block;">
         <div class="body">
             <div class="row">
                 <div class="image">
@@ -146,5 +148,40 @@
     {% endfor %}
     </div>
 </div>
+<script>
+for (key in dish_types) {
+    var div = document.createElement('div');
+    var input = document.createElement('input');
+    var label = document.createElement('label');
+    input.id = key;
+	input.type = "checkbox";
+    label.for = key;
+	label.textContent = key;
+    div.appendChild(input);
+    div.appendChild(label);
+    document.getElementById('dishTypes').appendChild(div);
+}
+var recipes_to_hide;
+function filter() {
+    recipes_to_hide = new Set();
+    for (key in dish_types) {
+        var input = document.getElementById(key)
+        if (input.checked) {
+            for (var i = 0; i < dish_types[key].length; i++) {
+                recipes_to_hide.add(String(dish_types[key][i]));
+            }
+        }
+    }
+    var products = document.getElementsByClassName('product');
+    for (var i = 0; i < products.length; i++) {
+        if (recipes_to_hide.has(products[i].id)) {
+            products[i].style.display = "none";
+        }
+        else {
+            products[i].style.display = "block";
+        }
+    }
+}
+</script>
 {% endif %}
 {% endblock %}
