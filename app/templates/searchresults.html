@@ -1,6 +1,9 @@
 {% extends "base2.html" %}
 {% block content %}
 <script type="text/javascript" src="../static/showhide.js"></script>
+<script type="text/javascript" src="../static/multirange.js"></script>
+<link rel="stylesheet" href="../static/product.css">
+<link rel="stylesheet" href="../static/multirange.css">
 <script>
 var dish_types = {};
 {% for dish in dish_types.iterkeys() %}
@@ -8,7 +11,6 @@ var dish_types = {};
 dish_types["{{ dish }}"] = {{ recipe_ids }};
 {% endfor %}
 </script>
-<link rel="stylesheet" href="../static/product.css" title="" type="">
 {% with messages = get_flashed_messages() %}
 {% if messages %}
 <ul>
@@ -19,6 +21,7 @@ dish_types["{{ dish }}"] = {{ recipe_ids }};
 {% endif %}
 {% endwith %}
 {% if recipes %}
+<h1 style="text-align: center;">Search Results</h1>
 <div class="content_filter_products">
     <div id="left-filter">
         <button id="dishType_button" onclick="filter();">Apply</button>
@@ -26,71 +29,57 @@ dish_types["{{ dish }}"] = {{ recipe_ids }};
             <h2>Dish Types</h2>
             <form action="" id="dishTypes" class="left_form"></form>
         </div>
+        <div style="margin-bottom: 5%;">
+            <h2>Cooking Time</h2>
+            <div class="slider-holder" style="text-align: center;">
+            <label for="myRange1">1</label>
+            <input type="range" multiple value="{{ cooking_time_min }},{{ cooking_time_max }}" min="{{ cooking_time_min }}" max="{{ cooking_time_max }}" class="multirange original" id="myRange1" style="width: 80%;">
+            <input type="range" multiple value="{{ cooking_time_min }},{{ cooking_time_max }}" min="{{ cooking_time_min }}" max="{{ cooking_time_max }}" class="multirange ghost" id="myRange2" style="--low:1%;--high:99%; width: 80%;">
+            <label for="myRange2">2</label>
+                <br>   <span>(in mins)</span>
+            </div>
+        </div>
     </div>
+    <script>
+        function changeEventListener(id, time) {
+            var range = document.getElementById(id);
+            range.labels[0].innerText = time;
+            range.value = time;
+            range.addEventListener('change', function() {
+                this.labels[0].innerText = this.value;
+            });
+        }
+        changeEventListener('myRange1', {{ cooking_time_min }});
+        changeEventListener('myRange2', {{ cooking_time_max }});
+    </script>
     <div id="main-content">
 	{% for recipe in recipes %}
         <div class="product" id={{ recipe.id }} style="order: {{ loop.index }}; display: block;">
-        <div class="body">
-            <div class="row">
-                <div class="image">
-                    <div class="image_container">
-                        <a class="productimage" href="#">
-                            <img src={{ recipe.image.image }} alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="product_specs">
-                    <div class="row">
-                        <div class="name">
-                            <div>{{ recipe.title | replace("'", "") }}</div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="ingredients">
-                            <img class="img-ing" src="../static/images/ingredients.jpg">
-                            <h4>Ingredients</h4>
-                            {% if recipe.ingredients|length >4 %}
-                                <ul class="ing-show" id="{{ recipe.id }}_ing_small">
-                                {% for i in range(4) %}
-                                   <li id={{ recipe.ingredients[i].id }}>{{ recipe.ingredients[i].name }}</li>
-                                {% endfor %}
-                                <li><a class="label" href="javascript:showMore({{ recipe.id }});"><b class="sign">+</b></a></li>
-                                </ul>
-                                <ul class="ing-hide ing-large" id="{{ recipe.id }}_ing_large">
-                                {% for j in recipe.ingredients %}
-                                   <li id={{ j.id }}>{{ j.name }}</li>
-                                {% endfor %}
-                                <li><a class="label" href="javascript:showLess({{ recipe.id }});"><b class="sign">-</b></a></li>
-                                </ul>
-                            {% else %}
-                                <ul>
-                                {% for j in recipe.ingredients %}
-                                   <li id={{ j.id }}>{{ j.name }}</li>
-                                {% endfor %}
-                                </ul>
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div class="more-details">
-                        <ul>
-                            <li><img src="../static/images/clock.png" alt="" style="">
-                                <p style="position: relative;top: -37px;right: -38px;">{{ recipe.ReadyInMin }} mins</p></li>
-                            <li><img src="../static/images/servings.png" alt="">
-                                <p style="position: relative;top: -37px;right: -38px;">{{ recipe.servings }}</p></li>
-                            {% if recipe.isVeg %}
-                            <li><img src="../static/images/veg.png" alt=""></li>
-                            {% else %}
-                            <li><img src="../static/images/non-veg.png" alt=""></li>
-                            {% endif %}
-
-                        </ul>
-                    </div>
-                    <br>
-                </div>
-                  <a class="label instructions" href="javascript:showProductPopup({{ recipe.id }})">View Instructions</a>
+            <div class="product-img-wrap">
+                <a href="javascript:showProductPopup({{ recipe.id }})">
+                    <img src={{ recipe.image.image }} alt="{{ recipe.title }}" class="product-image">
+                </a>
             </div>
-        </div>
+            <div class="product-name-wrap">
+                <span class="product-name">
+                    {{ recipe.title | replace("'", "") }}
+                </span>
+            </div>
+            <div class="info-wrap">
+                <div class="more-details">
+                    <ul>
+                        <li><img src="../static/images/clock.png" alt="" style="">
+                            <p id='cooking_time_{{ recipe.id }}' value='{{ recipe.ReadyInMin }}' style="position: relative;top: -32px;right: -29px;">{{ recipe.ReadyInMin }} mins</p></li>
+                        <li><img src="../static/images/servings.png" alt="">
+                            <p style="position: relative;top: -32px;right: -29px;">{{ recipe.servings }}</p></li>
+                        {% if recipe.isVeg %}
+                        <li><img src="../static/images/veg.png" alt=""></li>
+                        {% else %}
+                        <li><img src="../static/images/non-veg.png" alt=""></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
         <div class="product_view pop_hide" id="{{ recipe.id }}_view">
             <div class="modal quickview">
                 <span class="modal__close">
@@ -171,6 +160,13 @@ function filter() {
                 recipes_to_hide.add(String(dish_types[key][i]));
             }
         }
+    }
+    var cooktime1 = document.getElementById('myRange1').value;
+    var cooktime2 = document.getElementById('myRange2').value;
+    if (cooktime1 > cooktime2) {
+        var temp = cooktime1;
+        cooktime1 = cooktime2;
+        cooktime2 = temp;
     }
     var products = document.getElementsByClassName('product');
     for (var i = 0; i < products.length; i++) {

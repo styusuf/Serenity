@@ -71,7 +71,13 @@ def searchResults():
         num_recipes = len(recipes)
         dish_types = dict()
         all_recipes = set([x.id for x in recipes])
+        cooking_time_min = 10000
+        cooking_time_max = 0
         for recipe in recipes:
+            if recipe.ReadyInMin < cooking_time_min:
+                cooking_time_min = recipe.ReadyInMin
+            if recipe.ReadyInMin > cooking_time_max:
+                cooking_time_max = recipe.ReadyInMin
             for dish in recipe.dishTypes:
                 add_to_dict(dish_types, dish, recipe.id)
             if recipe.isVegan:
@@ -97,7 +103,9 @@ def searchResults():
                                 form=form,
                                 recipes=recipes,
                                 ingredients=ingredients,
-                                dish_types=dish_types)
+                                dish_types=dish_types,
+                                cooking_time_max=cooking_time_max,
+                                cooking_time_min=cooking_time_min)
     else:
         # form = LoginForm()
         flash('Please Login First!')

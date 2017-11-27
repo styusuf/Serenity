@@ -58,7 +58,7 @@ def searchRecipes(ingredient_list, dbi, ingredient_info, group_info, rank, qa):
     else:
         recipes = dbi.get_recipes_with_synonyms(tmp_adj_query, ingredient_info, group_info, verbose=True)
 
-    ranked, scores = rank.rank_results(recipes, query_with_amounts, ingredient_info, group_info, top_k = 20)
+    ranked, scores = rank.rank_results(recipes, query_with_amounts, ingredient_info, group_info, top_k = 21)
     return ranked
     # if len(ranked) > 0:
     #     for i in range(0, len(ranked)):

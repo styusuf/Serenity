@@ -9,7 +9,7 @@ class QueryAdjuster:
         self.pq = pq.PredictQuery()
         self.rmse = 15
 
-    def get_adj_query(self, orig_query, ingredient_info, group_info, min_res=30, verbose=False):
+    def get_adj_query(self, orig_query, ingredient_info, group_info, min_res=21, verbose=False):
         """
         Predicts the number of results that will be returned by database for the
             given query and adjusts the query to get enough results for the user
