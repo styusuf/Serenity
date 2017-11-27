@@ -7,7 +7,7 @@ import pdb
 class QueryAdjuster:
     def __init__(self):
         self.pq = pq.PredictQuery()
-        self.rmse = 15
+        self.rmse = 9
 
     def get_adj_query(self, orig_query, ingredient_info, group_info, min_res=21, verbose=False):
         """
@@ -42,7 +42,7 @@ class QueryAdjuster:
             print ("Predicted number of recipes for query: {} is {}".format(adj_query, predicted_num))
 
         # Adjust query if needed
-        while (predicted_num < (2 * min_res + self.rmse)) and (adj_query):
+        while (predicted_num < (min_res + self.rmse)) and (adj_query):
             # Remove most rare ingredient
             removed = synonym_query.pop()
             adj_query.pop()
