@@ -1,0 +1,70 @@
+<html>
+        <meta charset="utf-8"/>        
+<head>
+    <script type="text/javascript" src="../static/awesomplete-gh-pages/awesomplete.js"></script>
+
+    <link rel="shortcut icon" href="../static/images/logo.png"/>
+    <link rel="stylesheet" href="../static/awesomplete-gh-pages/awesomplete.css">
+	{% if title %}
+	<title>{{ title }}</title>
+	{% else %}
+	<title>Welcome to Serenity</title>
+	{% endif %}
+</head>
+<body>
+    <link rel="stylesheet" href="../static/global.css" title="" type="">
+    <link rel="stylesheet" href="../static/header.css" title="" type="">
+    <link rel="stylesheet" href="../static/searchbox.css" title="" type="">
+    <div class="container">
+        <div class="main-header" id="mainHeader">
+            <div class="header-container">
+                <h1 class="serenity-logo">
+                    <a href="/index">
+                        <span class="logo-name">
+                            Serenity
+                        </span>
+                        <img class="logo-image" src="../static/images/logo.png" alt="" height="70" width="70">
+                    </a>
+                </h1>
+                <div class="nav-wrap">
+                    <div class="nav-wrap-inner">
+                        <nav class="nav">
+                            <ul class="nav-list"> 
+                                <li class="nav-item">
+                                    <a href="/index">Home</a>
+                                </li>
+                                <li class="nav-item" style="margin-left: 25px;">
+                                    <a href="/login">Login</a>
+                                </li>
+                                <li class="nav-item" style="margin-left: 25px;">
+                                    <a href="/logout">Logout</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2>Select Ingredients</h2>
+        <!-- Search functionality here -->
+        <div class="search">
+            <form action="" name="add" method="">
+                <input class="textbox" id="ingredients" name="ingredients" size="200" type="text" value="" autocomplete="off" aria-owns="awesomplete_list_1" role="combobox">
+                <input title="Add" type="button" value="+" class="button" id="add_button">
+            </form>
+            <form action="" method="post" id="final_form">
+                {{ form.hidden_tag() }}
+                {{ form.ingredients(size=200, class_="final_ingredients", id="search_box") }}
+            <input value="&#x1F50D;" id="search_button" class="button search_button" style="display: none;" type="submit">
+            </form>
+            <form action="" id="add_ingredient" style="display: none;"></form>
+        </div>
+        <script type="text/javascript" src="../static/awesomecomplete.js"></script>
+        <script type="text/javascript" charset="utf-8" src="../static/units.js">
+        </script>
+        <br>
+            <script type="text/javascript" src="../static/form.js"></script>
+    {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

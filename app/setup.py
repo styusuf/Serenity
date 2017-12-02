@@ -5,6 +5,7 @@ import numpy as np
 from QueryAdjuster import QueryAdjuster
 from Ranking import Ranking
 import sys
+import pdb
 
 def createGlobals():
     group_info, ingred_to_groups = create_group_info()
@@ -31,7 +32,6 @@ def searchRecipes(ingredient_list, dbi, ingredient_info, group_info, rank, qa):
     # else:
     #     print "No Results!"
     min_res = 21
-
     if type(ingredient_list[0]) is not tuple:
         query_with_amounts = {x:(np.inf, "") for x in ingredient_list}
     else:
@@ -46,7 +46,6 @@ def searchRecipes(ingredient_list, dbi, ingredient_info, group_info, rank, qa):
             tup = (adj_id, adj_amt, adj_unit)
 
         query_with_amounts = {x[0]:(x[1], x[2]) for x in ingredient_list}
-
     # Set up necessary objects
     # [dbi, ingredient_info, group_info, rank, qa] = createGlobals()
     # dbi = DBInteract()
@@ -57,11 +56,7 @@ def searchRecipes(ingredient_list, dbi, ingredient_info, group_info, rank, qa):
     # qa = QueryAdjuster()
 
     # Use ML to adjust query
-<<<<<<< Updated upstream
     adj_ingredient_list = qa.get_adj_query(ingredient_list, ingredient_info, group_info, min_res=min_res)
-=======
-    adj_ingredient_list = qa.get_adj_query(ingredient_list, ingredient_info, group_info, verbose=True)
->>>>>>> Stashed changes
     tmp_adj_query = copy(adj_ingredient_list)
     recipes = []
     # Just in case ML model was wrong, need to requery

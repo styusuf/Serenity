@@ -1,9 +1,15 @@
 document.getElementById('final_form').addEventListener('submit', function() {
     // TODO be updated later with tuple
-    document.getElementById('search_box').value = ings.join(',');
+    var tuple = [];
+    for (var i = 0; i < ings.length; i++) {
+        var qty = document.getElementById(ings[i]).querySelector('#qty').value;
+        var unit = document.getElementById(ings[i]).querySelector('#ingr_option').value;
+        tuple.push(ings[i] + ":" + qty + ":" + unit);
+    }
+    document.getElementById('search_box').value = tuple.join(',');
 }, false);
 function form_list(units) {
-    select = "<select name=\"units\" class=\"textbox ingr_unit\">"
+    select = "<select name=\"units\" class=\"textbox ingr_unit\" id=\"ingr_option\">"
     if (units.length > 0) {
         units.forEach(function(element){
             select = select + "<option value='" + element + "'>" + element + "</option>"

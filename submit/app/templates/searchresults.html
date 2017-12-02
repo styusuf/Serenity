@@ -1,0 +1,189 @@
+{% extends "base2.html" %}
+{% block content %}
+<script type="text/javascript" src="../static/showhide.js"></script>
+<script type="text/javascript" src="../static/multirange.js"></script>
+<link rel="stylesheet" href="../static/product.css">
+<link rel="stylesheet" href="../static/multirange.css">
+<script>
+var dish_types = {};
+{% for dish in dish_types.iterkeys() %}
+{% set recipe_ids = dish_types[dish] %}
+dish_types["{{ dish }}"] = {{ recipe_ids }};
+{% endfor %}
+</script>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+	{% for message in messages %}
+		<li>{{ message }}</li>
+	{% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+{% if recipes %}
+<h1 style="text-align: center;">Search Results</h1>
+<div class="content_filter_products">
+    <div id="left-filter">
+        <button id="dishType_button" onclick="filter();">Apply</button>
+        <div>
+            <h2>Dish Types</h2>
+            <form action="" id="dishTypes" class="left_form"></form>
+        </div>
+        <div style="margin-bottom: 5%;">
+            <h2>Cooking Time</h2>
+            <div class="slider-holder" style="text-align: center;">
+            <label for="myRange1">1</label>
+            <input type="range" multiple value="{{ cooking_time_min }},{{ cooking_time_max }}" min="{{ cooking_time_min }}" max="{{ cooking_time_max }}" class="multirange original" id="myRange1" style="width: 80%;">
+            <input type="range" multiple value="{{ cooking_time_min }},{{ cooking_time_max }}" min="{{ cooking_time_min }}" max="{{ cooking_time_max }}" class="multirange ghost" id="myRange2" style="--low:1%;--high:99%; width: 80%;">
+            <label for="myRange2">2</label>
+                <br>   <span>(in mins)</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        function changeEventListener(id, time) {
+            var range = document.getElementById(id);
+            range.labels[0].innerText = time;
+            range.value = time;
+            range.addEventListener('change', function() {
+                this.labels[0].innerText = this.value;
+            });
+        }
+        changeEventListener('myRange1', {{ cooking_time_min }});
+        changeEventListener('myRange2', {{ cooking_time_max }});
+    </script>
+    <div id="main-content">
+	{% for recipe in recipes %}
+        <div class="product" id={{ recipe.id }} style="order: {{ loop.index }}; display: block;">
+            <div class="product-img-wrap">
+                <a href="javascript:showProductPopup({{ recipe.id }})">
+                    <img src={{ recipe.image.image }} alt="{{ recipe.title }}" class="product-image">
+                </a>
+            </div>
+            <div class="product-name-wrap">
+                <span class="product-name">
+                    {{ recipe.title | replace("'", "") }}
+                </span>
+            </div>
+            <div class="info-wrap">
+                <div class="more-details">
+                    <ul>
+                        <li><img src="../static/images/clock.png" alt="" style="">
+                            <p class='cooking_time' id='cooking_time_{{ recipe.id }}' value='{{ recipe.ReadyInMin }}' style="position: relative;top: -32px;right: -29px;">{{ recipe.ReadyInMin }} mins</p></li>
+                        <li><img src="../static/images/servings.png" alt="">
+                            <p style="position: relative;top: -32px;right: -29px;">{{ recipe.servings }}</p></li>
+                        {% if recipe.isVeg %}
+                        <li><img src="../static/images/veg.png" alt=""></li>
+                        {% else %}
+                        <li><img src="../static/images/non-veg.png" alt=""></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        <div class="product_view pop_hide" id="{{ recipe.id }}_view">
+            <div class="modal quickview">
+                <span class="modal__close">
+                    <a href="javascript:hideProductPopup({{ recipe.id }})">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve"><path d="M62.146,49.999L92.364,19.78c1.159-1.159,1.159-3.037,0-4.195l-7.95-7.95c-1.158-1.158-3.036-1.158-4.195,0L50,37.854  L19.781,7.635c-1.158-1.158-3.037-1.158-4.196,0l-7.95,7.95c-1.159,1.158-1.159,3.036,0,4.195l30.219,30.219L7.636,80.219  c-1.16,1.159-1.16,3.037,0,4.195l7.949,7.95c1.159,1.159,3.038,1.159,4.196,0L50,62.146l30.218,30.218  c1.159,1.159,3.037,1.159,4.195,0l7.95-7.95c1.159-1.158,1.159-3.036,0-4.195L62.146,49.999z"></path></svg>
+                    </a>
+                </span>
+                <div class="modal__content-wrapper animate">
+                    <div class="modal__content">
+                        <main role="main">
+                            <div id="product-content" class="site-flexbox grid">
+                                <div id="product-images" style="width: 100%;">
+                                    <img style="width: 100%;" src="{{ recipe.image.image }}" alt="">
+                                </div>
+                                <div id="product-options">
+                                    <header id="product-header" class="clearfix">
+                                        <h1>{{ recipe.title|replace("'", "") }}</h1>
+                                        <div id="product-meta">
+                                            <div class="quickview_ingredients">
+                                                <h3>Ingredients Required:</h3>
+                                                <ul>
+                                                    {% for i in recipe.ingredients %}
+                                                    <div class="ingr_popup_img">
+                                                            <img src="{{ i.image }}" alt="">
+                                                        </div>
+                                                    <li id="{{ i.id }}_popup" class="ingr_popup">
+                                                        {{ i.name }}
+                                                        {% if i.unitLong %}
+                                                            ({{ i.amount }} {{ i.unitLong }})
+                                                        {% else %}
+                                                            ({{ i.amount }})
+                                                        {% endif %}</li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                            <hr>
+                                            <div class="quickview_instructions">
+                                                <h3>Instructions to Prepare:</h3>
+                                                <ul>
+                                                    {% for i in recipe.instructions %}
+                                                    <li id="{{ i.number }}_popup"><p>{{ i.number }}. {{ i.step }}</p></li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </header>
+                                </div>
+                            </div>
+                        </main>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+</div>
+<script>
+for (key in dish_types) {
+    var div = document.createElement('div');
+    var input = document.createElement('input');
+    var label = document.createElement('label');
+    input.id = key;
+	input.type = "checkbox";
+    label.for = key;
+	label.textContent = key;
+    div.appendChild(input);
+    div.appendChild(label);
+    document.getElementById('dishTypes').appendChild(div);
+}
+var recipes_to_hide;
+function filter() {
+    recipes_to_hide = new Set();
+    for (key in dish_types) {
+        var input = document.getElementById(key)
+        if (input.checked) {
+            for (var i = 0; i < dish_types[key].length; i++) {
+                recipes_to_hide.add(String(dish_types[key][i]));
+            }
+        }
+    }
+    var cooktime1 = parseInt(document.getElementById('myRange1').value);
+    var cooktime2 = parseInt(document.getElementById('myRange2').value);
+    if (cooktime1 > cooktime2) {
+        var temp = cooktime1;
+        cooktime1 = cooktime2;
+        cooktime2 = temp;
+    }
+    var cooking_vals = document.getElementsByClassName('cooking_time');
+    for (var i = 0; i < cooking_vals.length; i++) {
+    	if (parseInt(cooking_vals[i].getAttribute('value')) < cooktime1 || parseInt(cooking_vals[i].getAttribute('value')) > cooktime2) {
+    		recipes_to_hide.add(cooking_vals[i].id.replace('cooking_time_', ''));
+    	}
+    }
+    var products = document.getElementsByClassName('product');
+    for (var i = 0; i < products.length; i++) {
+        if (recipes_to_hide.has(products[i].id)) {
+            products[i].style.display = "none";
+        }
+        else {
+            products[i].style.display = "block";
+        }
+    }
+}
+</script>
+{% endif %}
+{% endblock %}

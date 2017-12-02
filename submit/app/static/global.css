@@ -1,0 +1,23 @@
+div {
+    display: block;
+}
+
+body {
+    font-family: Gotham, "Helvetica,Neue",
+        Helvetica, Arial, "sans-serif";
+    font-size: 14px;
+    color: #333333;
+    background: url("images/background.png");
+    background-size: cover;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    min-width: 500px;
+    margin: auto;
+}

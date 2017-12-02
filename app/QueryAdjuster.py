@@ -24,7 +24,7 @@ class QueryAdjuster:
         # Translate query into most frequent in any group
         synonym_query = []
         for ing in orig_query:
-            mf_synonym = find_most_freq_syn(ingredient_info, group_info, ing)
+            mf_synonym = find_most_freq_syn(ingredient_info, group_info, ing[0])
             synonym_query.append(mf_synonym)
         sort_idx = [i[0] for i in sorted(enumerate(synonym_query), key=lambda x: -1*ingredient_info[x[1]]["frequency"])]
         synonym_query = [synonym_query[i] for i in sort_idx]

@@ -4,6 +4,7 @@ from flask import render_template, flash, redirect, url_for, request, session, j
 from .CheckUser import User
 from .setup import searchRecipes, createGlobals
 import json
+import pdb
 
 [dbi, ingredient_info, group_info, rank, qa] = createGlobals()
 
@@ -14,9 +15,17 @@ def add_to_dict(dictionary, key, val):
     except KeyError:
         dictionary[key] = [val]
 
+
 def displaySearchResults(data):
-    ingredients_ids = [int(a) for a in data.split(',')]
-    return searchRecipes(ingredients_ids, dbi, ingredient_info, group_info, rank, qa)
+    t = []
+    for each in data.split(','):
+        vals = each.split(':')
+        id = int(vals[0])
+        qty = int(vals[1])
+        unit = vals[2]
+        t.append((id, qty, unit))
+    return searchRecipes(t, dbi, ingredient_info, group_info, rank, qa)
+
 
 @app.route('/', methods=['GET','POST'])
 @app.route('/login', methods=['GET','POST'])
@@ -33,6 +42,7 @@ def login():
     return render_template('login.html',
                             title="Serenity",
                            form=form)
+
 
 @app.route('/logout')
 def logout():

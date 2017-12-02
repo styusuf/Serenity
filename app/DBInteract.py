@@ -123,7 +123,7 @@ class DBInteract(object):
         search_str_builder = []
         for ingredient in ingredients_list:
             new_or_statement_builder = []
-            for grp in ingredient_info[ingredient]["group"]:
+            for grp in ingredient_info[ingredient[0]]["group"]:
                 for syn in group_info[grp]["ingredient list"]:
                     new_or_statement_builder.append("ingredients::jsonb @> '[{}]'::jsonb".format(syn))
             search_str_builder.append("(" + " OR ".join(new_or_statement_builder) + ")")

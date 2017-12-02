@@ -1,0 +1,9 @@
+.DS_Store
+.idea/dva project.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/workspace.xml
+.ipynb_checkpoints/
+*.pyc
+.idea/.*
+web_app
