@@ -30,12 +30,22 @@ def searchRecipes(ingredient_list, dbi, ingredient_info, group_info, rank, qa):
     #         print "{}. {} ({})".format(i+1, ranked[i].title, ranked[i].image['image'])
     # else:
     #     print "No Results!"
-    min_res = 10
+    min_res = 21
 
     if type(ingredient_list[0]) is not tuple:
-        query_with_amounts = {x:np.inf for x in ingredient_list}
+        query_with_amounts = {x:(np.inf, "") for x in ingredient_list}
     else:
-        query_with_amounts = {x[0]:x[1] for x in ingredient_list}
+        for tup in ingredient_list:
+            adj_id = int(tup[0])
+            if tup[1] == 0:
+                adj_amt = np.inf
+                adj_unit = ""
+            else:
+                adj_amt = float(tup[1])
+                adj_unit = tup[2]
+            tup = (adj_id, adj_amt, adj_unit)
+
+        query_with_amounts = {x[0]:(x[1], x[2]) for x in ingredient_list}
 
     # Set up necessary objects
     # [dbi, ingredient_info, group_info, rank, qa] = createGlobals()
@@ -47,12 +57,16 @@ def searchRecipes(ingredient_list, dbi, ingredient_info, group_info, rank, qa):
     # qa = QueryAdjuster()
 
     # Use ML to adjust query
+<<<<<<< Updated upstream
     adj_ingredient_list = qa.get_adj_query(ingredient_list, ingredient_info, group_info, min_res=min_res)
+=======
+    adj_ingredient_list = qa.get_adj_query(ingredient_list, ingredient_info, group_info, verbose=True)
+>>>>>>> Stashed changes
     tmp_adj_query = copy(adj_ingredient_list)
     recipes = []
     # Just in case ML model was wrong, need to requery
     if len(tmp_adj_query) > 1:
-        while (len(recipes) < 2*min_res) and (len(tmp_adj_query) > 1):
+        while (len(recipes) < min_res) and (len(tmp_adj_query) > 1):
             recipes = dbi.get_recipes_with_synonyms(tmp_adj_query, ingredient_info, group_info, verbose=True)
             tmp_adj_query.pop()
     else:

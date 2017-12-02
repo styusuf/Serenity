@@ -15,14 +15,14 @@ import DBInteract
 class PredictQuery:
     """predictQuery class - Predict number of query results returned"""
 
-    def __init__(self):
+    def __init__(self, nn_only=False):
         """predictQuery constructor"""
         self.models = {"linreg": None, "knn": None, "rf": None, "nn_class": None, "nn": None}
-        if os.path.isfile("app/TestData/linreg_model.p"):
+        if os.path.isfile("app/TestData/linreg_model.p") and (not nn_only):
             self.models["linreg"] = pickle.load( open("app/TestData/linreg_model.p", "rb"))
-        if os.path.isfile("app/TestData/knn_model.p"):
+        if os.path.isfile("app/TestData/knn_model.p") and (not nn_only):
             self.models["knn"] = pickle.load( open("app/TestData/knn_model.p", "rb"))
-        if os.path.isfile("app/TestData/rf_model.p"):
+        if os.path.isfile("app/TestData/rf_model.p") and (not nn_only):
             self.models["rf"] = pickle.load( open("app/TestData/rf_model.p", "rb"))
         if os.path.isfile("app/TestData/nn_class_model.p"):
             self.models["nn_class"] = pickle.load( open("app/TestData/nn_class_model.p", "rb"))
@@ -92,7 +92,7 @@ class PredictQuery:
         self.models["knn"] = knn
         return knn
 
-    def train_rf(self, X, y, num_tress=10, max_depth=None):
+    def train_rf(self, X, y, num_trees=10, max_depth=None):
         """
         Trains random forest model
         :param X: Training data features
@@ -139,7 +139,10 @@ class PredictQuery:
         """
         if reg:
             for key in self.models:
+                if key == "nn_class":
+                    continue
                 if self.models[key] is not None:
+                    print "Beginning to test model: {}".format(key)
                     pred = self.models[key].predict(X)
                     rmse = np.sqrt(mean_squared_error(y, pred))
                     print "Model", key, "yields RMSE = ", rmse
@@ -224,10 +227,9 @@ def test_on_db_data(big=False):
         all_y = np.load("app/TestData/predict_query_train_y.npy")
     elif os.path.isfile("app/TestData/predict_query_train_X_big.npy") and (big == True):
         all_X = np.load("app/TestData/predict_query_train_X_big.npy")
-        pdb.set_trace()
         all_y = np.load("app/TestData/predict_query_train_y_big.npy")
     else:
-        all_X, all_y = build_training_data(ingredient_info, big=True)
+        all_X, all_y = build_training_data(ingredient_info, big=False)
 
     # shuffle data
     all_data = np.c_[all_X, np.reshape(all_y, (all_y.shape[0], 1))]
@@ -243,11 +245,11 @@ def test_on_db_data(big=False):
 
     # train
     pq = PredictQuery()
-    pq.train(train_X, train_y, linreg=False, knn=False, rf=False, nn_class=False, nn=False, k=10, num_trees=200, max_depth=2)
+    # pq.train(train_X, train_y, linreg=False, knn=False, rf=False, nn_class=False, nn=False, k=3, num_trees=10, max_depth=2)
 
     # test
-    print "Testing in-sample"
-    pq.test(train_X, train_y, reg=False)
+    # print "Testing in-sample"
+    # pq.test(train_X, train_y, reg=False)
     print "\nTesting out-of-sample"
     pq.test(test_X, test_y, reg=False)
 
@@ -270,11 +272,11 @@ def test_on_diabetes():
     pq = PredictQuery()
 
     # train models
-    pq.train(diabetes_X_train, diabetes_y_train, linreg=True, knn=True, rf=True, k=10, num_trees=100)
+    # pq.train(diabetes_X_train, diabetes_y_train, linreg=False, knn=False, rf=False, k=10, num_trees=100)
 
     # test models
     pq.test(diabetes_X_test, diabetes_y_test)
 
 if __name__ == "__main__":
     # test_on_diabetes()
-    test_on_db_data(big=True)
+    test_on_db_data(big=False)

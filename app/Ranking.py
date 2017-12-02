@@ -1,11 +1,11 @@
-import os.path
-import pickle
-import numpy as np
 import DBInteract
 from IngredientCluster import get_ingredient_clusters
+import json
+import numpy as np
+import os.path
+import pickle
+import unirest
 
-
-# TODO: add breakdown of missing ingredient clusters
 class RankingMetrics:
     def __init__(self, n_missing_q=0, n_missing_recipe=0, missing_by_cluster={}, score=0):
         self.n_missing_in_query = n_missing_q
@@ -72,6 +72,38 @@ class Ranking:
             return ranked_results, ranked_scores
 
     # Helper Functions
+    def convert_units(self, ingredient, ingredient_info, orig_unit, orig_amt, target_unit):
+        """
+        Converts an ingredient's units by using the Spoonacular API
+        :param ingredient: Ingredient id that you want to convert
+        :param ingredient_info: Dictionary created in main file that holds all
+            necessary information about ingredients
+        :param orig_unit: Unit you want to convert FROM
+        :param orig_amt: Amount of the ingredient you are converting (in terms of
+            the original unit)
+        :param target_unit: Unit you want to convert TO
+        :return: Converted value in terms of target unit or -1 for error
+        """
+        # Check cases where we can avoid querying Spoonacular
+        if orig_unit == target_unit:
+            return orig_amt
+        elif (orig_amt == np.inf) or (orig_amt == 0):
+            return orig_amt
+        try:
+            response = unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/convert?ingredientName={}&sourceAmount={}&sourceUnit={}&targetUnit={}".format(ingredient_info[ingredient]["name"].replace(" ", "+"), orig_amt, orig_unit, target_unit),
+              headers={
+                "X-Mashape-Key": "BuyjFV6xLqmshAVbK0ppDXmdXM0Jp1KsUhYjsnltPjvvB9mODp",
+                "X-Mashape-Host": "spoonacular-recipe-food-nutrition-v1.p.mashape.com"
+              }
+            )
+            data = json.loads(response.raw_body)
+        except:
+            return -1.0
+        if "failure" in data:
+            return -1.0
+        else:
+            return data["targetAmount"]
+
     def get_metric(self, all_missing, missing_in_rec, missing_in_q, score):
         missing_by_cluster = {}
         for ingred in all_missing:
@@ -111,10 +143,13 @@ class Ranking:
                 all_groups_freq += group_info[grp]["group frequency"]
 
             # cap quantities
-            if ingredient_tup[2] > ingredient_tup[1]:
+            converted_query_amt = self.convert_units(ingredient_tup[0], ingredient_info, ingredient_tup[4], ingredient_tup[2], ingredient_tup[3])
+            if converted_query_amt == -1.0:
+                quantity_scaling = np.random.random()
+            elif converted_query_amt > ingredient_tup[1]:
                 quantity_scaling = 0.0
             else:
-                quantity_scaling = (ingredient_tup[1]  - ingredient_tup[2]) / (ingredient_tup[1])
+                quantity_scaling = (ingredient_tup[1] - converted_query_amt) / (ingredient_tup[1])
             ret += quantity_scaling * (np.log(all_groups_freq / self.num_recipes) + np.log(qf_contribution))
         return ret
 
@@ -169,7 +204,8 @@ class Ranking:
             for ingredient in recipe.ingredients:
                 recipe_ingred.add(ingredient["id"])
                 if ingredient["id"] in set_orig_query:
-                    in_common.append((ingredient["id"], ingredient["amount"], orig_query[ingredient["id"]]))
+                    # (ingredient id, recipe amount, query amount, recipe unit, query unit)
+                    in_common.append((ingredient["id"], ingredient["amount"], orig_query[ingredient["id"]][0], ingredient["unitLong"],  orig_query[ingredient["id"]][1]))
             missing_in_rec = recipe_ingred.difference(set_orig_query)  # in recipe but not query
             missing_in_q = set_orig_query.difference(recipe_ingred)  # in query but not recipe
             all_missing_ingred = missing_in_q.union(missing_in_rec)
@@ -181,7 +217,6 @@ class Ranking:
                 score = self.use_pure_freq(all_missing_ingred, in_common, ingredient_info, group_info)
             scores.append(score)
 
-            # TODO: add breakdown of missing ingredient clusters
             metrics.append(self.get_metric(all_missing_ingred, missing_in_rec, missing_in_q, score))
 
         # sort in decreasing order
@@ -217,8 +252,6 @@ def test_ranking():
     dbi = DBInteract.DBInteract()
     dbi.connect_to_db()
 
-    from setup import create_ingredient_info
-    ingredient_info = create_ingredient_info()
     from LookUpTables import create_ingredient_info, create_group_info
     group_info, ingred_to_group = create_group_info()
     ingredient_info = create_ingredient_info(ingred_to_group)
@@ -226,8 +259,8 @@ def test_ranking():
     ranker = Ranking(group_info)
 
     query = [5062, 19296]
-    query_with_amounts = {5062:1, 19296:1}
-    results = dbi.get_recipes(query, verbose=True)
+    query_with_amounts = {5062:(np.inf, "ounces"), 19296:(0.125, "ounces")}
+    results = dbi.get_recipes([5062], verbose=True)
 
     print "Using Pure Frequencies"
     print "Name\tMissing in Recipe\tMissing in Query\tScore"
@@ -243,66 +276,22 @@ def test_ranking():
     for idx, recipe in enumerate(ranked):
         print "{0}: {1}, {2}, {3}, {4}".format(recipe.title, metrics[idx].missing_by_cluster, metrics[idx].n_missing_in_query, metrics[idx].n_missing_in_recipe, metrics[idx].score)
 
-# TODO: This will break!!! No quantities...
-def test_ranking_by_hand():
-    from RecipeClass import Recipe
+def test_convert_units():
+    dbi = DBInteract.DBInteract()
+    dbi.connect_to_db()
+
     from LookUpTables import create_ingredient_info, create_group_info
-    group_info, ingred_to_group = create_group_info
+    group_info, ingred_to_group = create_group_info()
     ingredient_info = create_ingredient_info(ingred_to_group)
+
     ranker = Ranking(group_info)
 
-    query = [2047, 19296, 5062]
-    results = []
-    new = Recipe()
-    new.title="Chicken, Honey, and Salt"
-    new.ingredients=[{"id": 5062}, {"id": 19296}, {"id": 2047}]
-    results.append(new)
-
-    new = Recipe()
-    new.title="Chicken and Honey"
-    new.ingredients=[{"id": 5062}, {"id": 19296}]
-    results.append(new)
-
-    new = Recipe()
-    new.title="Salt and Honey"
-    new.ingredients=[{"id": 19296}, {"id": 2047}]
-    results.append(new)
-
-    new = Recipe()
-    new.title="Salt and Chicken"
-    new.ingredients=[{"id": 5062}, {"id": 2047}]
-    results.append(new)
-
-    new = Recipe()
-    new.title="Chicken"
-    new.ingredients=[{"id": 5062}]
-    results.append(new)
-
-    new = Recipe()
-    new.title="Honey"
-    new.ingredients=[{"id": 19296}]
-    results.append(new)
-
-    new = Recipe()
-    new.title="Salt"
-    new.ingredients=[{"id": 2047}]
-    results.append(new)
-
-    print "Using Pure Frequencies"
-    print "Name\tMissing in Recipe\tMissing in Query\tScore"
-    print "--------------------------------------------------------------------"
-    ranked, metrics = ranker.rank_results(results, query, ingredient_info, group_info, use_clusters=False)
-    for idx, recipe in enumerate(ranked):
-        print "{0}: {1}, {2}, {3}, {4}".format(recipe.title, metrics[idx].missing_by_cluster, metrics[idx].n_missing_in_query, metrics[idx].n_missing_in_recipe, metrics[idx].score)
-    print
-    print "Using Cluster Frequencies"
-    print "Name\tMissing in Query\tMissing in Recipe\tScore"
-    print "--------------------------------------------------------------------"
-    ranked, metrics = ranker.rank_results(results, query, ingredient_info, group_info, use_clusters=True)
-    for idx, recipe in enumerate(ranked):
-        print "{0}: {1}, {2}, {3}, {4}".format(recipe.title, metrics[idx].missing_by_cluster, metrics[idx].n_missing_in_query, metrics[idx].n_missing_in_recipe, metrics[idx].score)
+    print ranker.convert_units(5062, ingredient_info, "ounces", 1.0, "ounces")
+    print ranker.convert_units(5062, ingredient_info, "strips", 1.0, "ounces")
+    print ranker.convert_units(5062, ingredient_info, "strips", np.inf, "ounces")
+    print ranker.convert_units(5062, ingredient_info, "ounces", 1.0, "pounds")
 
 if __name__ == "__main__":
     np.seterr(all='raise')
+    # test_convert_units()
     test_ranking()
-    # test_ranking_by_hand()
