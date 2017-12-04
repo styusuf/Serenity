@@ -12,8 +12,8 @@ or to run the demo. You can read more about these in the following sections.
 
 In the folder sql/ lives all the sql files for creating the database.
 
-All the code for both the front-end and back-end lives in the app/ folder. The python
-files for a lot of the back-end an front-end are in the first level of the app/ folder.
+All the code for both the front-end and back-end lives in the ./CODE/app/ folder. The python
+files for a lot of the back-end an front-end are in the first level of the ./CODE/app/ folder.
 Specifically, DBInteract.py, DBObject.py mashape.py, and dbtest.py are how we interact with our posgres
 database. IngredientClass.py, RawJson.py, RecipeClass.py are files for creating data
 structures for the back-end. LookUpTables.py, IngredientCluster.py, and find_synonyms.py
@@ -22,7 +22,7 @@ the backend computation is held in PredictQuery.py, QueryAdjuster.py (these 2 fi
 interact/create the machine learning model), and Ranking.py. Some of the front-end
 to back-end handoff is handled by forms.py, views.py, and setup.py.
 
-The other folders in app/ either store data or hold the front-end code. TestData holds
+The other folders in ./CODE/app/ either store data or hold the front-end code. TestData holds
 information that is used to populate our data structures and the machine learning
 model. The folder named static/ holds the front-end code including all .js and .css
 files as well as images/pages for displaying. The html templates are all held in templates/.
@@ -79,7 +79,7 @@ You also need to install the following python modules to make sure that the proj
 `$ pip install sklearn`
 `$ pip install unirest`
 
-In order to populate the database, you need to run the ./app/mashape.py script. This script queries the Spoonacular API and get one recipe at a time. For each recipe, it populates the "recipes" table in the database, takes the ingredients out of the recipe object and populates the "ingredients" table. Spoonacular is a recipe database which has different membership types. We picked the cheapest plan which has a limit on the number of recipes we can query in a day. So, "mashape.py" populates only 5000 recipes at a time. You may have to create your own account on spoonalcular and update the key and host in mashape.py file (https://spoonacular.com/food-api). At this link you can select "Get Academic Access", fill out the questionnaire and you will recieve your Key and Host ID in your Email. Once you have created an account on Spoonacular, you'll be provided with a key and host which you can update in the mashape.py file at line numbers 29 and 30 respectively. 
+In order to populate the database, you need to run the ./CODE/app/mashape.py script. This script queries the Spoonacular API and get one recipe at a time. For each recipe, it populates the "recipes" table in the database, takes the ingredients out of the recipe object and populates the "ingredients" table. Spoonacular is a recipe database which has different membership types. We picked the cheapest plan which has a limit on the number of recipes we can query in a day. So, "mashape.py" populates only 5000 recipes at a time. You may have to create your own account on spoonalcular and update the key and host in mashape.py file (https://spoonacular.com/food-api). At this link you can select "Get Academic Access", fill out the questionnaire and you will recieve your Key and Host ID in your Email. Once you have created an account on Spoonacular, you'll be provided with a key and host which you can update in the mashape.py file at line numbers 29 and 30 respectively. 
 
 NOTE: We haven't included any demo/toy data because all our machine learning models have been trained on a much larger dataset and they would break on toy data. The ranking mechanism also assumes that there are thousands of recipes.  
 
@@ -94,7 +94,7 @@ To run "mashape.py",
 
 `$ python mashape.py` 
 
-Also, make the changes mentioned above in the file ./app/Ranking.py on the following line numbers. This will later enable you to run the application.
+Also, make the changes mentioned above in the file ./CODE/app/Ranking.py on the following line numbers. This will later enable you to run the application.
 
   94               headers={
   95                 "X-Mashape-Key": "BuyjFV6xLqmshAVbK0ppDXmdXM0Jp1KsUhYjsnltPjvvB9mODp",
@@ -112,7 +112,7 @@ Edit the login details to the database on line number 16 in mashape.py. This wil
   20         print "unable to connect"
   21         exit(1)
 
-Also make the same changes in line number 25 in ./app/DBInteract.py,
+Also make the same changes in line number 25 in ./CODE/app/DBInteract.py,
 
   25             self.conn = psql.connect("dbname='fooddatabase' user='<owner_name>' host='localhost' password='<owner_pass>' port='<port_number>'")
 
