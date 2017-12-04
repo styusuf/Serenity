@@ -1,0 +1,4788 @@
+[
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "TBSPs"
+        ],
+        "to": "Tbsps"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "TBSP"
+        ],
+        "to": "Tbsps"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Tbsp"
+        ],
+        "to": "Tbsps"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "tbs"
+        ],
+        "to": "Tbsps"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "TBs"
+        ],
+        "to": "Tbsps"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "teaspoon"
+        ],
+        "to": "teaspoons"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Teaspoons"
+        ],
+        "to": "teaspoons"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Teaspoon"
+        ],
+        "to": "teaspoons"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Tsp"
+        ],
+        "to": "teaspoons"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Tsps"
+        ],
+        "to": "teaspoons"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Tub"
+        ],
+        "to": "tub"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "tubes"
+        ],
+        "to": "tube"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Tablespoon"
+        ],
+        "to": "tablespoons"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Tablespoons"
+        ],
+        "to": "tablespoons"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "tablespoon"
+        ],
+        "to": "tablespoons"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "tb"
+        ],
+        "to": "tablespoons"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "TB"
+        ],
+        "to": "tablespoons"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Tb"
+        ],
+        "to": "tablespoons"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Tbs"
+        ],
+        "to": "tablespoons"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Tbsps"
+        ],
+        "to": "tablespoons"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "strip"
+        ],
+        "to": "strips"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Strip"
+        ],
+        "to": "strips"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Sticks"
+        ],
+        "to": "sticks"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Stick"
+        ],
+        "to": "sticks"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "stick"
+        ],
+        "to": "sticks"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Stalks"
+        ],
+        "to": "stalks"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "stalk"
+        ],
+        "to": "stalks"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "square"
+        ],
+        "to": "squares"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Sprigs"
+        ],
+        "to": "sprigs"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Sprig"
+        ],
+        "to": "sprigs"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Slices"
+        ],
+        "to": "slices"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Slice"
+        ],
+        "to": "slices"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "slice"
+        ],
+        "to": "slices"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "slab"
+        ],
+        "to": "slabs"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "sprigs"
+        ],
+        "to": "sprigs"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "sprig"
+        ],
+        "to": "sprigs"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Sheets"
+        ],
+        "to": "sheets"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Sheet"
+        ],
+        "to": "sheets"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "sheet"
+        ],
+        "to": "sheets"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "serving"
+        ],
+        "to": "servings"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "scoop"
+        ],
+        "to": "scoops"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "ribsrib"
+        ],
+        "to": "ribs"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "ribsribs"
+        ],
+        "to": "ribs"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "rib"
+        ],
+        "to": "ribs"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Rib"
+        ],
+        "to": "ribs"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "rack"
+        ],
+        "to": "racks"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "quart"
+        ],
+        "to": "quarts"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "qts"
+        ],
+        "to": "quarts"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Pounds"
+        ],
+        "to": "pounds"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Pound"
+        ],
+        "to": "pounds"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "pound"
+        ],
+        "to": "pounds"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "pouches"
+        ],
+        "to": "pouch"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Pkg"
+        ],
+        "to": "pkgs"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Pkgs"
+        ],
+        "to": "pkgs"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "pint"
+        ],
+        "to": "pints"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "pinche"
+        ],
+        "to": "pinch"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "pinches"
+        ],
+        "to": "pinch"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "pinchs"
+        ],
+        "to": "pinch"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "packet"
+        ],
+        "to": "packets"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Packet"
+        ],
+        "to": "packets"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Packages"
+        ],
+        "to": "pkgs"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "pkgs"
+        ],
+        "to": "packages"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "package"
+        ],
+        "to": "packages"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Package"
+        ],
+        "to": "packages"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Ounce"
+        ],
+        "to": "ounces"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Ounces"
+        ],
+        "to": "ounces"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "ounce"
+        ],
+        "to": "ounces"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Ozs"
+        ],
+        "to": "ounces"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "mls"
+        ],
+        "to": "mLs"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "mL"
+        ],
+        "to": "mLs"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "mLs"
+        ],
+        "to": "mililiters"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "milliliters"
+        ],
+        "to": "milliliters"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "mililiters"
+        ],
+        "to": "mililiters"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "milliliters"
+        ],
+        "to": "milliliters"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "mililiters"
+        ],
+        "to": "milliliters"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Ls"
+        ],
+        "to": "liters"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "loafs"
+        ],
+        "to": "loaf"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Loaf"
+        ],
+        "to": "loaf"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "litres"
+        ],
+        "to": "liters"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "litre"
+        ],
+        "to": "liters"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "liter"
+        ],
+        "to": "liters"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Links"
+        ],
+        "to": "links"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "link"
+        ],
+        "to": "links"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Link"
+        ],
+        "to": "links"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Leave"
+        ],
+        "to": "leave"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "leaves"
+        ],
+        "to": "leave"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Leaf"
+        ],
+        "to": "leaf"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "leafs"
+        ],
+        "to": "leaf"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "L"
+        ],
+        "to": "liters"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Lb"
+        ],
+        "to": "Lbs"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "kg"
+        ],
+        "to": "kgs"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "kilo"
+        ],
+        "to": "kgs"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "kilos"
+        ],
+        "to": "kgs"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Jar"
+        ],
+        "to": "jars"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "jar"
+        ],
+        "to": "jars"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "inch"
+        ],
+        "to": "inches"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Inchs"
+        ],
+        "to": "inches"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Head"
+        ],
+        "to": "head"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "heads"
+        ],
+        "to": "head"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Handfuls"
+        ],
+        "to": "handfuls"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "handfuls"
+        ],
+        "to": "handful"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Handful"
+        ],
+        "to": "handful"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "halve"
+        ],
+        "to": "halves"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Grams"
+        ],
+        "to": "grams"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "grs"
+        ],
+        "to": "grams"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "gram"
+        ],
+        "to": "grams"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "gsheets"
+        ],
+        "to": "gramsheets"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "gramssheets"
+        ],
+        "to": "gramsheets"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Gram"
+        ],
+        "to": "grams"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "gms"
+        ],
+        "to": "grams"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "gm"
+        ],
+        "to": "grams"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "glasse"
+        ],
+        "to": "glasses"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "glass"
+        ],
+        "to": "glasses"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "glas"
+        ],
+        "to": "glasses"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Gallon"
+        ],
+        "to": "gallons"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "gallon"
+        ],
+        "to": "gallons"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "fluid ounce"
+        ],
+        "to": "fluid ounces"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "fluid ounces"
+        ],
+        "to": "fl. oz"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "fl. oz.s"
+        ],
+        "to": "fl. oz"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "fillet"
+        ],
+        "to": "fillets"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Envelopes"
+        ],
+        "to": "envelopes"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Envelope"
+        ],
+        "to": "envelopes"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "envelope"
+        ],
+        "to": "envelopes"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "drop"
+        ],
+        "to": "drops"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Dashe"
+        ],
+        "to": "dash"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "dashe"
+        ],
+        "to": "dash"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Dashs"
+        ],
+        "to": "dash"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "dashes"
+        ],
+        "to": "dash"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Dash"
+        ],
+        "to": "dash"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "CUPSs"
+        ],
+        "to": "cups"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Cups"
+        ],
+        "to": "cups"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "CUPs"
+        ],
+        "to": "cups"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "cup"
+        ],
+        "to": "cups"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "CUP"
+        ],
+        "to": "cups"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Cup"
+        ],
+        "to": "cups"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "cubes"
+        ],
+        "to": "cubes"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "cube"
+        ],
+        "to": "cubes"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Cs"
+        ],
+        "to": "cups"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Container"
+        ],
+        "to": "containers"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "container"
+        ],
+        "to": "containers"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Cloves"
+        ],
+        "to": "cloves"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Clove"
+        ],
+        "to": "clove"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Chunk"
+        ],
+        "to": "chunks"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "chunk"
+        ],
+        "to": "chunks"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Cans"
+        ],
+        "to": "cans"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "can"
+        ],
+        "to": "cans"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "C"
+        ],
+        "to": "cups"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Can"
+        ],
+        "to": "cans"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "clove"
+        ],
+        "to": "cloves"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Bunches"
+        ],
+        "to": "bunches"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Bunchs"
+        ],
+        "to": "bunches"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Bunch"
+        ],
+        "to": "bunches"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "bunche"
+        ],
+        "to": "bunches"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "bunch"
+        ],
+        "to": "bunches"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "boxs"
+        ],
+        "to": "boxes"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "boxe"
+        ],
+        "to": "boxes"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "box"
+        ],
+        "to": "boxes"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Box"
+        ],
+        "to": "boxes"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "bottles"
+        ],
+        "to": "bottle"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Bottle"
+        ],
+        "to": "bottle"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "balls"
+        ],
+        "to": "ball"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Bags"
+        ],
+        "to": "bags"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Bag"
+        ],
+        "to": "bags"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "bag"
+        ],
+        "to": "bags"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "9-inchs"
+        ],
+        "to": "9-inch"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "8-inchs"
+        ],
+        "to": "8-inch"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "8 inchs"
+        ],
+        "to": "8-inch"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "7-inchs"
+        ],
+        "to": "7-inch"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "5-inchs"
+        ],
+        "to": "5-inch"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "4-inchs"
+        ],
+        "to": "4-inch"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "6-inchs"
+        ],
+        "to": "6-inch"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "3-inchs"
+        ],
+        "to": "3-inch"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "2-inchs"
+        ],
+        "to": "2-inch"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "12-inchs"
+        ],
+        "to": "12-inch"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "12 inchs"
+        ],
+        "to": "12-inch"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "10-inch"
+        ],
+        "to": "10-inch"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "10-inchs"
+        ],
+        "to": "10-inch"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "10 inchs"
+        ],
+        "to": "10-inch"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "smallhandful"
+        ],
+        "to": "handful"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "pkgsheet"
+        ],
+        "to": "pkgs"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "pkgs"
+        ],
+        "to": "pkg"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "pkg"
+        ],
+        "to": "packages"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "ouncesribs"
+        ],
+        "to": "ounces"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "ouncessheets"
+        ],
+        "to": "ounces"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "ouncesheets"
+        ],
+        "to": "ounces"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "measure"
+        ],
+        "to": "servings"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "lbsheets"
+        ],
+        "to": "lbs"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "lbs"
+        ],
+        "to": "lbs"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Lbs"
+        ],
+        "to": "lbs"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "inchribes"
+        ],
+        "to": "inch"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "inch"
+        ],
+        "to": "inches"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "bagsheet"
+        ],
+        "to": "bags"
+      }
+    ]
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column _ - _ - ingredients - _ - amount using expression grel:value*8",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "cups",
+                "l": "cups"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "_ - _ - ingredients - _ - unitLong",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "_ - _ - ingredients - _ - unitLong"
+        }
+      ]
+    },
+    "columnName": "_ - _ - ingredients - _ - amount",
+    "expression": "grel:value*8",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "cups"
+        ],
+        "to": "ounces"
+      }
+    ]
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column _ - _ - ingredients - _ - amount using expression grel:value*16",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "pints",
+                "l": "pints"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "_ - _ - ingredients - _ - unitLong",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "_ - _ - ingredients - _ - unitLong"
+        }
+      ]
+    },
+    "columnName": "_ - _ - ingredients - _ - amount",
+    "expression": "grel:value*16",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "pints"
+        ],
+        "to": "ounces"
+      }
+    ]
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column _ - _ - ingredients - _ - amount using expression grel:value*32",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "quarts",
+                "l": "quarts"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "_ - _ - ingredients - _ - unitLong",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "_ - _ - ingredients - _ - unitLong"
+        }
+      ]
+    },
+    "columnName": "_ - _ - ingredients - _ - amount",
+    "expression": "grel:value*32",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "quarts"
+        ],
+        "to": "ounces"
+      }
+    ]
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column _ - _ - ingredients - _ - amount using expression grel:value*0.5",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "tablespoons",
+                "l": "tablespoons"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "_ - _ - ingredients - _ - unitLong",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "_ - _ - ingredients - _ - unitLong"
+        }
+      ]
+    },
+    "columnName": "_ - _ - ingredients - _ - amount",
+    "expression": "grel:value*0.5",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "tablespoons"
+        ],
+        "to": "ounces"
+      }
+    ]
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column _ - _ - ingredients - _ - amount using expression grel:value*0.166667",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "teaspoons",
+                "l": "teaspoons"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "_ - _ - ingredients - _ - unitLong",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "_ - _ - ingredients - _ - unitLong"
+        }
+      ]
+    },
+    "columnName": "_ - _ - ingredients - _ - amount",
+    "expression": "grel:value*0.166667",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "teaspoons"
+        ],
+        "to": "ounces"
+      }
+    ]
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column _ - _ - ingredients - _ - amount using expression grel:value*16",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "pounds",
+                "l": "pounds"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "_ - _ - ingredients - _ - unitLong",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "_ - _ - ingredients - _ - unitLong"
+        }
+      ]
+    },
+    "columnName": "_ - _ - ingredients - _ - amount",
+    "expression": "grel:value*16",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "pounds"
+        ],
+        "to": "ounces"
+      }
+    ]
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column _ - _ - ingredients - _ - amount using expression grel:value*0.25",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "pinch",
+                "l": "pinch"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "_ - _ - ingredients - _ - unitLong",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "_ - _ - ingredients - _ - unitLong"
+        }
+      ]
+    },
+    "columnName": "_ - _ - ingredients - _ - amount",
+    "expression": "grel:value*0.25",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "pinch"
+        ],
+        "to": "grams"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "fl. oz"
+        ],
+        "to": "ounces"
+      }
+    ]
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column _ - _ - ingredients - _ - amount using expression grel:value*1000",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "kgs",
+                "l": "kgs"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "_ - _ - ingredients - _ - unitLong",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "_ - _ - ingredients - _ - unitLong"
+        }
+      ]
+    },
+    "columnName": "_ - _ - ingredients - _ - amount",
+    "expression": "grel:value*1000",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "kgs"
+        ],
+        "to": "grams"
+      }
+    ]
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column _ - _ - ingredients - _ - amount using expression grel:value*8*0.33333334",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "handful",
+                "l": "handful"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "_ - _ - ingredients - _ - unitLong",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "_ - _ - ingredients - _ - unitLong"
+        }
+      ]
+    },
+    "columnName": "_ - _ - ingredients - _ - amount",
+    "expression": "grel:value*8*0.33333334",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "handful"
+        ],
+        "to": "ounces"
+      }
+    ]
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column _ - _ - ingredients - _ - amount using expression grel:value*16",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "lbs",
+                "l": "lbs"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "_ - _ - ingredients - _ - unitLong",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "_ - _ - ingredients - _ - unitLong"
+        }
+      ]
+    },
+    "columnName": "_ - _ - ingredients - _ - amount",
+    "expression": "grel:value*16",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "lbs"
+        ],
+        "to": "ounces"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "milliliters"
+        ],
+        "to": "grams"
+      }
+    ]
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column _ - _ - ingredients - _ - amount using expression grel:value*1000",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "liters",
+                "l": "liters"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "_ - _ - ingredients - _ - unitLong",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "_ - _ - ingredients - _ - unitLong"
+        }
+      ]
+    },
+    "columnName": "_ - _ - ingredients - _ - amount",
+    "expression": "grel:value*1000",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "liters"
+        ],
+        "to": "grams"
+      }
+    ]
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column _ - _ - ingredients - _ - amount using expression grel:value*128",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "gallons",
+                "l": "gallons"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "_ - _ - ingredients - _ - unitLong",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "_ - _ - ingredients - _ - unitLong"
+        }
+      ]
+    },
+    "columnName": "_ - _ - ingredients - _ - amount",
+    "expression": "grel:value*128",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "gallons"
+        ],
+        "to": "ounces"
+      }
+    ]
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column _ - _ - ingredients - _ - amount using expression grel:value*159",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "fillets",
+                "l": "fillets"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "_ - _ - ingredients - _ - unitLong",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "_ - _ - ingredients - _ - unitLong"
+        }
+      ]
+    },
+    "columnName": "_ - _ - ingredients - _ - amount",
+    "expression": "grel:value*159",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "fillets"
+        ],
+        "to": "grams"
+      }
+    ]
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column _ - _ - ingredients - _ - amount using expression grel:value*0.5",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "dash",
+                "l": "dash"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "_ - _ - ingredients - _ - unitLong",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "_ - _ - ingredients - _ - unitLong"
+        }
+      ]
+    },
+    "columnName": "_ - _ - ingredients - _ - amount",
+    "expression": "grel:value*0.5",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "dash"
+        ],
+        "to": "grams"
+      }
+    ]
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column _ - _ - ingredients - _ - amount using expression grel:value*28.3495",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "ounces",
+                "l": "ounces"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "_ - _ - ingredients - _ - unitLong",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "_ - _ - ingredients - _ - unitLong"
+        }
+      ]
+    },
+    "columnName": "_ - _ - ingredients - _ - amount",
+    "expression": "grel:value*28.3495",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "ounces"
+        ],
+        "to": "grams"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "leave"
+        ],
+        "to": "leaves"
+      }
+    ]
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column _ - _ - ingredients - _ - amount using expression grel:value*0.035274",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "grams",
+                "l": "grams"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "_ - _ - ingredients - _ - unitLong",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "_ - _ - ingredients - _ - unitLong"
+        }
+      ]
+    },
+    "columnName": "_ - _ - ingredients - _ - amount",
+    "expression": "grel:value*0.035274",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column _ - _ - ingredients - _ - unitLong",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - ingredients - _ - unitLong",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "grams"
+        ],
+        "to": "ounces"
+      }
+    ]
+  },
+  {
+    "op": "core/fill-down",
+    "description": "Fill down cells in column _ - _ - recipe_id",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "ounces",
+                "l": "ounces"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "_ - _ - ingredients - _ - unitLong",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "_ - _ - ingredients - _ - unitLong"
+        }
+      ]
+    },
+    "columnName": "_ - _ - recipe_id"
+  },
+  {
+    "op": "core/fill-down",
+    "description": "Fill down cells in column _ - _ - recipe_id",
+    "engineConfig": {
+      "mode": "record-based",
+      "facets": []
+    },
+    "columnName": "_ - _ - recipe_id"
+  }
+]

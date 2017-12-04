@@ -3,6 +3,7 @@ README for Serenity (Team 30)
 Members: Aditya Sahai, Rachel Black, Samuel Yusuf, Ryan LaFleur
 
 Part 1. Tour of Serenity Package
+================================
 
 Welcome to the README for Serenity (a.k.a. Fall 2017 CSE 6242 Team 30). At the top level
 of this project (at the level this README file is at) contains only a few files.
@@ -27,6 +28,8 @@ model. The folder named static/ holds the front-end code including all .js and .
 files as well as images/pages for displaying. The html templates are all held in templates/.
 
 Part 2. Setting up the Project
+==============================
+
 To setup the project you need to install PostgreSQL. The project was build using PostgreSQL database version 10. Please look at the following to install postgres,
 
 ## Installing PostgreSQL10
@@ -42,14 +45,14 @@ To setup the project you need to install PostgreSQL. The project was build using
 
 To populate the database, you'll have to make a few changes. If the name of the owner for the postgreSQL database is different than 'postgres', please edit the following lines in the database dump file in the "sql" folder (./sql/database_schema.sql),
 
-28:ALTER DATABASE fooddatabase OWNER TO postgres;
-75:ALTER TABLE ingredient_units OWNER TO postgres;
-91:ALTER TABLE ingredients OWNER TO postgres;
-104:ALTER TABLE people OWNER TO postgres;
-117:ALTER TABLE people_choices OWNER TO postgres;
-130:ALTER TABLE rawrecipejson OWNER TO postgres;
-156:ALTER TABLE recipes OWNER TO postgres;
-169:ALTER TABLE recipes_index OWNER TO postgres;
+  28:ALTER DATABASE fooddatabase OWNER TO postgres;
+  75:ALTER TABLE ingredient_units OWNER TO postgres;
+  91:ALTER TABLE ingredients OWNER TO postgres;
+  104:ALTER TABLE people OWNER TO postgres;
+  117:ALTER TABLE people_choices OWNER TO postgres;
+  130:ALTER TABLE rawrecipejson OWNER TO postgres;
+  156:ALTER TABLE recipes OWNER TO postgres;
+  169:ALTER TABLE recipes_index OWNER TO postgres;
 
 **(Please note that some of these tables like ingredient_units and recipes_index where only used for experimental purposes and are not used in application. We have decided to include them anyway to give a sense of the direction the application could be led into)**
 
@@ -72,11 +75,13 @@ You also need to install the following python modules to make sure that the proj
 `$ pip install flipflop`
 `$ pip install coverage`
 `$ pip install psycopg2`
-`$ pip install sklearn`
 `$ pip install numpy`
+`$ pip install sklearn`
 `$ pip install unirest`
 
-In order to populate the database, you need to run the ./app/mashape.py script. This script queries the Spoonacular API and get one recipe at a time. For each recipe, it populates the "recipes" table in the database, takes the ingredients out of the recipe object and populates the "ingredients" table. Spoonacular is a recipe database which has different membership types. We picked the cheapest plan and a limit on the number of recipes we can query in a day. So, "mashape.py" populates only 5000 recipes at a time. You may have to create your own account on spoonalcular account and update the key and host in mashape.py file (https://rapidapi.com/user/spoonacular/package/Recipe%20-%20Food%20-%20Nutrition/pricing). Once you have created an account on Spoonacular, you'll be provided with a key and host which you can update in the mashape.py file at line numbers 29 and 30 respectively. 
+In order to populate the database, you need to run the ./app/mashape.py script. This script queries the Spoonacular API and get one recipe at a time. For each recipe, it populates the "recipes" table in the database, takes the ingredients out of the recipe object and populates the "ingredients" table. Spoonacular is a recipe database which has different membership types. We picked the cheapest plan which has a limit on the number of recipes we can query in a day. So, "mashape.py" populates only 5000 recipes at a time. You may have to create your own account on spoonalcular and update the key and host in mashape.py file (https://spoonacular.com/food-api). At this link you can select "Get Academic Access", fill out the questionnaire and you will recieve your Key and Host ID in your Email. Once you have created an account on Spoonacular, you'll be provided with a key and host which you can update in the mashape.py file at line numbers 29 and 30 respectively. 
+
+NOTE: We haven't included any demo/toy data because all our machine learning models have been trained on a much larger dataset and they would break on toy data. The ranking mechanism also assumes that there are thousands of recipes.  
 
   27         response = unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=1",
   28           headers={
@@ -107,7 +112,7 @@ Edit the login details to the database on line number 16 in mashape.py. This wil
   20         print "unable to connect"
   21         exit(1)
 
-Also make the same changes in line number ./app/DBInteract.py,
+Also make the same changes in line number 25 in ./app/DBInteract.py,
 
   25             self.conn = psql.connect("dbname='fooddatabase' user='<owner_name>' host='localhost' password='<owner_pass>' port='<port_number>'")
 
@@ -115,9 +120,24 @@ NOTE: If these values are wrong, you'll get the following error when you run the
 
 *unable to connect*
 
-Part 3. Running the Demo
+Cleaning the Data using OpenRefine
+----------------------------------
+We had to do some cleaning to data and we used OpenRefine for this purpose. We cleaned the "unitLong" attribute of each ingredient and standardized the measuring unit for as many ingredients as possible to "ounces". For everything else, we query the Spoonacular API for a correct conversion value in the file Ranking.py (as discussed above). We have included the changes done in OpenRefine in the file OpenRefine.json. To use it, you must export the data in recipe table of the populated database to a file. Use the following command on the psql prompt, 
 
-Please follow the following steps to run the application
+`# select id, ingredients from recipes \g path/to/file.txt`
+
+and then use the included "ORjsonify.py" python script to convert this data into a json format which can be opened in OpenRefine.
+
+`$ python ORjsonify.py path/to/input.txt path/to/output.json`
+
+In OpenRefine you can use the OpenRefine.json file to apply the changes that we made.
+
+Part 3. Running the Demo
+========================
+
+You can check the demo.mov movie file to see a demo.
+
+Please follow the following steps to run the application,
 
 1. `$ python run.py` (run.py is in the base folder)
 2. login to http://localhost:5000
