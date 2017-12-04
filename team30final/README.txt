@@ -135,7 +135,7 @@ In OpenRefine you can use the OpenRefine.json file to apply the changes that we 
 Part 3. Running the Demo
 ========================
 
-You can check the demo.mov movie file to see a demo.
+You can check the ./DOC/demo.mov movie file to see a demo.
 
 Please follow the following steps to run the application,
 
