@@ -6,4 +6,4 @@
 .ipynb_checkpoints/
 *.pyc
 .idea/.*
-web_app
+web_app/
