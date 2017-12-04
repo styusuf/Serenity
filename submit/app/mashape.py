@@ -20,7 +20,7 @@ def connect_to_db():
         print "unable to connect"
         exit(1)
 
-for i in range(1,4000):
+for i in range(1,2):
     print "{} requests".format(i)
     try:
         unirest.timeout(10)
@@ -30,13 +30,7 @@ for i in range(1,4000):
             "X-Mashape-Host": "spoonacular-recipe-food-nutrition-v1.p.mashape.com"
           }
         )
-        filename = 'json_objects/{}.json'.format(re.sub(r'[-:. ]', '', str(datetime.datetime.now())))
-        # a = json.loads(response.body);
         data = json.loads(response.raw_body)
-
-        # Update local file with json
-        with open(filename, 'w') as f:
-            f.write(str(response.raw_body))
 
         conn = connect_to_db()
 
@@ -44,7 +38,7 @@ for i in range(1,4000):
         a = Recipe()
         a.populate_from_json(data)
         a.populate_insert_statement(conn)
-        
+
         if a.update_with_recipe(conn, sqlfilename) == 0:
             print "success"
             conn.commit()
@@ -52,7 +46,7 @@ for i in range(1,4000):
         else:
             conn.close()
             print "fail"
-    
+
     except SSLError:
         conn.close()
         print "SSL ERROR"

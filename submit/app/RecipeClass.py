@@ -36,7 +36,6 @@ class Recipe(DBObject):
         recipe = json_object['recipes'][0]
         # Populate fields
         self.id = recipe['id']
-        logging.error("Populating for recipe id = " + str(self.id))
         self.isVeg = recipe['vegetarian']
         self.isVegan = recipe['vegan']
         self.isGlutenFree = recipe['glutenFree']

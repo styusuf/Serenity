@@ -1,4 +1,4 @@
-README for Serenity
+README for Serenity (Team 30)
 
 Members: Aditya Sahai, Rachel Black, Samuel Yusuf, Ryan LaFleur
 
@@ -40,22 +40,22 @@ To setup the project you need to install PostgreSQL. The project was build using
   * Installs the `psql` tool by default
 
 
-To populate the database, you'll have to make a few changes. If the name of the owner for the postgreSQL database is different than 'postgres', please edit the following lines in the database dump file in the "sql" folder (./sql/database_dump.sql),
+To populate the database, you'll have to make a few changes. If the name of the owner for the postgreSQL database is different than 'postgres', please edit the following lines in the database dump file in the "sql" folder (./sql/database_schema.sql),
 
-28:ALTER DATABASE fooddatabase OWNER TO <owner_name>;
-75:ALTER TABLE ingredient_units OWNER TO <owner_name>;
-91:ALTER TABLE ingredients OWNER TO <owner_name>;
-104:ALTER TABLE people OWNER TO <owner_name>;
-117:ALTER TABLE people_choices OWNER TO <owner_name>;
-130:ALTER TABLE rawrecipejson OWNER TO <owner_name>;
-156:ALTER TABLE recipes OWNER TO <owner_name>;
-169:ALTER TABLE recipes_index OWNER TO <owner_name>;
+28:ALTER DATABASE fooddatabase OWNER TO postgres;
+75:ALTER TABLE ingredient_units OWNER TO postgres;
+91:ALTER TABLE ingredients OWNER TO postgres;
+104:ALTER TABLE people OWNER TO postgres;
+117:ALTER TABLE people_choices OWNER TO postgres;
+130:ALTER TABLE rawrecipejson OWNER TO postgres;
+156:ALTER TABLE recipes OWNER TO postgres;
+169:ALTER TABLE recipes_index OWNER TO postgres;
 
 **(Please note that some of these tables like ingredient_units and recipes_index where only used for experimental purposes and are not used in application. We have decided to include them anyway to give a sense of the direction the application could be led into)**
 
 Run the following commands,
 1. `$ psql` (login using your username and password)
-2. `# \i ./sql/database_dump.sql` (this step might take a few minutes)
+2. `# \i ./sql/database_schema.sql`
 
 You also need to install the following python modules to make sure that the project runs, 
 
@@ -74,13 +74,44 @@ You also need to install the following python modules to make sure that the proj
 `$ pip install psycopg2`
 `$ pip install sklearn`
 `$ pip install numpy`
+`$ pip install unirest`
 
-You also need to edit the login details in the following file/line number to make sure that the python application is able to connect to the database,
-* In the file ./app/DBInteract.py, make changes on line number 25. Change the "user" to the <owner_name> described above, "password" to your password for that <owner_name> and "port" (usually 5432) attributes.
+In order to populate the database, you need to run the ./app/mashape.py script. This script queries the Spoonacular API and get one recipe at a time. For each recipe, it populates the "recipes" table in the database, takes the ingredients out of the recipe object and populates the "ingredients" table. Spoonacular is a recipe database which has different membership types. We picked the cheapest plan and a limit on the number of recipes we can query in a day. So, "mashape.py" populates only 5000 recipes at a time. You may have to create your own account on spoonalcular account and update the key and host in mashape.py file (https://rapidapi.com/user/spoonacular/package/Recipe%20-%20Food%20-%20Nutrition/pricing). Once you have created an account on Spoonacular, you'll be provided with a key and host which you can update in the mashape.py file at line numbers 29 and 30 respectively. 
+
+  27         response = unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=1",
+  28           headers={
+  29             "X-Mashape-Key": "BuyjFV6xLqmshAVbK0ppDXmdXM0Jp1KsUhYjsnltPjvvB9mODp",
+  30             "X-Mashape-Host": "spoonacular-recipe-food-nutrition-v1.p.mashape.com"
+  31           }
+  32         )
+
+To run "mashape.py", 
+
+`$ python mashape.py` 
+
+Also, make the changes mentioned above in the file ./app/Ranking.py on the following line numbers. This will later enable you to run the application.
+
+  94               headers={
+  95                 "X-Mashape-Key": "BuyjFV6xLqmshAVbK0ppDXmdXM0Jp1KsUhYjsnltPjvvB9mODp",
+  96                 "X-Mashape-Host": "spoonacular-recipe-food-nutrition-v1.p.mashape.com"
+  97               }
+
+Edit the login details to the database on line number 16 in mashape.py. This will enable you to login to the database successfully and edit it. Change the "user" to the <owner_name> described above, "password" to your password for that <owner_name> and "port" (usually 5432) attributes.
+
+  14 def connect_to_db():
+  15     try:
+  16         return psql.connect("dbname='fooddatabase' user='<owner_name>' host='localhost' password='a' port='5433'")
+  17     except:
+  18         e = traceback.format_exc(0)
+  19         print e
+  20         print "unable to connect"
+  21         exit(1)
+
+Also make the same changes in line number ./app/DBInteract.py,
 
   25             self.conn = psql.connect("dbname='fooddatabase' user='<owner_name>' host='localhost' password='<owner_pass>' port='<port_number>'")
 
-If these values are wrong, you'll get the following error when you run the application in part 3.
+NOTE: If these values are wrong, you'll get the following error when you run the application in part 3.
 
 *unable to connect*
 
