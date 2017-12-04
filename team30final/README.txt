@@ -130,7 +130,7 @@ and then use the included "ORjsonify.py" python script to convert this data into
 
 `$ python ORjsonify.py path/to/input.txt path/to/output.json`
 
-In OpenRefine you can use the OpenRefine.json file to apply the changes that we made.
+In OpenRefine you can use the OpenRefine.json file to apply the changes that we made after creating a project with the output.json file created above.
 
 Part 3. Running the Demo
 ========================
