@@ -136,7 +136,7 @@ Files Under ./CODE/app/TestData
 -------------------------------
 - frequency.txt
     This file is created using the following SQL query on the postgreSQL shell. It contains the frequency of each ingredient in terms of how many recipes they appear in. Please create this file before moving to Part 3.
-`# select id, name, json_array_length(recipes) as num_recipes from ingredients order by num_recipes DESC \g path/to/frequency.txt`
+    `# select id, name, json_array_length(recipes) as num_recipes from ingredients order by num_recipes DESC \g path/to/frequency.txt`
 - groups.txt
     This is a file used by Serenity to get details about synonyms of ingredeints. To generate this, you must run ./CODE/enumerate_groups.txt. Then it will give suggestions of synonyms, and you must confirm if it is a synonym by entering 'Y' or reject by entering 'N'.
 - nn_model.p
