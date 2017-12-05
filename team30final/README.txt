@@ -39,7 +39,7 @@ To setup the project you need to install PostgreSQL. The project was build using
 
       `alias psql="/Library/PostgreSQL/10/scripts/runpsql.sh"`
 
-### 2. (Mac OSX) Install using [homebrew](https://launchschool.com/blog/how-to-install-postgresql-on-a-mac) 
+### 2. (Mac OSX) Install using [homebrew](https://launchschool.com/blog/how-to-install-postgresql-on-a-mac)
   * Installs the `psql` tool by default
 
 
@@ -60,7 +60,7 @@ Run the following commands,
 1. `$ psql` (login using your username and password)
 2. `# \i ./sql/database_schema.sql`
 
-You also need to install the following python modules to make sure that the project runs, 
+You also need to install the following python modules to make sure that the project runs,
 
 `$ pip install flask`
 `$ pip install flask-login`
@@ -79,9 +79,9 @@ You also need to install the following python modules to make sure that the proj
 `$ pip install sklearn`
 `$ pip install unirest`
 
-In order to populate the database, you need to run the ./CODE/app/mashape.py script. This script queries the Spoonacular API and get one recipe at a time. For each recipe, it populates the "recipes" table in the database, takes the ingredients out of the recipe object and populates the "ingredients" table. Spoonacular is a recipe database which has different membership types. We picked the cheapest plan which has a limit on the number of recipes we can query in a day. So, "mashape.py" populates only 5000 recipes at a time. You may have to create your own account on spoonalcular and update the key and host in mashape.py file (https://spoonacular.com/food-api). At this link you can select "Get Academic Access", fill out the questionnaire and you will recieve your Key and Host ID in your Email. Once you have created an account on Spoonacular, you'll be provided with a key and host which you can update in the mashape.py file at line numbers 29 and 30 respectively. 
+In order to populate the database, you need to run the ./CODE/app/mashape.py script. This script queries the Spoonacular API and get one recipe at a time. For each recipe, it populates the "recipes" table in the database, takes the ingredients out of the recipe object and populates the "ingredients" table. Spoonacular is a recipe database which has different membership types. We picked the cheapest plan which has a limit on the number of recipes we can query in a day. So, "mashape.py" populates only 5000 recipes at a time. You may have to create your own account on spoonalcular and update the key and host in mashape.py file (https://spoonacular.com/food-api). At this link you can select "Get Academic Access", fill out the questionnaire and you will recieve your Key and Host ID in your Email. Once you have created an account on Spoonacular, you'll be provided with a key and host which you can update in the mashape.py file at line numbers 29 and 30 respectively.
 
-NOTE: We haven't included any demo/toy data because all our machine learning models have been trained on a much larger dataset and they would break on toy data. The ranking mechanism also assumes that there are thousands of recipes.  
+NOTE: We haven't included any demo/toy data because all our machine learning models have been trained on a much larger dataset and they would break on toy data. The ranking mechanism also assumes that there are thousands of recipes.
 
   27         response = unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=1",
   28           headers={
@@ -90,9 +90,9 @@ NOTE: We haven't included any demo/toy data because all our machine learning mod
   31           }
   32         )
 
-To run "mashape.py", 
+To run "mashape.py",
 
-`$ python mashape.py` 
+`$ python mashape.py`
 
 Also, make the changes mentioned above in the file ./CODE/app/Ranking.py on the following line numbers. This will later enable you to run the application.
 
@@ -122,7 +122,7 @@ NOTE: If these values are wrong, you'll get the following error when you run the
 
 Cleaning the Data using OpenRefine
 ----------------------------------
-We had to do some cleaning to data and we used OpenRefine for this purpose. We cleaned the "unitLong" attribute of each ingredient and standardized the measuring unit for as many ingredients as possible to "ounces". For everything else, we query the Spoonacular API for a correct conversion value in the file Ranking.py (as discussed above). We have included the changes done in OpenRefine in the file OpenRefine.json. To use it, you must export the data in recipe table of the populated database to a file. Use the following command on the psql prompt, 
+We had to do some cleaning to data and we used OpenRefine for this purpose. We cleaned the "unitLong" attribute of each ingredient and standardized the measuring unit for as many ingredients as possible to "ounces". For everything else, we query the Spoonacular API for a correct conversion value in the file Ranking.py (as discussed above). We have included the changes done in OpenRefine in the file OpenRefine.json. To use it, you must export the data in recipe table of the populated database to a file. Use the following command on the psql prompt,
 
 `# select id, ingredients from recipes \g path/to/file.txt`
 
@@ -131,6 +131,20 @@ and then use the included "ORjsonify.py" python script to convert this data into
 `$ python ORjsonify.py path/to/input.txt path/to/output.json`
 
 In OpenRefine you can use the OpenRefine.json file to apply the changes that we made after creating a project with the output.json file created above.
+
+Files Under ./CODE/app/TestData
+-------------------------------
+- frequency.txt
+    This file is created using the following SQL query on the postgreSQL shell. It contains the frequency of each ingredient in terms of how many recipes they appear in. Please create this file before moving to Part 3.
+`# select id, name, json_array_length(recipes) as num_recipes from ingredients order by num_recipes DESC \g path/to/frequency.txt`
+- groups.txt
+    This is a file used by Serenity to get details about synonyms of ingredeints. To generate this, you must run ./CODE/enumerate_groups.txt. Then it will give suggestions of synonyms, and you must confirm if it is a synonym by entering 'Y' or reject by entering 'N'.
+- nn_model.p
+    This is the neural network file. The .p file indicates a pickle extension. To generate this, you must run the following line:
+        python ./CODE/app/PredictQuery.py
+    It will generate the neural network model. Please note, this will automatically save the training data, which is a very large file. Feel free to delete these after training (./CODE/app/TestData/predict_query_train_X_big.npy and ./CODE/app/TestData/predict_query_train_y_big.npy).
+- qf_data.p
+    This is a generated file. You can delete this safely and it will be regenerated.
 
 Part 3. Running the Demo
 ========================
@@ -141,7 +155,8 @@ Please follow the following steps to run the application,
 
 1. `$ python run.py` (run.py is in the base folder)
 2. login to http://localhost:5000
-3. On the UI, use the username password as follows, 
-	username - admin
-	password - password
+3. On the UI, use the username password as follows,
+    username - admin
+    password - password
 4. Search for recipes!
+h

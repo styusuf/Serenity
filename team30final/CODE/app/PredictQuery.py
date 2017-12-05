@@ -2,7 +2,6 @@ import os.path
 import pickle
 
 import numpy as np
-from sklearn import datasets
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
@@ -253,30 +252,6 @@ def test_on_db_data(big=False):
     print "\nTesting out-of-sample"
     pq.test(test_X, test_y, reg=False)
 
-def test_on_diabetes():
-    """
-    Tests regression models on sklearn diabetes dataset
-    :return: None
-    """
-    # load dataset
-    diabetes = datasets.load_diabetes()
-
-    # get features data
-    diabetes_X = diabetes.data[:, np.newaxis, 2]
-    diabetes_X_train = diabetes_X[:-20]
-    diabetes_X_test = diabetes_X[-20:]
-
-    # get target values
-    diabetes_y_train = diabetes.target[:-20]
-    diabetes_y_test = diabetes.target[-20:]
-    pq = PredictQuery()
-
-    # train models
-    # pq.train(diabetes_X_train, diabetes_y_train, linreg=False, knn=False, rf=False, k=10, num_trees=100)
-
-    # test models
-    pq.test(diabetes_X_test, diabetes_y_test)
-
 if __name__ == "__main__":
     # test_on_diabetes()
-    test_on_db_data(big=False)
+    test_on_db_data(big=True)
